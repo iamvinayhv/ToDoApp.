@@ -1,0 +1,40 @@
+input[type=text] {
+    width: 100%;
+    padding: 6px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+input[type=password] {
+
+	width: 100%;
+    padding: 6px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.bg
+{
+	width: 350px;
+	hight: 200px;
+	background-color: rgba(0,0,0,0.4);
+	margin:0 auto;
+	margin-top: 10px;
+	padding-top:10px;
+	padding-left:10px;
+	border-radius: 5px;
+}
+
+
+.head
+{
+	width: 350px;
+	background-color: rgba(0,0,0,0.4);
+	margin-top: 1px;
+	padding-top:5px;
+	padding-left:10px;
+	border-radius: 5px;
+}

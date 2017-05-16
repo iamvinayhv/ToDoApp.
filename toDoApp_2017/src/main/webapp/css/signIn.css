@@ -1,0 +1,31 @@
+.signInhead
+{
+	width: 350px;
+	margin-top: 1px;
+	padding-top:5px;
+	padding-left:10px;
+	border-radius: 5px;
+}
+
+
+#sigInpBody
+{
+	width: 350px;
+	hight: 200px;
+	margin:0 auto;
+	margin-top: 10px;
+	padding-top:10px;
+	padding-left:10px;
+	border-radius: 5px;
+}
+
+
+
+#signInbottom {
+    width: 100%;
+    padding: 6px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 5px;
+}
