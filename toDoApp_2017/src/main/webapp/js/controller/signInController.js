@@ -9,14 +9,15 @@ myToDo.controller("signInController",function ($scope,  $state, signInService, s
 		user.email=$scope.email;
 		user.password=$scope.password;
 		
-		var httpObje=loginService.signIn(user);
+		var httpObje=signInService.signIn(user);
 		
 		httpObje.then(function (data) {
 			console.log(data);
 			
 			console.log(data.status);
 			if( data.status=="200"){
-					$state.go('home');
+				
+				$state.go('home');
 			}
 			else
 			{
@@ -35,7 +36,7 @@ myToDo.controller("signInController",function ($scope,  $state, signInService, s
 myToDo.service("signInService",function ($http) {
 	this.signIn = function(user){ 
 		return $http({
-			url:"http://localhost:8012/toDoApp_2017/signIn",
+			url:"http://localhost:8080/toDoApp_2017/signIn",
 			method:"post",
 			data:user
 		});

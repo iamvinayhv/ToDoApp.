@@ -68,7 +68,7 @@ public class UserController {
 			//ObjectNode todo = mapper.createObjectNode();
 			//todo.put("id", toDo.getId());
 			
-			root.put("error", "errors");
+			root.put("status", "errors");
 			
 			//toDo.setUser(null);
 			

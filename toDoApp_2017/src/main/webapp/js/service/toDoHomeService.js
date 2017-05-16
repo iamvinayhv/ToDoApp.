@@ -1,8 +1,18 @@
 myToDo.service("homeService",function ($http) {
-	this.signIn = function(user){ 
+	
+	this.getNotes = function(){
 		return $http({
-			url:"http://localhost:8012/toDoApp_2017/getNotes",
+			url:"http://localhost:8080/toDoApp_2017/getNotes",
 			method:"GET",
 		});
 	}
+	
+	
+	this.addNote = function() {
+		return $http({
+			url:"http://localhost:8080/toDoApp_2017/addNote",
+			method:"POST",
+		});
+	}
+	
 });

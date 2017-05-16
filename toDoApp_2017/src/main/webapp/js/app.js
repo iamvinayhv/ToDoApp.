@@ -1,28 +1,28 @@
-var myToDo = angular.module('toDoApp', ['ui.router']);
+var myToDo = angular.module("toDoApp", ['ui.router']);
 
 myToDo.config(function ($stateProvider, $urlRouterProvider) {
   
   $stateProvider
  
   .state('signIn',{
-    url:"signIn",
-    templateUrl:"html/signIn.html",
+    url:"/signIn",
+    templateUrl:"template/signIn.html",
     controller:"signInController"
   })
   
   .state('signUp',{
-    url:"signUp",
-    templateUrl:"html/Signup.html",
+    url:"/signUp",
+    templateUrl:"template/signUp.html",
     controller:"signUpController"
   
   })
   
     .state('home',{
-	    url:"home",
-	    templateUrl:"html/home.html",
-	    controller:"toDoHomeController"
+	    url:"/home",
+	    templateUrl:"template/home.html",
+	    controller:""
 	  })
   
-  $urlRouterProvider.otherwise('/signIn');
+  $urlRouterProvider.otherwise('/signUp');
 
 });

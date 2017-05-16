@@ -47,7 +47,7 @@ public class LoginController {
 	public ResponseEntity<String> logIn(@RequestBody Map<String, String> loginMap, BindingResult bindingResult,
 			HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
 		
-		
+		System.out.println(loginMap.get("email")+"  "+loginMap.get("password"));
 
 		User user = userService.authUser(loginMap.get("email"), loginMap.get("password"));
 

@@ -1,4 +1,4 @@
-myToDo.controller("SignUpController",function ($scope,  $state, signUpService ,signUpValidationService) {	
+myToDo.controller("signUpController",function ($scope,  $state, signUpService ,signUpValidationService) {	
 	
 	signUpValidationService.signUpValidation();
 	

@@ -1,7 +1,13 @@
 <html>
 <head>
 	
-	<script src="" type="text/javascript"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<script src="bower_components/angular/angular.min.js" type="text/javascript"></script>
+	<script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+	<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript"></script>
+
+	<script src="js/app.js" type="text/javascript"></script>
 
 </head>
 
@@ -10,7 +16,7 @@
 
 
 
-<div data-ng-model="toDoApp">
+<div data-ng-app="toDoApp">
 
 	<ui-view></ui-view>
 
@@ -34,8 +40,7 @@
 
 
 
-
-<script src="css/signUp.css" type="text/javascript"></script>
-<script src="css/signIn.css" type="text/javascript"></script>
+<link rel="stylesheet" href="css/signUp.css">
+<link rel="stylesheet" href="css/signIn.css">
 
 </html>

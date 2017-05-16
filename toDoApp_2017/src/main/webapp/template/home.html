@@ -1,0 +1,22 @@
+<div data-ng-controller="homeController as hc">
+
+<div>
+<input type="text" name="title" placeholder="Title"><br>
+<input type="text" name="note" placeholder="Note"><br>
+
+<input type="submit" value="Add" data-ng-click="addNote()">
+
+</div>
+
+<div>
+	<ul data-ng-repeat="todo in toDoList">
+		<li>{{todo.title}}</li>
+		<li>{{todo.note}}</li>
+		<li>{{todo.remainder}}</li>
+	
+	</ul>
+
+</div>
+
+
+</div>

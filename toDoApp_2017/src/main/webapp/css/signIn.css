@@ -1,4 +1,4 @@
-.signInhead
+#signInhead
 {
 	width: 350px;
 	margin-top: 1px;
@@ -7,8 +7,7 @@
 	border-radius: 5px;
 }
 
-
-#sigInpBody
+#sigInBody
 {
 	width: 350px;
 	hight: 200px;
@@ -21,7 +20,7 @@
 
 
 
-#signInbottom {
+#signInBottom {
     width: 100%;
     padding: 6px 20px;
     margin: 8px 0;
