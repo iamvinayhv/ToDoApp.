@@ -26,7 +26,7 @@ myToDo.controller("homeController", function($scope, $state, homeService) {
 	
 	
 	
-	var addToDo = $scope.homeService.addNote();
+	/*var addToDo = $scope.homeService.addNote();
 	
 	addToDo.then( function(data) {
 		
@@ -37,7 +37,7 @@ myToDo.controller("homeController", function($scope, $state, homeService) {
 	}).catch( function(error) {
 		console.log(error);
 		$state.go('signIn');
-	});
+	});*/
 	
 	
 });
