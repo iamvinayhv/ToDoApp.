@@ -1,16 +1,77 @@
 #navBar
 {
-	height: 60px;
+	height: 65px;
 	background-color: #fcaf3e;
 }
 
 #homeBody
 {
-	margin-top: 80px;
+	margin-top: 100px;
 }
 
 .todo
 {
+	width: 85%;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	padding-left: 20px;
 	background-color: white;
+	margin-top:25px;
+	margin-left: 100px;
 	margin-bottom: 10px;
 }
+
+
+#dommydiv
+{
+	width: 85%;
+	height: 45px;
+	padding-top: 12px;
+	padding-left: 20px;
+	background-color: white;
+	margin-left: 100px;
+}
+
+#done
+{
+	width: 85%;
+	cursor: pointer;
+	margin-left: 100px;
+	background-color: white;
+	padding-left: 550px;
+	padding-bottom: 10px;
+	
+}
+
+#t,#n
+{
+	width: 85%;
+	height: 45px;
+	padding-top: 12px;
+	padding-left: 20px;
+	background-color: white;
+	margin-left: 100px;
+}
+
+#dommydiv:empty:before
+{
+    content: attr(placeholder);
+    display: block;
+}
+
+#t:empty:before
+{
+    content: attr(placeholder);
+    display: block;
+}
+#n:empty:before
+{
+    content: attr(placeholder);
+    display: block;
+}
+
+#toDoTitle,#toDoNote
+{
+	padding-bottom: 10px;
+}
+

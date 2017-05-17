@@ -20,7 +20,7 @@ myToDo.service("homeService",function ($http) {
 		
 		return $http({
 			url:"http://localhost:8080/toDoApp_2017/deleteNote/"+id,
-			method:"DELETE"
+			method:"POST"
 		});
 	}
 	

@@ -26,19 +26,18 @@ myToDo.controller("homeController", function($scope, $state, homeService) {
 	
 	this.addNote = function() {
 		
-		var toDo = {};
-		toDo.title = $scope.title;
-		toDo.note = $scope.note;
-		toDo.remainder = null;
+		//$scope.toDo.remainder = null;
 		
-		$scope.toDoList.push(toDo);
-		
-		var addToDoObj = homeService.addNote(toDo);
-		
+		var addToDoObj = homeService.addNote($scope.toDo);
 		addToDoObj.then( function(data) {
 			
 			if( data.status == 200 ) {
-				console.log(data);
+				$scope.toDoList.push(data.data.todo);
+				console.log(data.data.todo);
+				$scope.toDo.title=null;
+				$scope.toDo.note=null;
+				//$state.reload();
+				$state.go('home');
 				
 			}
 			
@@ -48,10 +47,31 @@ myToDo.controller("homeController", function($scope, $state, homeService) {
 		});
 	}
 	
+	
+	
 	this.deleteNote = function(id) {
-		
+		console.log(id);
 		var delToDoObj = homeService.deleteNote(id);
 		
+		delToDoObj.then(function(data) {
+			
+			if( data.status == 200 ) {
+				
+				console.log(data);
+				
+				$scope.toDoList.push(data.data.todo);
+				$state.reload();
+			}
+			
+		}).catch( function(error) {
+			
+			$state.go('signIn');
+		});
+	}
+	
+	
+	this.showHide = function() {
+		$scope.IsVisible = $scope.IsVisible ? false :true;
 	}
 	
 });

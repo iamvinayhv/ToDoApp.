@@ -26,29 +26,39 @@
 
 <div id="homeBody" class="row">
 	
-		<div class="col-sm-3"></div>
+		<div class="col-sm-2"></div>
 		
-			<div class="col-sm-6">
+			<div class="col-sm-7">
 
 
 				<div data-ng-controller="homeController as hc">
 				
-							<div >
-							<input type="text" name="title" data-ng-model="title" placeholder="Title"><br>
-							<input type="text" name="note" data-ng-model="note" placeholder="Note"><br>
+							<div>
+								<div id="dommydiv" data-ng-click="hc.showHide()" contenteditable="true" placeholder="Take a note..."></div>
 							
-							<input type="submit" value="Add" data-ng-click="hc.addNote()">
 							
+								<div data-ng-show ="IsVisible" >
+									<div id="t" name="title" data-ng-model="toDo.title" contenteditable="true" placeholder="Title"></div>
+									<div id="n" name="note" data-ng-model="toDo.note" contenteditable="true" placeholder="Take a note"></div>
+									<div data-ng-model="toDo.remainder"></div>
+									<div id="done" data-ng-click="hc.addNote()">DONE</div>
+								</div>
+							
+								
+								<input type="text" name="title" data-ng-model="toDo.title" placeholder="Title"><br>
+								<input type="text" name="note" data-ng-model="toDo.note" placeholder="Note"><br>
+								
+								<input type="submit" value="Add" data-ng-click="hc.addNote()">
+								
 							</div>
 							
 							<div data-ng-repeat="todo in toDoList">
-								<div id="{{todo.id}}" class="todo">
+								<div id="todo.id" class="todo">
 									<div id="toDoTitle">{{todo.title}}</div>
 									<div id="toDoNote">{{todo.note}}</div>
-									<div id="toDoRem">{{todo.remainder}}</div>
 									
 									<div>
-										<span data-ng-click="hc.deleteNote('{{todo.id}}')">delete</span>
+										<span data-ng-click="hc.deleteNote(todo.id)">delete</span>
 									</div>
 								</div>
 							</div>

@@ -20,7 +20,7 @@ myToDo.config(function ($stateProvider, $urlRouterProvider) {
     .state('home',{
 	    url:"/home",
 	    templateUrl:"template/home.html",
-	    controller:""
+	    controller:"homeController"
 	  })
   
   $urlRouterProvider.otherwise('/signUp');

@@ -35,6 +35,8 @@ public class ToDoController {
 	@Autowired
 	private ToDoService toDoService;
 
+	
+	
 	/**
 	 * to add the new note
 	 * 
@@ -102,6 +104,9 @@ public class ToDoController {
 			System.out.println( data ); 
 			return new ResponseEntity<String>(data, HttpStatus.UNAUTHORIZED);		}
 	}
+	
+	
+	
 
 	/**
 	 * to get all the notes by using the usedId
@@ -171,6 +176,9 @@ public class ToDoController {
 		}
 	}
 
+	
+	
+	
 	/**
 	 * to delete the particular note
 	 * 
@@ -180,19 +188,26 @@ public class ToDoController {
 	 * @return String message and status
 	 * @throws JsonProcessingException 
 	 */
-	@RequestMapping(value = "deleteNote/{id}", method = RequestMethod.DELETE)
+	
+	@RequestMapping(value = "deleteNote/{id}", method = RequestMethod.POST)
 	public ResponseEntity<String> deleteNote(@PathVariable("id") int id, HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
 
 		HttpSession session = request.getSession(false);
-		if (session != null) {
+		User user = (User) session.getAttribute("user");
+		if (session != null && user != null) {
 
 			int result = toDoService.deleteNote(id);
 
 			if (result != 0) {
+				
+				List<ToDo> todoList = toDoService.getNotes(user.getId());
+				
 				ObjectMapper mapper = new ObjectMapper();
 				ObjectNode root = mapper.createObjectNode();
 				
 				root.put("status", "success");
+				root.putPOJO("todo", todoList);
+				
 				String data = mapper.writeValueAsString(root);
 				System.out.println( data ); 
 				
@@ -211,12 +226,12 @@ public class ToDoController {
 		}
 		else{
 		
-		ObjectMapper mapper = new ObjectMapper();
-		ObjectNode root = mapper.createObjectNode();
-		
-		root.put("status", "signIn first");
-		String data = mapper.writeValueAsString(root);
-		System.out.println( data );
+			ObjectMapper mapper = new ObjectMapper();
+			ObjectNode root = mapper.createObjectNode();
+			
+			root.put("status", "signIn first");
+			String data = mapper.writeValueAsString(root);
+			System.out.println( data );
 		
 		return new ResponseEntity<String>(data, HttpStatus.UNAUTHORIZED);
 		
