@@ -30,6 +30,7 @@
 	padding-left: 20px;
 	background-color: white;
 	margin-left: 100px;
+	font-style: italic;
 }
 
 #done
@@ -51,6 +52,8 @@
 	padding-left: 20px;
 	background-color: white;
 	margin-left: 100px;
+	font-style: italic;
+	
 }
 
 #dommydiv:empty:before
@@ -70,7 +73,12 @@
     display: block;
 }
 
-#toDoTitle,#toDoNote
+#toDoTitle
+{
+	font-weight: bold;
+	padding-bottom: 10px;
+}
+#toDoNote
 {
 	padding-bottom: 10px;
 }
