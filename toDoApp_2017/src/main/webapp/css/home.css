@@ -1,0 +1,16 @@
+#navBar
+{
+	height: 60px;
+	background-color: #fcaf3e;
+}
+
+#homeBody
+{
+	margin-top: 80px;
+}
+
+.todo
+{
+	background-color: white;
+	margin-bottom: 10px;
+}

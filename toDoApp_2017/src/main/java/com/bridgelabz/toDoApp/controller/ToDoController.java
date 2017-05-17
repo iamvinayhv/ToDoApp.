@@ -44,9 +44,11 @@ public class ToDoController {
 	 * @return String message and status
 	 * @throws JsonProcessingException 
 	 */
-	@RequestMapping(value = "addNote", method = RequestMethod.POST)
+	@RequestMapping(value = "/addNote", method = RequestMethod.POST)
 	public ResponseEntity<String> addNote(@RequestBody ToDo toDo, HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
 
+		System.out.println("Add note java");
+		
 		HttpSession session = request.getSession(false);
 		User user = (User) session.getAttribute("user");
 
@@ -176,10 +178,10 @@ public class ToDoController {
 	 * @param request
 	 * @param response
 	 * @return String message and status
+	 * @throws JsonProcessingException 
 	 */
 	@RequestMapping(value = "deleteNote/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<String> deleteNote(@PathVariable("id") int id, HttpServletRequest request,
-			HttpServletResponse response) {
+	public ResponseEntity<String> deleteNote(@PathVariable("id") int id, HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
 
 		HttpSession session = request.getSession(false);
 		if (session != null) {
@@ -187,12 +189,38 @@ public class ToDoController {
 			int result = toDoService.deleteNote(id);
 
 			if (result != 0) {
-				return new ResponseEntity<String>("note Deleted", HttpStatus.OK);
+				ObjectMapper mapper = new ObjectMapper();
+				ObjectNode root = mapper.createObjectNode();
+				
+				root.put("status", "success");
+				String data = mapper.writeValueAsString(root);
+				System.out.println( data ); 
+				
+				return new ResponseEntity<String>(data, HttpStatus.OK);
+				
 			} else {
-				return new ResponseEntity<String>("note not present", HttpStatus.NOT_FOUND);
+				ObjectMapper mapper = new ObjectMapper();
+				ObjectNode root = mapper.createObjectNode();
+				
+				root.put("status", "toDoNot there");
+				String data = mapper.writeValueAsString(root);
+				System.out.println( data ); 
+				
+				return new ResponseEntity<String>(data, HttpStatus.NOT_FOUND);
 			}
 		}
-		return new ResponseEntity<String>("signIn first", HttpStatus.BAD_REQUEST);
+		else{
+		
+		ObjectMapper mapper = new ObjectMapper();
+		ObjectNode root = mapper.createObjectNode();
+		
+		root.put("status", "signIn first");
+		String data = mapper.writeValueAsString(root);
+		System.out.println( data );
+		
+		return new ResponseEntity<String>(data, HttpStatus.UNAUTHORIZED);
+		
+		}
 	}
 
 	/**

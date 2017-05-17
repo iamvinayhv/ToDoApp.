@@ -8,10 +8,19 @@ myToDo.service("homeService",function ($http) {
 	}
 	
 	
-	this.addNote = function() {
+	this.addNote = function(toDo) {
 		return $http({
 			url:"http://localhost:8080/toDoApp_2017/addNote",
 			method:"POST",
+			data:toDo
+		});
+	}
+	
+	this.deleteNote = function(id) {
+		
+		return $http({
+			url:"http://localhost:8080/toDoApp_2017/deleteNote/"+id,
+			method:"DELETE"
 		});
 	}
 	

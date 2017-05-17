@@ -1,6 +1,5 @@
-<div class="row" style="position: fixed;">
-	
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div>
+	<nav id="navBar" class="navbar navbar-default navbar-fixed-top" role="navigation">
 	      <div class="container">
 	          <div class="navbar-header">
 	            <a class="navbar-brand" href="#home">My Keep</a>
@@ -25,35 +24,38 @@
 	</nav>
 </div>
 
-<div class="row">
+<div id="homeBody" class="row">
 	
-		<div class="col-sm-4"></div>
+		<div class="col-sm-3"></div>
 		
-			<div class="col-sm-4">
+			<div class="col-sm-6">
 
 
 				<div data-ng-controller="homeController as hc">
 				
-							<div>
-							<input type="text" name="title" placeholder="Title"><br>
-							<input type="text" name="note" placeholder="Note"><br>
+							<div >
+							<input type="text" name="title" data-ng-model="title" placeholder="Title"><br>
+							<input type="text" name="note" data-ng-model="note" placeholder="Note"><br>
 							
-							<input type="submit" value="Add" data-ng-click="addNote()">
+							<input type="submit" value="Add" data-ng-click="hc.addNote()">
 							
 							</div>
 							
-							<div>
-								<ul data-ng-repeat="todo in toDoList">
-									<li>{{todo.title}}</li>
-									<li>{{todo.note}}</li>
-									<li>{{todo.remainder}}</li>
-								
-								</ul>
-							
+							<div data-ng-repeat="todo in toDoList">
+								<div id="{{todo.id}}" class="todo">
+									<div id="toDoTitle">{{todo.title}}</div>
+									<div id="toDoNote">{{todo.note}}</div>
+									<div id="toDoRem">{{todo.remainder}}</div>
+									
+									<div>
+										<span data-ng-click="hc.deleteNote('{{todo.id}}')">delete</span>
+									</div>
+								</div>
 							</div>
 				
 				
 				</div>
 			</div>
+		<div class="col-sm-3"></div>
 </div>
 

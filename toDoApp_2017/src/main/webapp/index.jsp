@@ -19,13 +19,13 @@
 
 </head>
 
-<body>
+<body id="Body">
 
 
 
 
 <div data-ng-app="toDoApp">
-	<div class="container-fluid" id="body">
+	<div class="container-fluid">
 	
 		<ui-view></ui-view>
 	
@@ -53,5 +53,6 @@
 
 <link rel="stylesheet" href="css/signUp.css">
 <link rel="stylesheet" href="css/signIn.css">
+<link rel="stylesheet" href="css/home.css">
 
 </html>

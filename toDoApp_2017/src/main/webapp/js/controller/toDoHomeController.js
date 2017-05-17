@@ -24,20 +24,34 @@ myToDo.controller("homeController", function($scope, $state, homeService) {
 	});
 		
 	
-	
-	
-	/*var addToDo = $scope.homeService.addNote();
-	
-	addToDo.then( function(data) {
+	this.addNote = function() {
 		
-		if( data.status == 200 ) {
-			console.log(data);
-		}
+		var toDo = {};
+		toDo.title = $scope.title;
+		toDo.note = $scope.note;
+		toDo.remainder = null;
 		
-	}).catch( function(error) {
-		console.log(error);
-		$state.go('signIn');
-	});*/
+		$scope.toDoList.push(toDo);
+		
+		var addToDoObj = homeService.addNote(toDo);
+		
+		addToDoObj.then( function(data) {
+			
+			if( data.status == 200 ) {
+				console.log(data);
+				
+			}
+			
+		}).catch( function(error) {
+			console.log(error);
+			$state.go('signIn');
+		});
+	}
 	
+	this.deleteNote = function(id) {
+		
+		var delToDoObj = homeService.deleteNote(id);
+		
+	}
 	
 });
