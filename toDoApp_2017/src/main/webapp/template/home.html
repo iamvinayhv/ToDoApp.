@@ -1,68 +1,54 @@
 <div>
 	<nav id="navBar" class="navbar navbar-default navbar-fixed-top" role="navigation">
 	      <div class="container">
-	          <div class="navbar-header">
-	            <a class="navbar-brand" href="#home">My Keep</a>
-	        
-	          <ul class="nav navbar-nav navbar-right">
-	            <li><a href="#"><span class="fa fa-home"></span> Home</a></li>
-	            <li><a href="#login"><span class="fa fa-shield"></span> LOGIN</a></li>
-	            <li><a href="#signup"><span class="fa fa-comment"></span> signup</a></li>
+	      
+				<div class="navbar-header" id="navHead">
+				
+					<span><span style="font-size: 20px;">&#9776;</span>
+					<strong style="padding-left: 35px; font-size: 22px;">Your </strong><i style="font-size: 20px;">Keep</i>
+					<input type="text" id="search" placeholder="Search" class="input-group-btn"><span class="glyphicon glyphicon-search"></span> </span>
+	            
+				</div>
+				
+	          <ul class="nav navbar-nav navbar-right" id="navBar">
+	            <li id="refresh"><span class="glyphicon glyphicon-repeat"></span></li>
+	            <li><span id="list" class="glyphicon glyphicon-th-list"></span></li>
 	          </ul>
-	              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-	                  <span class="sr-only">Toggle navigation</span>
-	                  <span class="icon-bar"></span>
-	                  <span class="icon-bar"></span>
-	                  <span class="icon-bar"></span>
-	              </button>
-	          </div>
-	          <div id="navbar" class="navbar-collapse collapse">
-	
-	
-	          </div>
 	      </div>
 	</nav>
 </div>
 
+
+
+
+
 <div id="homeBody" class="row">
-	
 		<div class="col-sm-2"></div>
-		
 			<div class="col-sm-7">
-
-
 				<div data-ng-controller="homeController as hc">
-				
+						
+					<div>
+						<div>
+						
+							<div data-ng-show ="IsVisible" id="title" name="title" data-ng-model="toDo.title" newcontenteditable contenteditable="true" placeholder="Title" style="font-weight: bold;"></div>
+							<div id="note" name="note" data-ng-model="toDo.note" data-ng-click="hc.showHide()" newcontenteditable contenteditable="true" placeholder="Take a note..."></div>
+							<div data-ng-show ="done" id="done" data-ng-click="hc.addNote()">DONE</div>
+							
+						</div>
+					</div>
+							
+					<div data-ng-repeat="todo in toDoList">
+						<div id="todo.id" class="todo">
+							
+							<div id="toDoTitle">{{todo.title}}</div>
+							<div id="toDoNote">{{todo.note}}</div>
+							
 							<div>
-								<div id="dommydiv" data-ng-click="hc.showHide()" contenteditable="true" placeholder="Take a note..."></div>
-							
-							
-								<div data-ng-show ="IsVisible" >
-									<div id="t" name="title" data-ng-model="toDo.title" contenteditable="true" placeholder="Title" style="font-weight: bold;"></div>
-									<div id="n" name="note" data-ng-model="toDo.note" contenteditable="true" placeholder="Take a note..."></div>
-									<div id="done" data-ng-click="hc.addNote()">DONE</div>
-								</div>
-							
-								
-								<input type="text" name="title" data-ng-model="toDo.title" placeholder="Title"><br>
-								<input type="text" name="note" data-ng-model="toDo.note" placeholder="Note"><br>
-								
-								<input type="submit" value="Add" data-ng-click="hc.addNote()">
-								
+								<span data-ng-click="hc.deleteNote(todo.id, $index)" class="glyphicon glyphicon-trash"></span>
 							</div>
 							
-							<div data-ng-repeat="todo in toDoList">
-								<div id="todo.id" class="todo">
-									<div id="toDoTitle">{{todo.title}}</div>
-									<div id="toDoNote">{{todo.note}}</div>
-									
-									<div>
-										<span data-ng-click="hc.deleteNote(todo.id)">delete</span>
-									</div>
-								</div>
-							</div>
-				
-				
+						</div>
+					</div>
 				</div>
 			</div>
 		<div class="col-sm-3"></div>

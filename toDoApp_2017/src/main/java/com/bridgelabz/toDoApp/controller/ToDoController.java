@@ -46,7 +46,7 @@ public class ToDoController {
 	 * @return String message and status
 	 * @throws JsonProcessingException 
 	 */
-	@RequestMapping(value = "/addNote", method = RequestMethod.POST)
+	@RequestMapping(value = "/addNote")
 	public ResponseEntity<String> addNote(@RequestBody ToDo toDo, HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
 
 		System.out.println("Add note java");

@@ -26,41 +26,42 @@ myToDo.controller("homeController", function($scope, $state, homeService) {
 	
 	this.addNote = function() {
 		
-		//$scope.toDo.remainder = null;
+		$scope.done = $scope.IsVisible ? false :false;
+		$scope.IsVisible = $scope.IsVisible ? false :false;
 		
-		var addToDoObj = homeService.addNote($scope.toDo);
-		addToDoObj.then( function(data) {
 			
-			if( data.status == 200 ) {
-				$scope.toDoList.push(data.data.todo);
-				console.log(data.data.todo);
-				$scope.toDo.title=null;
-				$scope.toDo.note=null;
-				//$state.reload();
-				$state.go('home');
+			var addToDoObj = homeService.addNote($scope.toDo);
+			addToDoObj.then( function(data) {
 				
-			}
-			
-		}).catch( function(error) {
-			console.log(error);
-			$state.go('signIn');
-		});
+				if( data.status == 200 ) {
+					$scope.toDoList.push(data.data.todo);
+					console.log(data.data.todo);
+					$scope.toDo.title=null;
+					$scope.toDo.note=null;
+					
+				}
+				
+			}).catch( function(error) {
+				console.log(error);
+				$state.go('signIn');
+			});
+		
 	}
 	
 	
 	
-	this.deleteNote = function(id) {
-		console.log(id);
+	this.deleteNote = function(id, index) {
+		console.log(id+" "+index);
 		var delToDoObj = homeService.deleteNote(id);
 		
 		delToDoObj.then(function(data) {
 			
 			if( data.status == 200 ) {
+				if(index>-1){
+					$scope.toDoList.splice(index, 1);
+					//alert("delete");
+				}
 				
-				console.log(data);
-				
-				$scope.toDoList.push(data.data.todo);
-				$state.reload();
 			}
 			
 		}).catch( function(error) {
@@ -71,7 +72,12 @@ myToDo.controller("homeController", function($scope, $state, homeService) {
 	
 	
 	this.showHide = function() {
-		$scope.IsVisible = $scope.IsVisible ? false :true;
+		$scope.IsVisible = $scope.done ? true :true;
+		$scope.done = $scope.IsVisible ? true :false;
 	}
 	
+ 	
 });
+
+
+
