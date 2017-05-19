@@ -18,6 +18,8 @@
     "angular": "^1.6.4",
     "bootstrap": "^3.3.7",
     "angular-ui-router": "^1.0.3",
-    "css": "^2.2.1"
+    "css": "^2.2.1",
+    "ui": "^0.0.5",
+    "angular-ui-bootstrap": "^2.5.0"
   }
 }

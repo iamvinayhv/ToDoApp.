@@ -1,4 +1,4 @@
-myToDo.controller("homeController", function($scope, $state, homeService) {
+myToDo.controller("homeController", function($scope, $state, $uibModal, homeService) {
 	
 	var toDoList = [];
 	var getToDoHtOb = homeService.getNotes();
@@ -76,7 +76,62 @@ myToDo.controller("homeController", function($scope, $state, homeService) {
 		$scope.done = $scope.IsVisible ? true :false;
 	}
 	
- 	
+	
+	$scope.list = function() {
+		
+		$scope.listType = true;
+		$scope.gridType = false;
+		
+		$scope.listView = {
+				"display":"none"
+		}
+		$scope.gridView = {
+				"display":"block"
+		}
+	}
+	
+	
+	$scope.grid = function() {
+		$scope.gridType = true;
+		$scope.listType = false;
+		
+		$scope.listView = {
+				"display":"block"
+		}
+		$scope.gridView = {
+				"display":"none"
+		}
+	}
+	
+	
+	
+	
+	
+	this.popUp = function(toDo, index) {
+		
+		var model = $uibModal.open({
+		     templateUrl: "template/popUp.html",
+		     size:'sm',
+		     controller:function($uibModalInstance){
+		    	 this.id = toDo.id;
+		    	 this.title = toDo.title;
+		    	 this.note = toDo.note;
+		    	 var $ctrl =this;
+		    	 
+		    	$scope.ok = function () {
+					$uibModalInstance.close({title:$ctrl.title, note:$ctrl.note, id:$ctrl.id});
+				};
+				
+				$scope.cancel = function () {
+				    $uibModalInstance.dismiss('cancel');
+				};
+		     },
+		     
+		     controllerAs :"$ctrl"
+		});
+		
+	}
+		
 });
 
 
