@@ -11,7 +11,6 @@
 	<script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
 	<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript"></script>
 	<script src="bower_components/angular-ui-bootstrap/src/modal/modal.js" type="text/javascript"></script>
-	<script src="bower_components/angular-ui-bootstrap/dist/ui-bootstrap-csp.css" type="text/javascript"></script>
 	<script src="bower_components/angular-sanitize/angular-sanitize.min.js" type="text/javascript"></script>
 	<script src="bower_components/angular-animate/angular-animate.min.js" type="text/javascript"></script>
 	<script src="bower_components/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js" type="text/javascript"></script>
@@ -24,7 +23,7 @@
 	
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+	<link rel="" href="bower_components/angular-ui-bootstrap/dist/ui-bootstrap-csp.css">
 
 
 

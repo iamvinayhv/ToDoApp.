@@ -1,16 +1,26 @@
 <div>
-    
-        <div class="modal-header">
-            <h3>Up date</h3>
-        </div>
-        <div class="modal-body" id="modal-body">
-        <div>title</div>
-        <div>Note</div>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" data-ng-click="ok()">OK</button>
-            <button class="btn btn-warning" data-ng-click="cancel()">Cancel</button>
-        </div>
+		
+	
+		<h3 style="padding-left: 90px;">Up date</h3>
+		
+		
+		<div class="modal-body" id="modal-body" contenteditable="true">
+			<textarea style="border: none; width: 100%; outline: none; padding-top: 15px; font-weight: bold;"
+				data-ng-model="$ctrl.title" rows="" cols="">{{$ctrl.title}}</textarea>
+		</div>
+		
+		<div class="modal-body" id="modal-body" contenteditable="true">
+			<textarea style="border: none; width: 100%; padding-top: 15px; outline: none;"
+				data-ng-model="$ctrl.note" rows="" cols="">{{$ctrl.note}}</textarea>
+		</div>
+	
+		<div class="modal-footer">
+			<button class="btn btn-primary" type="button"
+				data-ng-click="$ctrl.ok()">OK</button>
+			<button class="btn btn-warning" type="button" data-ng-discard
+				data-ng-click="$ctrl.cancel()">Cancel</button>
+		</div>
 
-    <div data-ng-show="selected">Selection from a modal: {{ selected }}</div>
 </div>
+
+

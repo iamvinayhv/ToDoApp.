@@ -1,5 +1,6 @@
 package com.bridgelabz.toDoApp.controller;
 
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -131,6 +132,7 @@ public class ToDoController {
 			
 			if (  !todoList.isEmpty()  ) {
 
+				//Collections.reverse(todoList);
 
 				ObjectMapper mapper = new ObjectMapper();
 				ObjectNode root = mapper.createObjectNode();
@@ -158,7 +160,7 @@ public class ToDoController {
 				String data = mapper.writeValueAsString(root);
 				System.out.println( data ); 
 				
-				return new ResponseEntity<String>(data, HttpStatus.NOT_FOUND);
+				return new ResponseEntity<String>(data, HttpStatus.OK);
 				
 			}
 		}
@@ -246,43 +248,51 @@ public class ToDoController {
 	 * @param request
 	 * @param response
 	 * @return String message and status
+	 * @throws JsonProcessingException 
 	 */
-	@RequestMapping(value = "editNote/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<String> updateNote(@RequestBody ToDo toDo, @PathVariable("id") int toDoid,
-			HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value = "updateNote", method = RequestMethod.POST)
+	public ResponseEntity<String> updateNote(@RequestBody ToDo toDo, HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
 
 		HttpSession session = request.getSession(false);
+		User user = (User) session.getAttribute("user");
 
-		if (session != null) {
+		if ( session != null && user != null ) {
 
-			User user = (User) session.getAttribute("user");
 			toDo.setUser(user);
-			toDo.setId(toDoid);
 
-			List<ToDo> toDoList = toDoService.getNotes(user.getId());
-
-			Iterator<ToDo> i = toDoList.iterator();
-			boolean flag = false;
-
-			while (i.hasNext()) {
-				ToDo do1 = i.next();
-				if (do1.getId() == toDo.getId()) {
-					flag = true;
-				}
-			}
-
-			if (!toDoList.isEmpty() && flag) {
-				boolean result = toDoService.updateNote(toDo);
-				if (result) {
-					return new ResponseEntity<String>("updated", HttpStatus.OK);
-				} else {
-					return new ResponseEntity<String>("not updated", HttpStatus.NOT_ACCEPTABLE);
-				}
+			boolean result = toDoService.updateNote(toDo);
+			
+			if (result) {
+				
+				ObjectMapper mapper = new ObjectMapper();
+				ObjectNode root = mapper.createObjectNode();
+				
+				root.put("message", "Updated");
+				
+				String data = mapper.writeValueAsString(root);
+				
+				return new ResponseEntity<String>(data, HttpStatus.OK);
 			} else {
-				return new ResponseEntity<String>("you dont have any notes", HttpStatus.NOT_ACCEPTABLE);
+				
+				ObjectMapper mapper = new ObjectMapper();
+				ObjectNode root = mapper.createObjectNode();
+				
+				root.put("status", "not updated");
+				
+				String data = mapper.writeValueAsString(root);
+				return new ResponseEntity<String>(data, HttpStatus.OK);
 			}
+				
 		} else {
-			return new ResponseEntity<String>("Login first", HttpStatus.NOT_ACCEPTABLE);
+			
+			ObjectMapper mapper = new ObjectMapper();
+			ObjectNode root = mapper.createObjectNode();
+			
+			root.put("message", "login required");
+			
+			String data = mapper.writeValueAsString(root);
+			
+			return new ResponseEntity<String>(data, HttpStatus.UNAUTHORIZED);
 		}
 	}
 

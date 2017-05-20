@@ -1,6 +1,6 @@
 #search
 {
-	width: 650px;
+	width: 45%;
 	height:47px;
 	margin-left: 55px;
 	padding-left: 30px;
@@ -62,6 +62,7 @@
 	margin-top:30px;
 	margin-bottom: 30px;
 	box-shadow: 1px 1px 1px 0px;
+	
 }
 
 .todoGrid
@@ -149,3 +150,12 @@
 {
 	margin-left: -15px;
 }
+
+#modal-body
+{
+	font-style: italic;
+}
+
+
+
+
