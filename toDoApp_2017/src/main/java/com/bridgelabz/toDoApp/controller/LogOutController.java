@@ -9,6 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 /**
  * this class is used to logOut the user handles the "/signOut" request"
  * @author bridgeit vinay
@@ -21,19 +25,35 @@ public class LogOutController {
 	 * @param request
 	 * @param response
 	 * @return String message and Status
+	 * @throws JsonProcessingException 
 	 */
 	@RequestMapping(value="/signOut")
-	public ResponseEntity<String> logOut(HttpServletRequest request, HttpServletResponse response) {
+	public ResponseEntity<String> logOut(HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
 		
 		HttpSession session = request.getSession(false);
 		if(session != null) {
 			session.removeAttribute("user");
 			session.invalidate();
-			return new ResponseEntity<String>("you are Logged Out!!! ThankYou",HttpStatus.OK);
+			
+			ObjectMapper mapper = new ObjectMapper();
+			ObjectNode root = mapper.createObjectNode();
+			
+			root.put("message", "you are Logged Out");
+			
+			String data = mapper.writeValueAsString(root);
+			
+			return new ResponseEntity<String>(data, HttpStatus.OK);
 		}
 		else {
-			return new ResponseEntity<String>("SignIn First",HttpStatus.BAD_REQUEST);
+			
+			ObjectMapper mapper = new ObjectMapper();
+			ObjectNode root = mapper.createObjectNode();
+			
+			root.put("message", "You have to SignIn");
+			
+			String data = mapper.writeValueAsString(root);
+			
+			return new ResponseEntity<String>(data, HttpStatus.OK);
 		}
 	}
-
 }

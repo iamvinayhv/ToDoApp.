@@ -33,4 +33,11 @@ myToDo.service("homeService",function ($http) {
 		});
 	}
 	
+	this.signOut = function() {
+		return $http({
+			url:"http://localhost:8080/toDoApp_2017/signOut",
+			method:"POST"
+		});
+	}
+	
 });

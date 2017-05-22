@@ -1,3 +1,4 @@
+<div data-ng-controller="homeController as hc">
 <div>
 	<nav id="navBar" class="navbar navbar-default navbar-fixed-top" role="navigation">
 	      <div class="container">
@@ -13,8 +14,8 @@
 	          <ul class="nav navbar-nav navbar-right" id="navBar">
 	          
 	            <li id="refresh"><span class="glyphicon glyphicon-repeat"></span></li>
-	            <li><span id="list" class="glyphicon glyphicon-th-list" data-ng-click="list()" ng-style="listView"></span></li>
-	            <li><span id="grid" class="glyphicon glyphicon-th" data-ng-click="grid()" ng-style="gridView"></span></li>
+	            <li><span  class="btn glyphicon" data-ng-click="isList = !isList" ng-class="{'glyphicon-list': !isList, 'glyphicon-th-large': isList}"></span></li>
+	            <li><span id="signOut" class="glyphicon glyphicon-off" data-ng-click="hc.signOut()"></span></li>
 	            
 	          </ul>
 	      </div>
@@ -26,9 +27,8 @@
 
 
 <div id="homeBody" class="row">
-		<div class="col-sm-3"></div>
-			<div class="col-sm-6">
-				<div data-ng-controller="homeController as hc">
+		<div class="col-sm-2"></div>
+			<div class="col-sm-8">
 						
 					<div>
 						<div>
@@ -39,41 +39,25 @@
 							
 						</div>
 					</div>
-							
-					<div data-ng-repeat="todo in toDoList" id="listList" data-ng-show="listType">
-						<div id="todo.id" class="todoList">
+					
+					
+					<div class="cont" data-ng-class="{list: isList, grid: !isList}">
+						<div class="cardRow">
+							<div class="card" data-ng-repeat="todo in toDoList" data-ng-mouseover="disp(todo.id)">
 						
-							<div  data-ng-click="hc.popUp(todo, $index)" >
-								<div id="toDoTitle">{{todo.title}}</div>
-								<div id="toDoNote">{{todo.note}}</div>
+								<div  data-ng-click="hc.popUp(todo, $index)" >
+									<div id="toDoTitle">{{todo.title}}</div>
+									<div id="toDoNote">{{todo.note}}</div>
+								</div>
+								<div style="padding-left: 20px; padding-bottom: 10px;padding-top: 20px;">
+									<span data-ng-click="hc.deleteNote(todo.id, $index)" class="glyphicon glyphicon-trash"></span>
+								</div>
 							</div>
-							
-							<div>
-								<span data-ng-click="hc.deleteNote(todo.id, $index)" class="glyphicon glyphicon-trash"></span>
-							</div>
-							
 						</div>
-					</div>
 					
-					
-					<div class="col-sm-4" id="gridlist" data-ng-repeat="todo in toDoList" ng-show="gridType">
-						<div id="todo.id" class="todoGrid">
-						
-							<div  data-ng-click="hc.popUp(todo, $index)">
-								<div id="toDoTitle">{{todo.title}}</div>
-								<div id="toDoNote">{{todo.note}}</div>
-							</div>
-							
-							<div>
-								<span data-ng-click="hc.deleteNote(todo.id, $index)" class="glyphicon glyphicon-trash"></span>
-							</div>
-							
-						</div>
-					</div>
-					
-					
+					</div>	
 				</div>
 			</div>
-		<div class="col-sm-3"></div>
+		<div class="col-sm-2"></div>
 </div>
 

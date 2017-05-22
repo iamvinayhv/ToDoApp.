@@ -17,7 +17,6 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 			else if(localStorage.getItem("view") == "grid") {
 				$scope.grid();
 			}*/
-			
 		}
 		else{
 			
@@ -25,19 +24,20 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		}
 		
 	}).catch( function(error) {
-		
+		$scope.isList = true;
 		$state.go('signIn');
 		console.log(error);
 	});
 		
-	
+	$scope.isList = true;
 	
 	this.addNote = function() {
 		
 		$scope.done = $scope.done ? false :true;
 		$scope.IsVisible = $scope.IsVisible ? false :true;
 		
-			
+		if($scope.toDo.title != null && $scope.toDo.note != null || ($scope.toDo.title != "" && $scope.toDo.note != ""))	
+		
 			var addToDoObj = homeService.addNote($scope.toDo);
 			addToDoObj.then( function(data) {
 				
@@ -93,14 +93,13 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		$scope.listType = true;
 		$scope.gridType = false;
 		
-		$scope.listView = {
+		$scope.listIcon = {
 				"display":"none"
 		}
-		$scope.gridView = {
+		$scope.gridIcon = {
 				"display":"block"
 		}
-	    localStorage.setItem("view", "list");
-		
+	   /* localStorage.setItem("view", "list");*/
 		
 	}
 	
@@ -112,17 +111,14 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		$scope.gridType = true;
 		$scope.listType = false;
 		
-		$scope.listView = {
+		$scope.listIcon = {
 				"display":"block"
 		}
-		$scope.gridView = {
+		$scope.gridIcon = {
 				"display":"none"
 		}
-	    localStorage.setItem("view", "grid");
-		
+	    /*localStorage.setItem("view", "grid");*/
 	}
-	
-	
 	
 	
 	
@@ -180,6 +176,33 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 	}
 	
 	
+	
+	this.signOut = function() {
+		
+		console.log("iiiiiiiiiiii");
+		var signoutObj = homeService.signOut();
+		
+		signoutObj.then = function(data) {
+			
+			if( data.status == 200 ){
+				$state.go('signIn');
+			}
+			else {
+				$state.go('signUp');
+			}
+		}.catch( function(error) {
+			console.log(error);
+			$state.go('signUp');
+		});
+	}
+	
+	
+	
+	//$scope.toDoList = _.range(1, 5);
+	  
+	  
+	  
+	  
 });
 
 
