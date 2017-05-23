@@ -5,7 +5,7 @@
 	      
 				<div class="navbar-header" id="navHead">
 				
-					<span><span style="font-size: 20px;">&#9776;</span>
+					<span><b data-ng-click="visible=!visible; hc.move()" style="margin-left: 10px;font-size: 20px; cursor: pointer;">&#9776;</b>
 					<strong style="padding-left: 35px; font-size: 22px;">Your </strong><i style="font-size: 20px;">Keep</i>
 					<span class="glyphicon glyphicon-search"></span><input type="text" id="search" placeholder="Search"></span>
 	            
@@ -24,11 +24,20 @@
 
 
 
+  <div data-ng-class="{'is-visible':visible}" class="menu">
+    <ul style="padding-top: 20px; font-size: 20px;">
+      <li>Home</li>
+      <li>Notes</li>
+      <li>About</li>
+      <li>SignOut</li>
+    </ul>
+  </div>
 
 
-<div id="homeBody" class="row">
+
+<div id="homeBody" class="row"  data-ng-style="move">
 		<div class="col-sm-2"></div>
-			<div class="col-sm-8">
+			<div class="col-sm-9">
 						
 					<div>
 						<div>
@@ -43,14 +52,14 @@
 					
 					<div class="cont" data-ng-class="{list: isList, grid: !isList}">
 						<div class="cardRow">
-							<div class="card" data-ng-repeat="todo in toDoList" data-ng-mouseover="disp(todo.id)">
+							<div class="card" data-ng-repeat="todo in toDoList" data-ng-mouseover="icons=true" data-ng-mouseleave="icons=false">
 						
 								<div  data-ng-click="hc.popUp(todo, $index)" >
 									<div id="toDoTitle">{{todo.title}}</div>
 									<div id="toDoNote">{{todo.note}}</div>
 								</div>
-								<div style="padding-left: 20px; padding-bottom: 10px;padding-top: 20px;">
-									<span data-ng-click="hc.deleteNote(todo.id, $index)" class="glyphicon glyphicon-trash"></span>
+								<div id="icons" style="padding-left: 20px; border-top:0.1px dashed;">
+									<span data-ng-show="icons" data-ng-click="hc.deleteNote(todo.id, $index)" class="glyphicon glyphicon-trash" style="padding-top: 9px;"></span>
 								</div>
 							</div>
 						</div>
@@ -58,6 +67,6 @@
 					</div>	
 				</div>
 			</div>
-		<div class="col-sm-2"></div>
+		<!-- <div class="col-sm-2"></div> -->
 </div>
 

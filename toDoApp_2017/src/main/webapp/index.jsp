@@ -15,7 +15,6 @@
 	<script src="bower_components/angular-animate/angular-animate.min.js" type="text/javascript"></script>
 	<script src="bower_components/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js" type="text/javascript"></script>
 	
-	
 	<script src="js/app.js" type="text/javascript"></script>
 	
 	
@@ -27,10 +26,7 @@
 
 
 
-	<!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"></script>
-    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
- -->
+
 </head>
 
 <body id="Body">

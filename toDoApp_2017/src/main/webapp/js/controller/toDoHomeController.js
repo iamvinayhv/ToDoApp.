@@ -11,12 +11,6 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 			console.log(data);
 			$scope.toDoList = data.data.todo;
 			
-			/*if(localStorage.getItem("view") == "list") {
-				$scope.list();
-			}
-			else if(localStorage.getItem("view") == "grid") {
-				$scope.grid();
-			}*/
 		}
 		else{
 			
@@ -67,7 +61,6 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 			if( data.status == 200 ) {
 				if(index > -1){
 					$scope.toDoList.splice(index, 1);
-					//alert("delete");
 				}
 				
 			}
@@ -82,42 +75,6 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 	this.showHide = function() {
 		$scope.IsVisible = $scope.done ? true :true;
 		$scope.done = $scope.IsVisible ? true :false;
-	}
-	
-	
-	
-	$scope.list = function() {
-		
-		console.log("list view btn");
-		
-		$scope.listType = true;
-		$scope.gridType = false;
-		
-		$scope.listIcon = {
-				"display":"none"
-		}
-		$scope.gridIcon = {
-				"display":"block"
-		}
-	   /* localStorage.setItem("view", "list");*/
-		
-	}
-	
-	
-	$scope.grid = function() {
-		
-		console.log("grid view btn");
-		
-		$scope.gridType = true;
-		$scope.listType = false;
-		
-		$scope.listIcon = {
-				"display":"block"
-		}
-		$scope.gridIcon = {
-				"display":"none"
-		}
-	    /*localStorage.setItem("view", "grid");*/
 	}
 	
 	
@@ -158,7 +115,6 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 	        	console.log("error::",error); 
 	        	
 	         }).then(function(data){
-	        	//$state.reload();
 	        	if(data) {
 	        		console.log(data);
 	        		$scope.toDoList.splice(index, 1, data);
@@ -174,12 +130,21 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		
 		var updToDoObj = homeService.updateNote(toDo);
 	}
+
 	
+	this.move = function() {
+		if($scope.visible){
+			$scope.move = {"margin-left":"10%","transition":"0.6s ease"}
+		}
+		else {
+			$scope.move = {"margin-left":"0px","transition":"0.6s ease"}
+		}
+		
+	}
 	
 	
 	this.signOut = function() {
 		
-		console.log("iiiiiiiiiiii");
 		var signoutObj = homeService.signOut();
 		
 		signoutObj.then = function(data) {
@@ -198,11 +163,6 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 	
 	
 	
-	//$scope.toDoList = _.range(1, 5);
-	  
-	  
-	  
-	  
 });
 
 
