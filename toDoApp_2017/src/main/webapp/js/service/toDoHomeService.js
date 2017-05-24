@@ -33,6 +33,14 @@ myToDo.service("homeService",function ($http) {
 		});
 	}
 	
+	this.copyToDo = function(toDo) {
+		return $http({
+			url:"http://localhost:8080/toDoApp_2017/copyToDo",
+			method:"POST",
+			data:toDo
+		});
+	}
+	
 	this.signOut = function() {
 		return $http({
 			url:"http://localhost:8080/toDoApp_2017/signOut",
@@ -41,3 +49,4 @@ myToDo.service("homeService",function ($http) {
 	}
 	
 });
+

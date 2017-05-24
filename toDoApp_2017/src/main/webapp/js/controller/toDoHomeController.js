@@ -132,6 +132,8 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 	}
 
 	
+	
+	
 	this.move = function() {
 		if($scope.visible){
 			$scope.move = {"margin-left":"10%","transition":"0.6s ease"}
@@ -141,6 +143,33 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		}
 		
 	}
+	
+	
+	
+	this.makeCopy = function(toDo) {
+		
+		var copy = {};
+		
+		copy.title = toDo.title;
+		copy.note = toDo.note;
+		copy.remainder = toDo.remainder;
+		
+		console.log(toDo);
+		var copyToDoObj = homeService.copyToDo(copy);
+		
+		copyToDoObj.then (function(data) {
+			
+			if( data.status == 200 ) {
+				$scope.toDoList.push(data.data.todoCopy);
+			}
+		}).catch( function(error) {
+			console.log(error);
+			$state.go('signIn');
+		});
+	}
+	
+	
+	
 	
 	
 	this.signOut = function() {
@@ -165,5 +194,7 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 	
 });
 
-
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
 

@@ -110,4 +110,28 @@ public class ToDoDaoImpl implements ToDoDao {
 		
 	}
 
+
+
+	@Override
+	public boolean copyToDo(ToDo copy) {
+		
+		try{
+			session = sessionFactory.openSession();
+			Transaction transaction = session.beginTransaction();
+			session.save(copy);
+			transaction.commit();
+			return true;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		finally {
+			if( session != null ) {
+				session.close();
+			}
+		}
+		
+	}
+
 }

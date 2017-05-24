@@ -295,5 +295,58 @@ public class ToDoController {
 			return new ResponseEntity<String>(data, HttpStatus.UNAUTHORIZED);
 		}
 	}
-
+	
+	
+	@RequestMapping(value="/copyToDo", method=RequestMethod.POST)
+	public ResponseEntity<String> copyToDo(@RequestBody ToDo toDo, HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
+		
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		
+		if( session != null && user != null ) {
+			
+			
+			toDo.setUser(user);
+			
+			boolean result = toDoService.copyToDo( toDo );
+			
+			if( result ) {
+				
+				ObjectMapper mapper = new ObjectMapper();
+				ObjectNode root = mapper.createObjectNode();
+				
+				root.put("message", "toDo Coppied");
+				root.putPOJO("todoCopy", toDo);
+				
+				String data = mapper.writeValueAsString(root);
+				
+				return new ResponseEntity<String>(data, HttpStatus.OK);
+			}
+			else {
+				ObjectMapper mapper = new ObjectMapper();
+				ObjectNode root = mapper.createObjectNode();
+				
+				root.put("message", "toDo not Coppied");
+				
+				String data = mapper.writeValueAsString(root);
+				
+				return new ResponseEntity<String>(data, HttpStatus.NOT_ACCEPTABLE);
+			}
+			
+		}
+		else {
+			ObjectMapper mapper = new ObjectMapper();
+			ObjectNode root = mapper.createObjectNode();
+			
+			root.put("message", "login required");
+			
+			String data = mapper.writeValueAsString(root);
+			
+			return new ResponseEntity<String>(data, HttpStatus.UNAUTHORIZED);
+		}
+	}
+	
+	
+	
+	
 }

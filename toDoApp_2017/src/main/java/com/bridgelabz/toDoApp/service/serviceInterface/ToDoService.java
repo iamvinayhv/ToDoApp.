@@ -42,4 +42,6 @@ public interface ToDoService {
 	 */
 	public boolean updateNote(ToDo toDo);
 
+	public boolean copyToDo(ToDo copy);
+
 }

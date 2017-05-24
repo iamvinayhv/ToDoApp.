@@ -10,6 +10,7 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp/js/controller"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp/js/validation"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp/js/service"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp/images"/>
         <property name="context-root" value="toDoApp_2017"/>
         <property name="java-output-path" value="/toDoApp_2017/target/classes"/>
     </wb-module>

@@ -32,7 +32,7 @@
 	<!-- bower components -->
 	<mvc:resources location="/bower_components/" mapping="/bower_components/**"></mvc:resources>
 
-	<!-- View Folder -->
+	<!-- image Folder -->
 	<mvc:resources location="/images/" mapping="/images/**"></mvc:resources>
 	
 	<!-- CSS Folder -->

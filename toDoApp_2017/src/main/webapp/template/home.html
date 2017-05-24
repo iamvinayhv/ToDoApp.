@@ -5,9 +5,9 @@
 	      
 				<div class="navbar-header" id="navHead">
 				
-					<span><b data-ng-click="visible=!visible; hc.move()" style="margin-left: 10px;font-size: 20px; cursor: pointer;">&#9776;</b>
-					<strong style="padding-left: 35px; font-size: 22px;">Your </strong><i style="font-size: 20px;">Keep</i>
-					<span class="glyphicon glyphicon-search"></span><input type="text" id="search" placeholder="Search"></span>
+					<span><span data-ng-click="visible=!visible; hc.move()" style="margin-left: 10px; cursor: pointer;"><img alt="icon" data-toggle="tooltip" title="Menu" src="images/Menu.png" width="25px" height="20px"></span>
+					<strong style="padding-left: 35px; font-size: 22px;">Nanna </strong><i style="font-size: 20px;">Keep</i>
+					<span class="glyphicon glyphicon-search"></span><input type="text" id="search" placeholder="Search"  data-toggle="tooltip" title="Search"></span>
 	            
 				</div>
 				
@@ -29,7 +29,7 @@
       <li>Home</li>
       <li>Notes</li>
       <li>About</li>
-      <li>SignOut</li>
+      <li><a href="#signIn">SignOut</a></li>
     </ul>
   </div>
 
@@ -37,14 +37,18 @@
 
 <div id="homeBody" class="row"  data-ng-style="move">
 		<div class="col-sm-2"></div>
-			<div class="col-sm-9">
+			<div class="col-sm-10">
 						
 					<div>
 						<div>
 						
 							<div data-ng-show ="IsVisible" id="title" name="title" data-ng-model="toDo.title" newcontenteditable contenteditable="true" placeholder="Title" style="font-weight: bold;"></div>
 							<div id="note" name="note" data-ng-model="toDo.note" data-ng-click="hc.showHide()" newcontenteditable contenteditable="true" placeholder="Take a note..."></div>
-							<div data-ng-show ="done" id="done" data-ng-click="hc.addNote()">DONE</div>
+							<div data-ng-show ="done" id="done">
+							<span><img alt="color" src="images/remaind.png" width="25px;" height="20px;" data-toggle="tooltip" title="Remind me" style="margin-left: 20px; cursor: pointer;"></span>
+							<span><img alt="color" src="images/color.png" width="20px;" height="20px;" data-toggle="tooltip" title="Change color" style="margin-left: 20px; cursor: pointer;"></span>
+							<span style="float: right; cursor: pointer;" data-ng-click="hc.addNote()">DONE</span>
+							</div>
 							
 						</div>
 					</div>
@@ -58,15 +62,28 @@
 									<div id="toDoTitle">{{todo.title}}</div>
 									<div id="toDoNote">{{todo.note}}</div>
 								</div>
-								<div id="icons" style="padding-left: 20px; border-top:0.1px dashed;">
-									<span data-ng-show="icons" data-ng-click="hc.deleteNote(todo.id, $index)" class="glyphicon glyphicon-trash" style="padding-top: 9px;"></span>
+							
+								<div  uib-dropdown dropdown-append-to-body id="icons" style="padding-left: 20px;">
+									<span data-ng-show="icons">
+									<span><img alt="color" src="images/remaind.png" width="25px;" height="20px;" data-toggle="tooltip" title="Remind me" style=" cursor: pointer;""></span>
+									<span><img alt="color" src="images/color.png" width="20px;" height="20px;" data-toggle="tooltip" title="Change color" style="margin-left: 20px; cursor: pointer;"></span>
+									<span><img alt="color" src="images/update.png" width="25px;" height="22px;" data-toggle="tooltip" title="Update note" style="margin-left: 20px; cursor: pointer;" data-ng-click="hc.popUp(todo, $index)"></span>
+									<span uib-dropdown-toggle class="glyphicon btn-group" data-toggle="tooltip" title="More" style="margin-left: 15px;"><img alt="icon" src="images/more.png" width="30px" height="25px"></span>
+									</span>
+									
+									<div >
+										<ul uib-dropdown-menu class="dropdown-menu" style="cursor: pointer;">
+											<li data-ng-click="hc.makeCopy(todo)"><a>Make a copy</a></li>
+											<li data-ng-click="hc.deleteNote(todo.id, $index)"><a>Delete Note</a></li>
+										</ul>
+									</div>
+									
 								</div>
 							</div>
 						</div>
 					
-					</div>	
+					</div>
 				</div>
 			</div>
-		<!-- <div class="col-sm-2"></div> -->
 </div>
 

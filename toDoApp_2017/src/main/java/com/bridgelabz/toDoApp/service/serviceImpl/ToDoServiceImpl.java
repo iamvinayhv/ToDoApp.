@@ -38,4 +38,10 @@ public class ToDoServiceImpl implements ToDoService {
 		return toDoDao.updateNote(toDo);
 	}
 
+	@Override
+	public boolean copyToDo(ToDo copy) {
+		
+		return toDoDao.copyToDo(copy);
+	}
+
 }
