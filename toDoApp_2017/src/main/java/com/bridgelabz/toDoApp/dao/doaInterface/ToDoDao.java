@@ -40,4 +40,6 @@ public interface ToDoDao {
 
 	public boolean copyToDo(ToDo copy);
 
+	public void setReminder(ToDo toDo);
+
 }

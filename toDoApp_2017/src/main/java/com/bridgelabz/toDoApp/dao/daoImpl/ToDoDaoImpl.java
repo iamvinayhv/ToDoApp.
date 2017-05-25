@@ -134,4 +134,25 @@ public class ToDoDaoImpl implements ToDoDao {
 		
 	}
 
+
+
+	@Override
+	public void setReminder(ToDo toDo) {
+		
+		try{
+			session = sessionFactory.openSession();
+			Transaction transaction = session.beginTransaction();
+			session.update(toDo);
+			transaction.commit();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			if(session != null ){
+				session.close();
+			}
+		}
+	}
+
 }

@@ -346,7 +346,37 @@ public class ToDoController {
 		}
 	}
 	
-	
+	@RequestMapping(value="setReminder", method=RequestMethod.POST)
+	public ResponseEntity<String> setReminder ( @RequestBody ToDo toDo, HttpServletRequest request, HttpServletResponse response  ) throws JsonProcessingException {
+		
+		HttpSession session = request.getSession();
+		User  user = (User) session.getAttribute("user");
+		
+		if(session != null && user != null ){
+			toDoService.setReminder(toDo);
+			
+			ObjectMapper mapper = new ObjectMapper();
+			ObjectNode root = mapper.createObjectNode();
+			
+			root.put("message", "remainder updated");
+			root.putPOJO("todo", toDo);
+			
+			String data = mapper.writeValueAsString(root);
+			System.out.println( data ); 
+			
+			return new ResponseEntity<String>(data, HttpStatus.OK);
+		}
+		else{
+			
+			ObjectMapper mapper = new ObjectMapper();
+			ObjectNode root = mapper.createObjectNode();
+			
+			root.put("message", "signIn Required");
+			String data = mapper.writeValueAsString(root);
+			
+			return new ResponseEntity<String>(data, HttpStatus.OK);
+		}
+	}
 	
 	
 }

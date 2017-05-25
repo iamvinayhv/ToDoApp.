@@ -44,4 +44,6 @@ public interface ToDoService {
 
 	public boolean copyToDo(ToDo copy);
 
+	public void setReminder(ToDo toDo);
+
 }

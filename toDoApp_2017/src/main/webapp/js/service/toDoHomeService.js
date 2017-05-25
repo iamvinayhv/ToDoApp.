@@ -48,5 +48,13 @@ myToDo.service("homeService",function ($http) {
 		});
 	}
 	
+	this.toToReminder = function(toDo) {
+		return $http({
+			url:"http://localhost:8080/toDoApp_2017/setReminder",
+			method:"POST",
+			data:toDo
+		});
+	}
+	
 });
 

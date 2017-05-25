@@ -44,4 +44,10 @@ public class ToDoServiceImpl implements ToDoService {
 		return toDoDao.copyToDo(copy);
 	}
 
+	@Override
+	public void setReminder(ToDo toDo) {
+		
+		toDoDao.setReminder(toDo);
+	}
+
 }

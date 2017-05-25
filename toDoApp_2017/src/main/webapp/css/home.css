@@ -1,6 +1,6 @@
 #search
 {
-	width: 700px;
+	width: 40%;
 	height:47px;
 	margin-left: 55px;
 	padding-left: 30px;
@@ -117,14 +117,25 @@
 #toDoNote
 {
 	word-wrap: break-word;
-	padding: 10px 20px 22px 20px;
+	padding: 10px 20px 15px 20px;
 }
 
 #icons
 {
-	padding-top:7px;
-	height: 35px;
+	padding-bottom:30px;
+	height: 20px;
 }
+
+#remainder
+{
+	padding-top:5px;
+	border-top: 1px dashed;
+	padding-left: 20px;
+	height: 26px;
+}
+
+
+
 
 
 
@@ -198,8 +209,25 @@
   transition: width 0.5s ease-in-out;
 }
 
-.dropdown-menu
+/* .dropdown-menu
 {
-	margin-left: 1%
+	float: right;
+} */
+
+
+.uib-day button
+{
+	margin-left: 25%;
+}
+
+
+
+.uib-datepicker-popup.dropdown-menu{
+	width: 75%;
+}
+
+.btn
+{
+	margin-left: 10px;
 }
 

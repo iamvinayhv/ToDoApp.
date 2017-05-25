@@ -34,22 +34,63 @@
   </div>
 
 
+	
+
 
 <div id="homeBody" class="row"  data-ng-style="move">
 		<div class="col-sm-2"></div>
 			<div class="col-sm-10">
+			
+			<pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre>
+    
+    <div class="row">
+      <div class="col-sm-6">
+        <p class="input-group">
+          <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+      </div>
+    </div>
 						
 					<div>
 						<div>
 						
 							<div data-ng-show ="IsVisible" id="title" name="title" data-ng-model="toDo.title" newcontenteditable contenteditable="true" placeholder="Title" style="font-weight: bold;"></div>
 							<div id="note" name="note" data-ng-model="toDo.note" data-ng-click="hc.showHide()" newcontenteditable contenteditable="true" placeholder="Take a note..."></div>
-							<div data-ng-show ="done" id="done">
-							<span><img alt="color" src="images/remaind.png" width="25px;" height="20px;" data-toggle="tooltip" title="Remind me" style="margin-left: 20px; cursor: pointer;"></span>
+							<div  uib-dropdown dropdown-append-to-body data-ng-show ="done" id="done">
+							<span uib-dropdown-toggle><img alt="color" src="images/remaind.png" width="25px;" height="20px;" data-toggle="tooltip" title="Remind me" style="margin-left: 20px; cursor: pointer;"></span>
 							<span><img alt="color" src="images/color.png" width="20px;" height="20px;" data-toggle="tooltip" title="Change color" style="margin-left: 20px; cursor: pointer;"></span>
 							<span style="float: right; cursor: pointer;" data-ng-click="hc.addNote()">DONE</span>
-							</div>
 							
+							
+								<div  uib-dropdown-menu class="dropdown-menu" style="cursor: pointer; margin-left: 10px; min-width: 200px; top: 87%; padding: 5px; line-height: 2">
+								<div>Reminder:</div>
+															
+										<hr>
+																									
+										<div data-ng-click="tdctl.doReminder(x.id,$index,'Today')">
+											<span>Later today</span>
+											<span style="float: right; padding-right: 10px">20:00</span>
+										</div>
+										
+										
+									    <div data-ng-click="tdctl.doReminder(x.id,$index,'Tomorrow')">
+									        <span>Tomorrow</span><span style="float: right; padding-right: 10px">08:00</span>
+									    </div>
+									
+									    <div data-ng-click="tdctl.doReminder(x.id,$index,'Next-Week')">
+									        <span>Next Week</span><span style="float: right; padding-right: 10px">08:00</span>
+									    </div>
+									    
+									     <div data-ng-click="tdctl.doReminder(x.id,$index,'Next-Week')">
+									        <span>Callender</span><span style="float: right; padding-right: 25px"><img alt="icon" src="images/Calendar.png" width="20px" height="20px"></span>
+									    </div>
+										
+										    
+							</div>
+							</div>
 						</div>
 					</div>
 					
@@ -63,25 +104,69 @@
 									<div id="toDoNote">{{todo.note}}</div>
 								</div>
 							
-								<div  uib-dropdown dropdown-append-to-body id="icons" style="padding-left: 20px;">
+								<div  id="icons" style="padding-left: 20px;">
 									<span data-ng-show="icons">
-									<span><img alt="color" src="images/remaind.png" width="25px;" height="20px;" data-toggle="tooltip" title="Remind me" style=" cursor: pointer;""></span>
+									
+										<span uib-dropdown dropdown-append-to-body>
+											<span data-toggle="tooltip" title="Remind me">
+												<img uib-dropdown-toggle alt="color" src="images/remaind.png" width="25px;" height="20px;"  style=" cursor: pointer;"">
+											</span>
+											
+												<div uib-dropdown-menu class="dropdown-menu" style="cursor: pointer; margin-left: 10px; min-width: 200px; top: 87%; padding: 5px; line-height: 2; margin-top: 10px;">
+														
+														<div>Reminder:</div>
+																			
+														<hr>
+																													
+														<div data-ng-click="hc.toToReminder(todo,$index,'Today')">
+															<span>Later today</span>
+															<span style="float: right; padding-right: 10px">20:00</span>
+														</div>
+														
+														
+													    <div data-ng-click="hc.toToReminder(todo,$index,'Tomorrow')">
+													        <span>Tomorrow</span><span style="float: right; padding-right: 10px">08:00</span>
+													    </div>
+													
+													    <div data-ng-click="hc.toToReminder(todo,$index,'Next-Week')">
+													        <span>Next Week</span><span style="float: right; padding-right: 10px">08:00</span>
+													    </div>
+													    
+													     <div data-ng-click="tdctl.doReminder(todo.id,$index,'Next-Week')">
+													        <span>Callender</span><span style="float: right; padding-right: 25px"><img alt="icon" src="images/Calendar.png" width="20px" height="20px"></span>
+													    </div>
+												</div>
+										</span>
+									
+									
 									<span><img alt="color" src="images/color.png" width="20px;" height="20px;" data-toggle="tooltip" title="Change color" style="margin-left: 20px; cursor: pointer;"></span>
 									<span><img alt="color" src="images/update.png" width="25px;" height="22px;" data-toggle="tooltip" title="Update note" style="margin-left: 20px; cursor: pointer;" data-ng-click="hc.popUp(todo, $index)"></span>
-									<span uib-dropdown-toggle class="glyphicon btn-group" data-toggle="tooltip" title="More" style="margin-left: 15px;"><img alt="icon" src="images/more.png" width="30px" height="25px"></span>
+									
+									
+										<span uib-dropdown dropdown-append-to-body>
+											<span uib-dropdown-toggle data-toggle="tooltip" title="More" style="margin-left: 15px;">
+												<img alt="icon" src="images/more.png" width="30px" height="25px">
+											</span>
+										
+											<div >
+												<ul uib-dropdown-menu class="dropdown-menu" style="cursor: pointer; margin-left: 2%; margin-top: 10px;">
+													<li data-ng-click="hc.makeCopy(todo)"><a>Make a copy</a></li>
+													<li data-ng-click="hc.deleteNote(todo.id, $index)"><a>Delete Note</a></li>
+												</ul>
+											</div>
+										
+										</span>
 									</span>
-									
-									<div >
-										<ul uib-dropdown-menu class="dropdown-menu" style="cursor: pointer;">
-											<li data-ng-click="hc.makeCopy(todo)"><a>Make a copy</a></li>
-											<li data-ng-click="hc.deleteNote(todo.id, $index)"><a>Delete Note</a></li>
-										</ul>
-									</div>
-									
+								</div>
+								<div>
+								<div id="remainder" data-ng-mouseover="cancel=true" data-ng-mouseleave="cancel=false"><span>
+								<span><img alt="icon" src="images/timeSpan.png" width="12px" height="12px"> {{todo.remainder|date:'MMM, dd yyyy  HH:mm'}}</span>
+								<span style="float: right;" data-ng-show="cancel"><img alt="icon" src="images/Cancel.png" width="20px" height="20px" data-toggle="tooltip" title="Delete remainder"></span>
+								</span>
+								</div>
 								</div>
 							</div>
 						</div>
-					
 					</div>
 				</div>
 			</div>
