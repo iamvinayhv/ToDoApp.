@@ -50,4 +50,10 @@ public class ToDoServiceImpl implements ToDoService {
 		toDoDao.setReminder(toDo);
 	}
 
+	@Override
+	public void cancelRemainder(ToDo toDo) {
+		
+		toDoDao.cancelRemainder(toDo);
+	}
+
 }

@@ -26,7 +26,7 @@
 #refresh
 {
 	margin-left: -230px;
-	margin-top: 20px;
+	margin-top: 21px;
 	font-size: 17px;
 }
 
@@ -80,9 +80,9 @@
 {
 	width: 770px;
 	background-color: white;
-	height: 30px;
+	height: 90px;
 	padding-right: 20px;
-	padding-bottom: 10px;
+	padding-bottom: 15px;
 	box-shadow: 2px 2px 2px 0px;
 	font-weight: bold;
 }
@@ -146,9 +146,7 @@
 
 .btn
 {
-	margin-left: -190px;
-	margin-top: 10px;
-	font-size: 17px;
+	position: inherit;
 }
 
 
@@ -223,7 +221,8 @@
 
 
 .uib-datepicker-popup.dropdown-menu{
-	width: 75%;
+	width: 85%;
+	outline: none;
 }
 
 .btn

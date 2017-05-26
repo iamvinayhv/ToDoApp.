@@ -7,24 +7,18 @@ import com.bridgelabz.toDoApp.model.ToDo;
 public interface ToDoDao {
 
 	/**
-	 * to add new Note
-	 * 
 	 * @param toDo
 	 * @return true/false
 	 */
 	public boolean addNote(ToDo toDo);
 
 	/**
-	 * to get all the notes for the particular user by passing userId
-	 * 
 	 * @param id
 	 * @return List
 	 */
 	public List<ToDo> getNotes(int UserId);
 
 	/**
-	 * to delete the particular note by using noteId
-	 * 
 	 * @param id
 	 * @return int number of rows affected
 	 */
@@ -38,8 +32,20 @@ public interface ToDoDao {
 	 */
 	public boolean updateNote(ToDo toDo);
 
+	/**
+	 * @param copy
+	 * @return true/false
+	 */
 	public boolean copyToDo(ToDo copy);
 
+	/**
+	 * @param toDo
+	 */
 	public void setReminder(ToDo toDo);
+
+	/**
+	 * @param toDoId
+	 */
+	public void cancelRemainder(ToDo toDo);
 
 }

@@ -56,5 +56,13 @@ myToDo.service("homeService",function ($http) {
 		});
 	}
 	
+	this.cancelRemainder = function(toDo) {
+		return $http({
+			url:"http://localhost:8080/toDoApp_2017/cancelRemainder",
+			method:"POST",
+			data:toDo
+		});
+	}
+	
 });
 
