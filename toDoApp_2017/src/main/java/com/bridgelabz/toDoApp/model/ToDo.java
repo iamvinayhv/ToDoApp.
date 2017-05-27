@@ -26,6 +26,7 @@ public class ToDo implements Serializable {
 	private String title;
 	private String note;
 	private Date remainder;
+	private String color;
 	private Date upDated = new Date();
 
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -62,6 +63,14 @@ public class ToDo implements Serializable {
 
 	public void setRemainder(Date remainder) {
 		this.remainder = remainder;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
 	}
 
 	public Date getUpDated() {

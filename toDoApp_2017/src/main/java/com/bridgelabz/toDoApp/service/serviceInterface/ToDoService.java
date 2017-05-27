@@ -58,4 +58,9 @@ public interface ToDoService {
 	 */
 	public void cancelRemainder(ToDo toDo);
 
+	/**
+	 * @param toDo
+	 */
+	public void setColor(ToDo toDo);
+
 }

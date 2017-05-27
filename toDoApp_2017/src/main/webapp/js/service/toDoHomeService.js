@@ -64,5 +64,13 @@ myToDo.service("homeService",function ($http) {
 		});
 	}
 	
+	this.setColor = function(toDo) {
+		return $http({
+			url:"http://localhost:8080/toDoApp_2017/setColor",
+			method:"POST",
+			data:toDo
+		});
+	}
+	
 });
 

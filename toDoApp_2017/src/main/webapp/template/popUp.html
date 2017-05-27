@@ -1,19 +1,16 @@
 <div>
-		
+		<h3 style="padding-left: 80px;">up-date todo</h3>
 	
-		<h3 style="padding-left: 90px;">Up date</h3>
-		
-		
 		<div class="modal-body" id="modal-body" contenteditable="true">
-			<textarea style="border: none; width: 100%; outline: none; padding-top: 15px; font-weight: bold;"
+			<textarea style="border: none; width: 100%; outline: none; padding-top: 10px; font-weight: bold;"
 				data-ng-model="$ctrl.title" rows="" cols="">{{$ctrl.title}}</textarea>
 		</div>
 		
 		<div class="modal-body" id="modal-body" contenteditable="true">
-			<textarea style="border: none; width: 100%; padding-top: 15px; outline: none;"
+			<textarea style="border: none; width: 100%; padding-top: 10px; outline: none;"
 				data-ng-model="$ctrl.note" rows="" cols="">{{$ctrl.note}}</textarea>
 		</div>
-	
+		<div style="padding-left: 15px">Edited on : {{$ctrl.upDated|date:'MMM, dd yyyy  hh:mm a'}}</div>
 		<div class="modal-footer">
 			<button class="btn btn-primary" type="button"
 				data-ng-click="$ctrl.ok()">OK</button>

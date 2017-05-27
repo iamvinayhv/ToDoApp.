@@ -38,7 +38,7 @@
 		<div class="col-sm-2"></div>
 			<div class="col-sm-10">
 					<div>
-						<div>
+						<div >
 						
 							<div data-ng-show ="IsVisible" id="title" name="title" data-ng-model="toDo.title" newcontenteditable contenteditable="true" placeholder="Title" style="font-weight: bold;"></div>
 							<div id="note" name="note" data-ng-model="toDo.note" data-ng-click="hc.showHide()" newcontenteditable contenteditable="true" placeholder="Take a note..."></div>
@@ -58,8 +58,32 @@
 													  </ul>
 												</div>
 										
-							<span uib-dropdown-toggle><img alt="color" src="images/remaind.png" width="25px;" height="20px;" data-toggle="tooltip" title="Remind me" style="margin-left: 20px; cursor: pointer;"></span>
-							<span><img alt="color" src="images/color.png" width="20px;" height="20px;" data-toggle="tooltip" title="Change color" style="margin-left: 20px; cursor: pointer;"></span>
+											<span uib-dropdown-toggle><img alt="color" src="images/remaind.png" width="25px;" height="20px;" data-toggle="tooltip" title="Remind me" style="margin-left: 20px; cursor: pointer;"></span>
+											
+												<span uib-dropdown dropdown-append-to-body><img uib-dropdown-toggle alt="color" src="images/color.png" width="20px;" height="20px;" data-toggle="tooltip" title="Change color" style="margin-left: 20px; cursor: pointer;">
+														
+														<div  uib-dropdown-menu style="margin-top:-16px; margin-left: 40px" data-ng-model="toDo.color">
+															<div style="margin-left: 10px; padding-right: 10px;">
+																<span>
+																	<img src="images/White.png" width="32px" height="32px"	data-ng-click="toDo.color='#ffffff'">
+																	<img src="images/red.png" width="37px" height="37px"	data-ng-click="toDo.color='#ff8a80'">
+																	<img src="images/yellow.png" width="30px" height="30px" data-ng-click="toDo.color='#ffd180'">
+																	<img src="images/orange.png" width="30px" height="30px"	data-ng-click="toDo.color='#fb7c05'">
+																</span>
+															</div>
+															<div style="margin-left: 10px; padding-top: 10px;">
+																<span>
+																	<img src="images/blue.png" width="30px" height="30px"	data-ng-click="toDo.color='#3498db'">
+																	<img src="images/nice.png" width="37px" height="37px"	data-ng-click="toDo.color='#ccff90'">
+																	<img src="images/green.png" width="30px" height="30px"	data-ng-click="toDo.color='#2ecc71'">
+																	<img src="images/gray.png" width="30px" height="30px"	data-ng-click="toDo.color='#95a5a6'">
+																</span>
+															</div>
+														</div>
+														
+												</span>
+
+
 							<span style="float: right; cursor: pointer;" data-ng-click="hc.addNote()">DONE</span>
 							
 							<div>
@@ -90,7 +114,7 @@
 					
 					<div class="cont" data-ng-class="{list: isList, grid: !isList}">
 						<div class="cardRow">
-							<div class="card" data-ng-repeat="todo in toDoList" data-ng-mouseover="icons=true" data-ng-mouseleave="icons=false">
+							<div class="card" data-ng-repeat="todo in toDoList" data-ng-mouseover="icons=true" data-ng-mouseleave="icons=false" style="background-color: {{todo.color}};">
 						
 								<div  data-ng-click="hc.popUp(todo, $index)" >
 									<div id="toDoTitle">{{todo.title}}</div>
@@ -131,30 +155,46 @@
 									
 									<span uib-dropdown dropdown-append-to-body><img uib-dropdown-toggle alt="color" src="images/color.png" width="20px;" height="20px;" data-toggle="tooltip" title="Change color" style="margin-left: 20px; cursor: pointer;">
 										
-										<div uib-dropdown-menu>
-											<div style="margin-left: 20px;">
+										<div  uib-dropdown-menu style="margin-top:-105px; margin-left: 23px">
+											<div style="margin-left: 10px; padding-right: 10px;">
 												<span>
-													<img src="images/white.png" width="25px" height="25px">
-													<img src="images/red.png" width="25px" height="25px">
-													<img src="images/yellow.png" width="25px" height="25px">
+													<img src="images/White.png" width="32px" height="32px"	data-ng-click="hc.setColor(todo,'#ffffff')">
+													<img src="images/red.png" width="37px" height="37px"	data-ng-click="hc.setColor(todo,'#ff8a80')">
+													<img src="images/yellow.png" width="30px" height="30px" data-ng-click="hc.setColor(todo,'#ffd180')">
+													<img src="images/orange.png" width="30px" height="30px"	data-ng-click="hc.setColor(todo,'#fb7c05')">
 												</span>
 											</div>
-											<div style="margin-left: 20px;">
+											<div style="margin-left: 10px; padding-top: 10px;">
 												<span>
-													<img src="images/blue.png" width="25px" height="25px" >
-													<img src="images/purple.png" width="25px" height="25px">
-													<img src="images/green.png" width="25px" height="25px">
+													<img src="images/blue.png" width="30px" height="30px"	data-ng-click="hc.setColor(todo,'#3498db')">
+													<img src="images/nice.png" width="37px" height="37px"	data-ng-click="hc.setColor(todo,'#ccff90')">
+													<img src="images/green.png" width="30px" height="30px"	data-ng-click="hc.setColor(todo,'#2ecc71')">
+													<img src="images/gray.png" width="30px" height="30px"	data-ng-click="hc.setColor(todo,'#95a5a6')">
 												</span>
 											</div>
 										</div>
-									
-									
-									
+										
 									</span>
+									
+									
 									<span><img alt="color" src="images/update.png" width="25px;" height="22px;" data-toggle="tooltip" title="Update note" style="margin-left: 20px; cursor: pointer;" data-ng-click="hc.popUp(todo, $index)"></span>
 									
+										<span class="dropdown"  style="width: 5%; padding-left: 10px;">
+													  <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" >
+													    <input data-ng-show="in" type="text" class="form-control" data-ng-model="toDo.remainder" name="remainder" placeholder="Pick date & time"><img data-toggle="tooltip" title="Set Remainder" alt="icon" src="images/Calendar.png" height="20px" width="20px">
+													    
+													  </a>
+													  
+													  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+													    <datetimepicker data-ng-model="toDo.remainder" data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }"/>
+													  </ul>
+												</sapn>
 									
-										<span uib-dropdown dropdown-append-to-body>
+										</span>
+									
+									
+									
+										<span uib-dropdown dropdown-append-to-body >
 											<span uib-dropdown-toggle data-toggle="tooltip" title="More" style="margin-left: 15px;">
 												<img alt="icon" src="images/more.png" width="30px" height="25px">
 											</span>
@@ -167,6 +207,7 @@
 											</div>
 										
 										</span>
+										
 									</span>
 								</div>
 								
@@ -175,7 +216,7 @@
 								<div data-ng-if="todo.remainder" id="remainder" data-ng-mouseover="cancel=true" data-ng-mouseleave="cancel=false"><span>
 									<span><img alt="icon" src="images/timeSpan.png" width="12px" height="12px"> {{todo.remainder|date:'MMM, dd yyyy  hh:mm a'}}</span>
 									<span style="float: right;" data-ng-show="cancel"><img data-ng-click="hc.cancelRemainder(todo)" alt="icon" src="images/Cancel.png" width="20px" height="20px" data-toggle="tooltip" title="Delete remainder"></span>
-									</span>
+
 								</div>
 							</div>
 						</div>

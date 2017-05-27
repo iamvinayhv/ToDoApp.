@@ -56,4 +56,10 @@ public class ToDoServiceImpl implements ToDoService {
 		toDoDao.cancelRemainder(toDo);
 	}
 
+	@Override
+	public void setColor(ToDo toDo) {
+		
+		toDoDao.setColor(toDo);
+	}
+
 }

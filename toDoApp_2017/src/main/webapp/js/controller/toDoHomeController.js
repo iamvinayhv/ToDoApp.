@@ -39,6 +39,7 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 					console.log(data.data.todo);
 					$scope.toDo.title=null;
 					$scope.toDo.note=null;
+					$scope.toDo.color=null;
 					$scope.toDo.remainder=null;
 					
 				}
@@ -91,6 +92,8 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		    	 this.id = toDo.id;
 		    	 this.title = toDo.title;
 		    	 this.note = toDo.note;
+		    	 this.remainder = toDo.remainder;
+		    	 this.upDated = toDo.upDated;
 		    	 var $ctrl = this;
 		    	 
 		    	 
@@ -127,6 +130,7 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 	
 	$scope.updateNote = function( toDo ) {
 		console.log("mobile");
+		toDo.upDated = new Date();
 		
 		var updToDoObj = homeService.updateNote(toDo);
 		
@@ -250,6 +254,23 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		cancelObj.then(function(data) {
 			
 			if( data.status == 200 ) {
+			}
+		}).catch(function(error) {
+			console.log(error);
+			$state.go('signIn');
+		})
+	}
+	
+	
+	this.setColor = function(todo, color) {
+		todo.color = color;
+		console.log(todo+" "+color);
+		var colorObj = homeService.setColor(todo);
+		
+		colorObj.then(function(data) {
+			
+			if( data.status == 200 ) {
+				console.log("color set ogaya");
 			}
 		}).catch(function(error) {
 			console.log(error);

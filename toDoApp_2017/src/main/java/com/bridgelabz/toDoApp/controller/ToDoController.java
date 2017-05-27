@@ -431,4 +431,45 @@ public class ToDoController {
 		}
 	}
 	
+	
+	/**
+	 * @param toDo
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws JsonProcessingException 
+	 */
+	@RequestMapping(value="setColor", method=RequestMethod.POST)
+	public ResponseEntity<String> setColor (@RequestBody ToDo toDo, HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
+		
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		
+		if( session != null && user != null ) {
+			
+			toDoService.setColor(toDo);
+			
+			ObjectMapper mapper = new ObjectMapper();
+			ObjectNode root = mapper.createObjectNode();
+			
+			root.put("message", "color updated");
+			
+			String data = mapper.writeValueAsString(root);
+			System.out.println( data ); 
+			
+			return new ResponseEntity<String>(data, HttpStatus.OK);
+		}
+		else {
+			ObjectMapper mapper = new ObjectMapper();
+			ObjectNode root = mapper.createObjectNode();
+			
+			root.put("message", "signIn Required");
+			String data = mapper.writeValueAsString(root);
+			
+			return new ResponseEntity<String>(data, HttpStatus.UNAUTHORIZED);
+		}
+		
+		
+	}
+	
 }

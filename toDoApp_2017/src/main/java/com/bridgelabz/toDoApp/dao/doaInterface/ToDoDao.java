@@ -48,4 +48,9 @@ public interface ToDoDao {
 	 */
 	public void cancelRemainder(ToDo toDo);
 
+	/**
+	 * @param toDo
+	 */
+	public void setColor(ToDo toDo);
+
 }
