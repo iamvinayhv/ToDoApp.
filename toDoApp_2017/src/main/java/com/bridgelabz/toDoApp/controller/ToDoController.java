@@ -139,7 +139,8 @@ public class ToDoController {
 				
 				root.put("status", "success");
 				
-				root.putPOJO("todo", todoList); 
+				root.putPOJO("todo", todoList);
+				root.putPOJO("user", user);
 				
 				String data = mapper.writeValueAsString(root);
 				System.out.println( data ); 
@@ -155,7 +156,8 @@ public class ToDoController {
 				root.put("status", "notes are not added");
 				
 				
-				root.putPOJO("todo", todoList); 
+				root.putPOJO("todo", todoList);
+				root.putPOJO("user", user);
 				
 				String data = mapper.writeValueAsString(root);
 				System.out.println( data ); 

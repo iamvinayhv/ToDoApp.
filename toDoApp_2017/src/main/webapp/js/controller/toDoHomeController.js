@@ -1,14 +1,17 @@
 myToDo.controller("homeController", function($scope, $state, $uibModal, homeService) {
 	
 	var toDoList = [];
+	var user = [];
 	var getToDoHtOb = homeService.getNotes();
 	getToDoHtOb.then(function(data) {
 		
 		console.log("comming data "+data.status);
+		$scope.user = data.data.user;
 		
 		if( data.status == 200 ) {
 			console.log(data);
 			$scope.toDoList = data.data.todo;
+			
 			
 		}
 		else{
@@ -94,13 +97,14 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		    	 this.note = toDo.note;
 		    	 this.remainder = toDo.remainder;
 		    	 this.upDated = toDo.upDated;
+		    	 this.color = toDo.color;
 		    	 var $ctrl = this;
 		    	 
 		    	 
 		    	 
 		    	this.ok = function () {
 		    		console.log("update ok");
-					$uibModalInstance.close({id:$ctrl.id, title:$ctrl.title, note:$ctrl.note});
+					$uibModalInstance.close({id:$ctrl.id, title:$ctrl.title, note:$ctrl.note, remainder:$ctrl.remainder, color:$ctrl.color});
 					
 				};
 				
@@ -165,6 +169,7 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		copy.title = toDo.title;
 		copy.note = toDo.note;
 		copy.remainder = toDo.remainder;
+		copy.color = toDo.color;
 		
 		console.log(toDo);
 		var copyToDoObj = homeService.copyToDo(copy);

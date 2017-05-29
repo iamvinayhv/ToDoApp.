@@ -1,23 +1,40 @@
-<div>
-		<h3 style="padding-left: 80px;">up-date todo</h3>
-	
-		<div class="modal-body" id="modal-body" contenteditable="true">
-			<textarea style="border: none; width: 100%; outline: none; padding-top: 10px; font-weight: bold;"
+<div style=" width:180%; margin-left:-50%; ;background-color:white;">
+	<div style="background-color: #2b67cb; color: white;padding-left: 15px;">Update ToDo</div>
+	<div style="background-color:  {{$ctrl.color}};">
+		<div class="modal-body" id="modal-body"  style="outline: none; height: 40px;">
+			<textarea style="border: none; width: 100%; outline: none;; font-weight: bold; background-color:{{$ctrl.color}}"
 				data-ng-model="$ctrl.title" rows="" cols="">{{$ctrl.title}}</textarea>
 		</div>
 		
-		<div class="modal-body" id="modal-body" contenteditable="true">
-			<textarea style="border: none; width: 100%; padding-top: 10px; outline: none;"
+		
+		<div class="modal-body" id="modal-body"  style="outline: none; ">
+			<textarea style="border: none; width: 100%; outline: none; background-color:{{$ctrl.color}}"
 				data-ng-model="$ctrl.note" rows="" cols="">{{$ctrl.note}}</textarea>
 		</div>
-		<div style="padding-left: 15px">Edited on : {{$ctrl.upDated|date:'MMM, dd yyyy  hh:mm a'}}</div>
+		
+		<div style="padding-bottom: 10px; padding-left: 10px;">
+		<span class="dropdown"  style="width: 5%; padding-left: 10px; padding-bottom: 5px;">
+					  <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" >
+					    <input data-ng-show="in" type="text" class="form-control" data-ng-model="$ctrl.remainder" name="remainder" placeholder="Pick date & time"><img data-toggle="tooltip" title="Set Remainder" alt="icon" src="images/Calendar.png" height="20px" width="20px">
+					    
+					  </a>
+					  
+					  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+					    <datetimepicker data-ng-model="$ctrl.remainder" data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }"/>
+					  </ul>
+	
+		<span style="float: right;padding-right: 15px;">Edited : {{$ctrl.upDated|date:'MMM, dd yyyy  hh:mm a'}}</span>
+		
+		</span>
+		</div>
+		
 		<div class="modal-footer">
 			<button class="btn btn-primary" type="button"
 				data-ng-click="$ctrl.ok()">OK</button>
 			<button class="btn btn-warning" type="button" data-ng-discard
 				data-ng-click="$ctrl.cancel()">Cancel</button>
 		</div>
-
+	</div>
 </div>
 
 

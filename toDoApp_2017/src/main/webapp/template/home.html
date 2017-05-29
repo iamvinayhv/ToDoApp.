@@ -1,21 +1,101 @@
 <div data-ng-controller="homeController as hc">
 <div>
+
+
+
 	<nav id="navBar" class="navbar navbar-default navbar-fixed-top" role="navigation">
 	      <div class="container">
-	      
-				<div class="navbar-header" id="navHead">
+	      <div class="navbar-header">
+          <a class="navbar-brand" href="#menu-toggle" id="menu-toggle" >
+          </a>
+			<span>
+			
+				<span data-ng-click="visible=!visible; hc.move()" style="margin-left: 10px; cursor: pointer;">
+					<img alt="icon" data-toggle="tooltip" title="Menu" src="images/Menu.png" width="25px" height="20px" style="margin-top: 20px;"">
+				</span>
+				
+				<span>
+					<strong style="padding-left: 35px; font-size: 22px;">Nanna </strong><i style="font-size: 20px;">Keep</i>
+				</span>
+				
+			</span>
+			
+					<!-- <input type="text" id="search" placeholder="Search"  data-toggle="tooltip" title="Search"></span>
+           --><!-- <a class="navbar-brand" href="#menu-toggle" id="menu-toggle"> -->
+<!--               <span id="keepClass">My Keep </span>
+  -->         <!-- </a> -->
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" style="margin-right:12%;" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+      </div>
+      
+      
+       
+      
+      
+      
+      
+				<!-- <div class="navbar-header" id="navHead">
 				
 					<span><span data-ng-click="visible=!visible; hc.move()" style="margin-left: 10px; cursor: pointer;"><img alt="icon" data-toggle="tooltip" title="Menu" src="images/Menu.png" width="25px" height="20px" style="margin-top: -8px;""></span>
-					<strong style="padding-left: 35px; font-size: 22px;">Nanna </strong><i style="font-size: 20px;">Keep</i>
-					<input type="text" id="search" placeholder="Search"  data-toggle="tooltip" title="Search"></span>
+					
 	            
-				</div>
-				
+				</div> -->
+				<div id="navbar" class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav navbar-right" id="navBar">
-	          
-	            <li id="refresh"><span class="glyphicon glyphicon-repeat"></span></li>
-	            <li><span  class="glyphicon" data-ng-click="isList = !isList" data-ng-class="{'glyphicon-list': !isList, 'glyphicon-th-large': isList}" style="margin-top: 20px;margin-left: -170px; font-size: 17px;"></span></li>
+		          <li id="refresh">
+		          	<a><span class="glyphicon glyphicon-refresh" data-toggle="tooltip" title="Refresh"></span></a>
+		          </li>
+		      
+          		
+				<li>
+		            <a><span  class="glyphicon" data-ng-click="isList = !isList" data-ng-class="{'glyphicon-list': !isList, 'glyphicon-th-large': isList}" style="margin-left: -80px; font-size: 17px;"></a></span>
+				</li>
+					
+					
+					<!-- <li>
+						<input type="text" id="search" placeholder="Search"  data-toggle="tooltip" title="Search"></span>
+					</li> -->
 	            
+		            <!-- <li id="refresh">
+						<span class="glyphicon glyphicon-repeat" data-toggle="tooltip" title="Refresh"></span>
+		            </li> -->
+		            
+		           
+		            
+		            <!-- <li>
+			            <span style="margin-left: -60px; margin-top: 20px;">
+			            <img alt="notifn" src="images/notification.png" width="20px;" height="20px;" data-toggle="tooltip" title="Notification" style="margin-left: 20px; cursor: pointer;">
+			            </span>
+					</li> -->
+					
+	            <li>
+	            	<span uib-dropdown dropdown-append-to-body >
+	            	
+	            	<div class="dropdown-toggle" uib-dropdown-toggle style="width: 40px;margin-top:-37px; border-radius: 50%; background-color: white; padding-left: 10px; font-size: 30px; background-color: #b5a429; color:white; cursor: pointer;" data-toggle="tooltip" title="Profile">{{user.firstName.charAt(0)}}</div>
+	          			<div  uib-dropdown-menu style="margin-left: -19%;margin-top: 15px;">
+	          				<div class="col-sm-3" style="width: 300px;height: 160px;padding-top: 5px;">
+	          				
+	          					<div class="col-sm-1" id="userChar">
+	          						{{user.firstName.charAt(0)}}
+	          					</div>
+	          					<div class="col-sm-1">
+	          					
+	          					<span>{{user.firstName}}</span><span>{{user.lastName}}</span></div>	          					</div>
+	          					<div><span>{{user.email}}</span>
+	          					
+	          				</div>
+	          			
+	          				</div>
+	          			</div>
+	          			
+	          		</span>
+	          		
+	          	</li>
+	          	
 	          </ul>
 	      </div>
 	</nav>
@@ -23,7 +103,7 @@
 
 
 
-  <div data-ng-class="{'is-visible':visible}" class="menu">
+  <div data-ng-class="{'is-visible':visible}" class="menu" style="z-index: 1;">
     <ul style="padding-top: 20px; font-size: 20px;">
       <li>Home</li>
       <li>Notes</li>
@@ -36,29 +116,29 @@
 	
 <div id="homeBody" class="row"  data-ng-style="move">
 		<div class="col-sm-2"></div>
-			<div class="col-sm-10">
+			<div class="col-sm-8">
 					<div>
 						<div >
 						
 							<div data-ng-show ="IsVisible" id="title" name="title" data-ng-model="toDo.title" newcontenteditable contenteditable="true" placeholder="Title" style="font-weight: bold;"></div>
 							<div id="note" name="note" data-ng-model="toDo.note" data-ng-click="hc.showHide()" newcontenteditable contenteditable="true" placeholder="Take a note..."></div>
 							
-							<div  uib-dropdown dropdown-append-to-body data-ng-show ="done" id="done">
-							<!-- <span uib-dropdown-toggle><img alt="color" src="images/remaind.png" width="25px;" height="20px;" data-toggle="tooltip" title="Remind me" style="margin-left: 20px; cursor: pointer;"></span>
-							<span><img alt="color" src="images/color.png" width="20px;" height="20px;" data-toggle="tooltip" title="Change color" style="margin-left: 20px; cursor: pointer;"></span>
-							 -->
+							<div data-ng-show ="done" id="done">
+							
 												<div class="dropdown" style="width: 50%;margin-left: 20px; padding-top: 10px; padding-bottom: 10px">
 													  <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" >
-													    <div class="input-group"><input type="text" class="form-control" data-ng-model="toDo.remainder" name="remainder" placeholder="Pick date & time"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></div>
+													    <div class="input-group"><input type="text" class="form-control" data-ng-model="toDo.remainder" name="remainder" placeholder="Pick date & time"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i>
 													    
+													    
+													    </div>
 													  </a>
-													  
+												 
 													  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 													    <datetimepicker data-ng-model="toDo.remainder" data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }"/>
 													  </ul>
 												</div>
 										
-											<span uib-dropdown-toggle><img alt="color" src="images/remaind.png" width="25px;" height="20px;" data-toggle="tooltip" title="Remind me" style="margin-left: 20px; cursor: pointer;"></span>
+											<!-- <span uib-dropdown-toggle><img alt="color" src="images/remaind.png" width="25px;" height="20px;" data-toggle="tooltip" title="Remind me" style="margin-left: 20px; cursor: pointer;"></span> -->
 											
 												<span uib-dropdown dropdown-append-to-body><img uib-dropdown-toggle alt="color" src="images/color.png" width="20px;" height="20px;" data-toggle="tooltip" title="Change color" style="margin-left: 20px; cursor: pointer;">
 														
@@ -86,27 +166,6 @@
 
 							<span style="float: right; cursor: pointer;" data-ng-click="hc.addNote()">DONE</span>
 							
-							<div>
-								<div  uib-dropdown-menu class="dropdown-menu" style="cursor: pointer; width: 20%; top: 86%; padding: 5px; line-height: 2">
-										<div>Reminder:</div>
-																	
-												<hr>
-																											
-												<div data-ng-click="tdctl.doReminder(x.id,$index,'Today')">
-													<span>Later today</span>
-													<span style="float: right; padding-right: 10px">20:00</span>
-												</div>
-												
-												
-											    <div data-ng-click="tdctl.doReminder(x.id,$index,'Tomorrow')">
-											        <span>Tomorrow</span><span style="float: right; padding-right: 10px">08:00</span>
-											    </div>
-											
-											    <div data-ng-click="tdctl.doReminder(x.id,$index,'Next-Week')">
-											        <span>Next Week</span><span style="float: right; padding-right: 10px">08:00</span>
-											    </div>
-										</div>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -175,25 +234,7 @@
 										</div>
 										
 									</span>
-									
-									
-									<span><img alt="color" src="images/update.png" width="25px;" height="22px;" data-toggle="tooltip" title="Update note" style="margin-left: 20px; cursor: pointer;" data-ng-click="hc.popUp(todo, $index)"></span>
-									
-										<span class="dropdown"  style="width: 5%; padding-left: 10px;">
-													  <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" >
-													    <input data-ng-show="in" type="text" class="form-control" data-ng-model="toDo.remainder" name="remainder" placeholder="Pick date & time"><img data-toggle="tooltip" title="Set Remainder" alt="icon" src="images/Calendar.png" height="20px" width="20px">
-													    
-													  </a>
-													  
-													  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-													    <datetimepicker data-ng-model="toDo.remainder" data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }"/>
-													  </ul>
-												</sapn>
-									
-										</span>
-									
-									
-									
+							
 										<span uib-dropdown dropdown-append-to-body >
 											<span uib-dropdown-toggle data-toggle="tooltip" title="More" style="margin-left: 15px;">
 												<img alt="icon" src="images/more.png" width="30px" height="25px">
@@ -222,6 +263,7 @@
 						</div>
 					</div>
 				</div>
+				<div class="col-sm-2"></div>
 			</div>
 </div>
 

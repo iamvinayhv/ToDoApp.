@@ -66,7 +66,6 @@ public class LoginController {
 			
 			//toDo.setUser(null);
 			
-			//root.putPOJO("todo", toDo); 
 			
 			// set("todo", todo);
 			String data = mapper.writeValueAsString(root);

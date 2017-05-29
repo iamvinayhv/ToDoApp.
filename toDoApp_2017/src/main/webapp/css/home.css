@@ -1,14 +1,17 @@
 #search
 {
-	width: 40%;
+	width: 100%;
 	height:47px;
-	margin-left: 55px;
-	padding-left: 30px;
 	outline: none;
 	background-color: #fcaf3e;
-	border-radius:3px;
-	border: none;
 	margin-top: -5px;
+	border: none;
+	padding-left: 30px;
+	
+	
+	/*border-radius:3px;
+	margin-right: 60%;
+	 */
 }
 
 
@@ -25,8 +28,8 @@
 
 #refresh
 {
-	margin-left: -230px;
-	margin-top: 21px;
+	margin-left: -130px;
+	
 	font-size: 17px;
 }
 
@@ -51,7 +54,7 @@
 
 #title
 {
-	width: 770px;
+	width: 95%;
 	min-height: 45px;
 	padding-top: 12px;
 	padding-left: 20px;
@@ -65,7 +68,7 @@
 
 #note
 {
-	width: 770px;
+	width: 95%;
 	min-height: 45px;
 	padding-top: 12px;
 	padding-left: 20px;
@@ -78,7 +81,7 @@
 
 #done
 {
-	width: 770px;
+	width: 95%;
 	background-color: white;
 	height: 90px;
 	padding-right: 20px;
@@ -112,12 +115,15 @@
 	font-weight: bold;
 	word-wrap: break-word;
 	padding: 10px 10px 10px 20px;
+	font-family: sans-serif;
 	
 }
 #toDoNote
 {
 	word-wrap: break-word;
 	padding: 10px 20px 15px 20px;
+	font-family: fantasy;
+	font-size: 20px;
 }
 
 #icons
@@ -131,7 +137,7 @@
 	padding-top:5px;
 	border-top: 1px dashed;
 	padding-left: 20px;
-	height: 26px;
+	min-height: 26px;
 }
 
 
@@ -157,7 +163,7 @@
   margin-top: 40px;
 }
 .cont.list .card {
-	width: 770px;
+	width: 95%;
 	background: #fff;
 	padding: 6px;
 	margin-bottom: 30px;
@@ -170,7 +176,7 @@
 
 .cont.grid .card {
 	display: inline-block;
-	width: 243.3px;
+	min-width: 30%;
 	
 	padding: 10px;
 	vertical-align: middle;
@@ -229,4 +235,20 @@
 {
 	margin-left: 10px;
 }
+
+
+#userChar
+{
+	width: 100px;
+	height:100px;
+	border-radius:50%;
+	padding-left:34px;
+	padding-top:15px;
+	background-color: #b5a429;
+	font-size: 50px;
+	color:white;
+	box-sizing: border-box;
+}
+
+
 
