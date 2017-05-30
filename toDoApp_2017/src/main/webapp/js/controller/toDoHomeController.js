@@ -208,7 +208,7 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 	}
 	
 	
-	this.toToReminder = function(toDo, index, day) {
+	this.toToReminder = function(toDo, day) {
 		
 		var today = new Date();
 		var httpObjRem ;
@@ -247,6 +247,10 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		
 	}
 	
+	
+	this.updateReminder = function(toDo, remainder) {
+		console.log(toDo+" "+remainder);
+	}
 	
 	
 	

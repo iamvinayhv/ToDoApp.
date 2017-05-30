@@ -31,15 +31,15 @@ public class UserValidation implements Validator {
 
 		User user = (User) target;
 
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "required.firstName",
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required.firstName",
 				"First name is required your are leaving blank");
 
-		if (user.getFirstName() != null && !user.getFirstName().isEmpty()) {
+		if (user.getName() != null && !user.getName().isEmpty()) {
 
 			pattern = Pattern.compile(STRING_PATTERN);
-			matcher = pattern.matcher(user.getFirstName());
+			matcher = pattern.matcher(user.getName());
 			if (!matcher.matches()) {
-				errors.rejectValue("firstName", "firstName.required", "Enter correct First Name");
+				errors.rejectValue("name", "name.required", "Enter correct First Name");
 			}
 		}
 

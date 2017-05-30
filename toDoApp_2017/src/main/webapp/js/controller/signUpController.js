@@ -7,8 +7,7 @@ myToDo.controller("signUpController",function ($scope,  $state, signUpService ,s
      		
 		var user = {};
 		
-		user.firstName = $scope.firstName;
-		user.lastname = $scope.lastName;
+		user.name = $scope.name;
 		user.mobile = $scope.mobile;
 		user.email = $scope.email;
 		user.password = $scope.password;

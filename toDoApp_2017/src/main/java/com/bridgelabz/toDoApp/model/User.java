@@ -19,8 +19,7 @@ public class User implements Serializable {
 	@GenericGenerator(name = "gen", strategy = "increment")
 	@GeneratedValue(generator = "gen")
 	private int id;
-	private String firstName;
-	private String lastName;
+	private String name;
 	private String mobile;
 	private String email;
 	private String password;
@@ -33,20 +32,13 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstName;
+
+	public String getName() {
+		return name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getMobile() {

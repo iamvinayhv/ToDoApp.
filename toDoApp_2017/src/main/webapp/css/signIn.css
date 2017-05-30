@@ -1,12 +1,12 @@
-#form_firstName,#form_lastName,#form_mobile,#form_email,#form_password{
-    width: 100%;
+/* #form_firstName,#form_lastName,#form_mobile,#form_email,#form_password{
+    width: 70%;
     padding: 6px 20px;
     margin: 8px 0;
     box-sizing: border-box;
     border: 1px solid #204a87;
     border-radius: 5px;
    
-}
+} */
 
 #signInhead
 {

@@ -13,14 +13,37 @@
 								<form method="post">
 								
 								
-								<table>
 								
-								<tr><td>E-mail ID	</td><td>	<input type="text" name="email" data-ng-model="email" placeholder="email Id" id="form_email"></td></tr>				<tr style="color:red;"><td colspan="2"><span class="error_form" id="email_error_msg"></span></td></tr>
-								<tr><td>Password	</td><td>	<input type="password" name="password" data-ng-model="password"  placeholder="password" id="form_password"></td></tr>			<tr style="color:red;"><td colspan="2"><span class="error_form" id="password_error_msg"></span></td></tr>
+								 
+								<div class="form-group">
+							<label for="email" class="cols-sm-2 control-label">Email</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><img src="images/mail.png" width="20px" height="20px"></span>
+									<input type="text" class="form-control" name="email" id="form_email" data-ng-model="email" placeholder="Your Email"/>
+								</div>
+							</div>
+						</div>
+						
+						<span style="color: red" class="error_form" id="email_error_msg"></span>		
+							
+								
+						<div class="form-group">
+							<label for="password" class="cols-sm-2 control-label">password</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><img src="images/Password.png" width="20px" height="20px"></span>
+									<input type="text" class="form-control" name="password" id="form_password" data-ng-model="password"  placeholder="Your mobile Number"/>
+								</div>
+							</div>
+						</div>
+						
+						
 								
 								
-								<tr><td></td><td><input type="submit" value="signIn" data-ng-click="signIn()"></td></tr>
-								</table>
+								
+							<input type="submit" value="signIn" data-ng-click="signIn()">
+								
 								
 								
 								</form>
