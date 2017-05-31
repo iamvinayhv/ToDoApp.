@@ -132,7 +132,7 @@ public class ToDoController {
 			
 			if (  !todoList.isEmpty()  ) {
 
-				//Collections.reverse(todoList);
+				Collections.reverse(todoList);
 
 				ObjectMapper mapper = new ObjectMapper();
 				ObjectNode root = mapper.createObjectNode();

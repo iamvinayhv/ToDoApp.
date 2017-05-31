@@ -38,7 +38,7 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 			addToDoObj.then( function(data) {
 				
 				if( data.status == 200 ) {
-					$scope.toDoList.push(data.data.todo);
+					$scope.toDoList.unshift(data.data.todo);
 					console.log(data.data.todo);
 					$scope.toDo.title=null;
 					$scope.toDo.note=null;
@@ -64,6 +64,7 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 			
 			if( data.status == 200 ) {
 				if(index > -1){
+					console.log(index);
 					$scope.toDoList.splice(index, 1);
 				}
 				
@@ -177,7 +178,7 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		copyToDoObj.then (function(data) {
 			
 			if( data.status == 200 ) {
-				$scope.toDoList.push(data.data.todoCopy);
+				$scope.toDoList.unshift(data.data.todoCopy);
 			}
 		}).catch( function(error) {
 			console.log(error);
@@ -234,6 +235,7 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
             toDo.remainder = nextWeek;
             httpObjRem = homeService.toToReminder(toDo);
 		}
+		
 		httpObjRem.then(function(data) {
 		    
 		    if ( data.data.status == 200 ) {
@@ -243,14 +245,14 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		}).catch(function(error) {
 		    console.log(error);
 		    $state.go('signIn');
-		})
+		});
 		
 	}
 	
 	
-	this.updateReminder = function(toDo, remainder) {
+	/*this.updateReminder = function(toDo, remainder) {
 		console.log(toDo+" "+remainder);
-	}
+	}*/
 	
 	
 	
