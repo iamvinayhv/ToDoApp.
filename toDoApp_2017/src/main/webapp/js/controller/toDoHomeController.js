@@ -82,6 +82,11 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		$scope.done = $scope.IsVisible ? true :false;
 	}
 	
+	this.clear = function() {
+		$scope.searchText = undefined;
+		$scope.clear = $scope.clear ? false :false;
+	}
+	
 	
 	
 	this.popUp = function(toDo, index) {
