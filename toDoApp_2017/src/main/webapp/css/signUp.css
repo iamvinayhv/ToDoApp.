@@ -1,38 +1,28 @@
-#signUphead
-{
-	width: 100%;
-	margin-top: 1px;
-	padding-top:5px;
-	padding-left:25%;
-	border-radius: 5px;
-	background-color: #204a87;
-	color: white;
-}
-
-
 #signUpBody
 {
 	width:100%;
 	hight: 200px;
-	margin-top: 10px;
-	padding-top:10px;
-	padding-left:10px;
+	margin-top: 100px;
+	padding-top:30px;
+	padding-left:50px;
 	padding-bottom: 10px;
 	border-radius: 5px;
-	background-color: white;
 	margin-bottom: 10px;
+	color:#000000;
+	background-color: white;
+	box-shadow: 1px 1px 1px 1px;
 }
 
 
 
 #signUpBottom {
-    width: 100%;
     padding: 6px 20px;
     margin: 8px 0;
     box-sizing: border-box;
     border-radius: 5px;
-    background-color: #204a87;
     padding-left: 27%;
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px;
 }
 
 

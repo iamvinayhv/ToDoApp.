@@ -164,13 +164,18 @@
 							</div>
 						</div>
 					</div>
+			
 					
 			<div class="cont" data-ng-class="{list: isList, grid: !isList}">
 						<div class="cardRow">
+						
+						
 							<div class="card" id="cardId" data-ng-repeat="todo in toDoList | filter:searchText" data-ng-mouseover="icons=true" data-ng-mouseleave="icons=false" style="background-color: {{todo.color}};">
 						
 								<div  data-ng-click="hc.popUp(todo, $index)" ><!-- | orderBy:'-' -->
-									<div id="toDoTitle">{{todo.title}}</div>
+									<div id="toDoTitle">{{todo.title}}
+<!-- 									<div style="float: right;"><img data-ng-show="icons" alt="icon" src="images/Pin.png" width="20px" height="20px" data-toggle="tooltip" title="Pin note" data-ng-click="hc.pinNote(todo,$index)"></div>
+ -->									</div>
 									<div id="toDoNote">{{todo.note}}</div>
 								</div>
 							
@@ -182,14 +187,14 @@
 												<img uib-dropdown-toggle alt="color" src="images/remaind.png" width="25px;" height="20px;"  style=" cursor: pointer;"">
 											</span>
 											
-												<div uib-dropdown-menu class="dropdown-menu" style="cursor: pointer; margin-left: 10px; width: 100px; top: 87%; padding: 5px; line-height: 2; margin-top: 10px;">
+												<div uib-dropdown-menu class="dropdown-menu" style="cursor: pointer; margin-left: 10px;  top: 87%; padding:10px; line-height: 2; margin-top: 10px;">
 														
 														<div>Reminder:</div>
 																			
 														<hr>
 																													
 														<div data-ng-click="hc.toToReminder(todo,'Today')">
-															<span>Later today</span>
+															<span style="padding-right: 60px;">Later today</span>
 															<span style="float: right; padding-right: 10px">08:00 PM</span>
 														</div>
 														
@@ -201,21 +206,6 @@
 													    <div data-ng-click="hc.toToReminder(todo,'Next-Week')">
 													        <span>Next Week</span><span style="float: right; padding-right: 10px">08:00 AM</span>
 													    </div>
-													    
-													    <i id="drop" href>Pick Date and Time:</i>
-					                                       	<div class="dropdown" style="width: 50%; padding-top: 10px; padding-bottom: 10px">
-					                                            <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" >
-					                                                  <div class="input-group" style="margin-left:10px; width: 130px;">
-					                                                    <input type="text" class="form-control" data-ng-model="remainder" name="remainder" placeholder="Pick date & time"/>
-					                                                          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-					                                                      </div>
-					                                                      <a ><span ng-click="hc.updateReminder(toDo,remainder)" >Save</span></a>
-					                                              </a>
-					
-					                                              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-					                                                 <datetimepicker data-ng-model="remainder" data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }"/>
-					                                              </ul>
-					                                        </div>
 													    
 												</div>
 										</span>
@@ -243,9 +233,11 @@
 										</div>
 										
 									</span>
+									
+									
 							
 										<span uib-dropdown dropdown-append-to-body >
-											<span uib-dropdown-toggle data-toggle="tooltip" title="More" style="margin-left: 15px;">
+											<span uib-dropdown-toggle data-toggle="tooltip" title="More" style="margin-left: 15px; cursor: ">
 												<img alt="icon" src="images/more.png" width="30px" height="25px">
 											</span>
 										
@@ -257,6 +249,8 @@
 											</div>
 										
 										</span>
+										
+										
 										
 									</span>
 								</div>
@@ -271,8 +265,6 @@
 							</div>
 						</div>
 					</div>
-				</div>
 				<div class="col-sm-2"></div>
-			</div>
 </div>
-
+</div></div>

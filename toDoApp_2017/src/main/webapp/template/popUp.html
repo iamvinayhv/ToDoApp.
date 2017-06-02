@@ -1,6 +1,4 @@
-<div class="col-sm-2"></div>
-<div class="coll-sm-8 modal">
-	<div style=" width:100%; margin-left:-50%; ;background-color:white;">
+	<div id="popUp" style="background-color:white;">
 		<div style="background-color: #2b67cb; color: white;padding-left: 15px;">Update ToDo</div>
 		<div style="background-color:  {{$ctrl.color}};">
 			<div class="modal-body" id="modal-body"  style="outline: none; height: 40px;">
@@ -30,7 +28,8 @@
 					
 					</span>
 			
-			<span uib-dropdown><img uib-dropdown-toggle alt="color" src="images/color.png" height="25px;" data-toggle="tooltip" title="Change color" style="cursor: pointer;padding-left: 15px;">
+			<span uib-dropdown>
+				<img uib-dropdown-toggle alt="color" src="images/color.png" height="25px;" data-toggle="tooltip" title="Change color" style="cursor: pointer;padding-left: 25px;">
 															
 					<div  uib-dropdown-menu style="margin-top:-5px; margin-left: 30px; z-index: 1000!important;" data-ng-model="toDo.color">
 						<div style="margin-left: 9px;">
@@ -53,6 +52,17 @@
 					
 			</span>
 			
+			<span uib-dropdown>
+				<img uib-dropdown-toggle alt="icon" src="images/more.png" width="30px" height="25px"data-toggle="tooltip" title="More" style="cursor: pointer;margin-left: 15px;">
+			
+					<ul uib-dropdown-menu style="cursor: pointer; margin-left: 30px;">
+						<li data-ng-click="$ctrl.makeCopy($ctrl)"><a>Make a copy</a></li>
+						<li data-ng-click="$ctrl.deleteTodo($ctrl.id)"><a>Delete Note</a></li>
+					</ul>
+			
+			
+			</span>
+			
 			
 			</div>
 			
@@ -63,7 +73,5 @@
 					data-ng-click="$ctrl.cancel()">Cancel</button>
 			</div>
 		</div>
-	</div>
 </div>
-<div class="col-sm-2"></div>
 

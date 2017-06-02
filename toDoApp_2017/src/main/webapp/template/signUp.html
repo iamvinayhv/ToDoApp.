@@ -2,11 +2,23 @@
 		<div class="col-sm-4"></div>
 		<div class="col-sm-4">
 
-				<div data-ng-controller="signUpController">
+<div data-ng-controller="signUpController">
 					
-						<div  id="signUphead">
-							<h3>SignUp to ToDoApp</h3>
-						</div>
+<nav id="navBar" class="navbar navbar-default navbar-fixed-top" role="navigation">
+	      <div class="container">
+	      <div class="navbar-header" style="display: flex;">
+         
+				
+				<div class="navbar-brand" style="font-weight: bold;">
+					SignUp to ToDoApp
+				</div>
+				
+		</div>
+      </div>
+      
+</nav>
+					
+						
 						
 						<form>
 						
@@ -19,12 +31,12 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><img src="images/Contact.png" width="20px" height="20px"></span>
-                                    <input type="text" class="form-control" name="name" id="name" data-ng-model="name" placeholder="Your Name" />
+                                    <input type="text" class="form-control" name="name" id="form_name" data-ng-model="name" placeholder="Your Name" />
 								</div>
 							</div>
 						</div>
 						
-						<span style="color: red" class="error_form" id="firstName_error_msg"></span>		
+						<span style="color: red" class="error_form" id="name_error_msg"></span>		
 											
 											
 											
@@ -77,9 +89,18 @@
 					</div>
 					
 					<div id="signUpBottom">
-						<a style="color: white;" data-ui-sref="signIn">Already Registered? SignIn</a>
+						<a style="color: black;" data-ui-sref="signIn">Already Registered? SignIn</a>
 					</div>
 		
+				<nav id="navBar" class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+	      <div class="container">
+	      <div class="navbar-header" style="display: flex;">
+         
 				
+				
+		</div>
+      </div>
+      
+</nav>
 		</div>
 </div>

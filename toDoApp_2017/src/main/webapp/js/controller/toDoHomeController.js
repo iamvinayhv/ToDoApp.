@@ -1,6 +1,7 @@
 myToDo.controller("homeController", function($scope, $state, $uibModal, homeService) {
 	
 	var toDoList = [];
+	var pinToDo = [];
 	var user = [];
 	var getToDoHtOb = homeService.getNotes();
 	getToDoHtOb.then(function(data) {
@@ -88,16 +89,17 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 	}
 	
 	
-	
+	var homeCont=this;
 	this.popUp = function(toDo, index) {
-		
-		var modal = $uibModal.open({
+		console.log(toDo+index);
+			var modal = $uibModal.open({
 		     templateUrl: "template/popUp.html",
 		     arialLabelledBy: "modal-title-bottom",
 		     arialLabelledBy: "modal-body-bottom",
 		     arialLabelledBy: "modal-footer-bottom",
 		     size:'sm',
 		     controller:function( $uibModalInstance ){
+		    	 this.index = index;
 		    	 this.id = toDo.id;
 		    	 this.title = toDo.title;
 		    	 this.note = toDo.note;
@@ -118,6 +120,22 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 					console.log("update cancle");
 				    $uibModalInstance.dismiss('cancel');
 				};
+				
+				this.deleteTodo = function(id) {
+					
+					console.log("delete "+id+" "+index);
+					homeCont.deleteNote(id, index);
+					$uibModalInstance.dismiss('cancel');
+				};
+				
+				this.makeCopy = function(toDo) {
+					console.log(toDo.id);
+					//toDo.id=null;//not required
+					console.log(toDo.id);
+					homeCont.makeCopy(toDo);
+				};
+				
+				
 		     },
 		     
 		     controllerAs :"$ctrl"
@@ -294,6 +312,7 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		})
 	}
 	
+
 	
 });
 

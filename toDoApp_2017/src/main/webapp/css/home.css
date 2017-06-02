@@ -48,7 +48,7 @@
 
 #title
 {
-	width: 97%;
+	width: 95%;
 	min-height: 45px;
 	padding-top: 12px;
 	padding-left: 20px;
@@ -62,7 +62,7 @@
 
 #note
 {
-	width: 97%;
+	width: 95%;
 	min-height: 45px;
 	padding-top: 12px;
 	padding-left: 20px;
@@ -75,7 +75,7 @@
 
 #done
 {
-	width: 97%;
+	width: 95%;
 	background-color: white;
 	/* height: 90px; */
 	padding-right: 20px;
@@ -159,7 +159,7 @@
   margin-top: 40px;
 }
 .cont.list .card {
-	width: 97%;
+	width: 95%;
 	background: #fff;
 	padding: 6px;
 	margin-bottom: 30px;
@@ -252,10 +252,23 @@
 }
 
 
+
+
 #search:focus {
     background-color: #ffffff;
 }
 
+#popUp
+{
+	width: 190%;
+	margin-left: -50%
+}
+@media(max-width: 770px){
+	#popUp{
+	width:100%;
+	margin-left:0%;
+	}
+}
 
 
 
