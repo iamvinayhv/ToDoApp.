@@ -12,12 +12,10 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		if( data.status == 200 ) {
 			console.log(data);
 			$scope.toDoList = data.data.todo;
-			
-			
+		
 		}
 		else{
-			
-			$scope.toDoList = null;
+			$state.go('signUp');
 		}
 		
 	}).catch( function(error) {
@@ -46,6 +44,9 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 					$scope.toDo.color=null;
 					$scope.toDo.remainder=null;
 					
+				}
+				else{
+					$state.go('signIn');
 				}
 				
 			}).catch( function(error) {
@@ -94,10 +95,7 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		console.log(toDo+index);
 			var modal = $uibModal.open({
 		     templateUrl: "template/popUp.html",
-		     arialLabelledBy: "modal-title-bottom",
-		     arialLabelledBy: "modal-body-bottom",
-		     arialLabelledBy: "modal-footer-bottom",
-		     size:'sm',
+		     size:'md',
 		     controller:function( $uibModalInstance ){
 		    	 this.index = index;
 		    	 this.id = toDo.id;
@@ -111,28 +109,27 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		    	 
 		    	 
 		    	this.ok = function () {
-		    		console.log("update ok");
+		    		
 					$uibModalInstance.close({id:$ctrl.id, title:$ctrl.title, note:$ctrl.note, remainder:$ctrl.remainder, color:$ctrl.color});
 					
 				};
 				
 				this.cancel = function () {
-					console.log("update cancle");
+					
 				    $uibModalInstance.dismiss('cancel');
 				};
 				
 				this.deleteTodo = function(id) {
 					
-					console.log("delete "+id+" "+index);
 					homeCont.deleteNote(id, index);
 					$uibModalInstance.dismiss('cancel');
 				};
 				
 				this.makeCopy = function(toDo) {
-					console.log(toDo.id);
-					//toDo.id=null;//not required
-					console.log(toDo.id);
+					
+					toDo.id=null;//not required
 					homeCont.makeCopy(toDo);
+					$uibModalInstance.dismiss('cancel');
 				};
 				
 				
@@ -209,28 +206,7 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		});
 	}
 	
-	
-	
-	
-	
-	this.signOut = function() {
-		
-		var signoutObj = homeService.signOut();
-		
-		signoutObj.then = function(data) {
-			
-			if( data.status == 200 ){
-				$state.go('signIn');
-			}
-			else {
-				$state.go('signUp');
-			}
-		}.catch( function(error) {
-			console.log(error);
-			$state.go('signUp');
-		});
-	}
-	
+
 	
 	this.toToReminder = function(toDo, day) {
 		
@@ -310,6 +286,33 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 			console.log(error);
 			$state.go('signIn');
 		})
+	}
+	
+	
+	
+	this.refresh = function() {
+		$state.reload();
+	}
+	
+	
+	
+	this.signOut = function() {
+		
+		var signoutObj = homeService.signOut();
+		
+		signoutObj.then( function(data) {
+			
+			if( data.status == 200 ){
+				$state.go('signIn');
+			}
+			else{
+				$state.go('signUp');
+			}
+			
+		}).catch( function(error) {
+			console.log(error);
+			$state.go('signUp');
+		});
 	}
 	
 

@@ -175,7 +175,7 @@
 	width: 30%;
 	
 	padding: 10px;
-	vertical-align: middle;
+	vertical-align: top;
 	margin-bottom: 30px;
 	margin-right: 20px;
 	background: #fff;
@@ -258,16 +258,8 @@
     background-color: #ffffff;
 }
 
-#popUp
-{
-	width: 190%;
-	margin-left: -50%
-}
-@media(max-width: 770px){
-	#popUp{
-	width:100%;
-	margin-left:0%;
-	}
+.modal-content {
+    margin-top: 34%!important;
 }
 
 

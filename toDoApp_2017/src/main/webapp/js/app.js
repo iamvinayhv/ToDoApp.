@@ -7,7 +7,8 @@ myToDo.config(function ($stateProvider, $urlRouterProvider) {
   .state('signIn',{
     url:"/signIn",
     templateUrl:"template/signIn.html",
-    controller:"signInController"
+    controller:"signInController",
+
   })
   
   .state('signUp',{

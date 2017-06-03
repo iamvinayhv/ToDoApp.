@@ -32,8 +32,10 @@ public class LogOutController {
 		
 		HttpSession session = request.getSession(false);
 		if(session != null) {
+			
 			session.removeAttribute("user");
 			session.invalidate();
+			session = request.getSession();
 			
 			ObjectMapper mapper = new ObjectMapper();
 			ObjectNode root = mapper.createObjectNode();
