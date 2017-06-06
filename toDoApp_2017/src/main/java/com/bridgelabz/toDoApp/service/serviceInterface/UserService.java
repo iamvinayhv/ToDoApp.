@@ -8,4 +8,7 @@ public interface UserService {
 
 	public User authUser(String email, String password);
 
+
+	public User getUserByEmail(String email);
+
 }

@@ -60,4 +60,22 @@ public class UserDaoImpl implements UserDao {
 			}
 		}
 	}
+
+
+
+	@Override
+	public User getUserByEmail(String email) {
+		
+		try{
+		session = sessionFactory.openSession();
+		Criteria ctr = session.createCriteria(User.class);
+		ctr.add(Restrictions.eq("email", email));
+		User user = (User) ctr.uniqueResult();
+		return user;
+		}finally{
+			if(session!=null){
+				session.close();
+			}
+		}
+	}
 }

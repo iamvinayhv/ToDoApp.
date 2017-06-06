@@ -11,6 +11,7 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp/js/validation"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp/js/service"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp/images"/>
+        <wb-resource deploy-path="/" source-path="/src/main/java/com/bridgelabz/toDoApp/Social"/>
         <property name="context-root" value="toDoApp_2017"/>
         <property name="java-output-path" value="/toDoApp_2017/target/classes"/>
     </wb-module>

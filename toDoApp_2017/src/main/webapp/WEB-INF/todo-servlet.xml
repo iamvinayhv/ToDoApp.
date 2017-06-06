@@ -17,11 +17,14 @@
 	<!--controller and services scan -->
 	<context:component-scan base-package="com.bridgelabz.toDoApp.controller" />
 	<context:component-scan base-package="com.bridgelabz.toDoApp.service" />
+	<context:component-scan base-package="com.bridgelabz.toDoApp.Social" />
+	
 	
 	<!-- beans creation for user -->
 	<bean id="userService" class="com.bridgelabz.toDoApp.service.serviceImpl.UserServiceImpl"></bean>
 	<bean id="userDao" class="com.bridgelabz.toDoApp.dao.daoImpl.UserDaoImpl"></bean>
 	<bean id="userValidation" class="com.bridgelabz.toDoApp.vlidator.UserValidation"></bean>
+	<bean id="connection" class="com.bridgelabz.toDoApp.Social.FaceBookConnection"></bean>
 	
 	
 	<!-- beans creation for ToDo manager -->

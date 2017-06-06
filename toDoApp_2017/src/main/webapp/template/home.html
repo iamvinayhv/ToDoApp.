@@ -100,7 +100,6 @@
       <li>Home</li>
       <li>Notes</li>
       <li>About</li>
-      <li><a href="#signIn">SignOut</a></li>
     </ul>
   </div>
 
@@ -135,7 +134,7 @@
 												</i> 
 											</div>	
 												
-											<div class="col-sm-2">
+											<div class="col-sm-2" style="background-color: {{color}}">
 												<span uib-dropdown dropdown-append-to-body><img uib-dropdown-toggle alt="color" src="images/color.png" width="20px;" height="20px;" data-toggle="tooltip" title="Change color" style="margin-top:5px;cursor: pointer;">
 														
 														<div  uib-dropdown-menu style="margin-top:-12px; margin-left: 25px" data-ng-model="toDo.color">
@@ -151,7 +150,7 @@
 																<span>
 																	<img src="images/blue.png" width="30px" height="30px"	data-ng-click="toDo.color='#3498db'">
 																	<img src="images/nice.png" width="37px" height="37px"	data-ng-click="toDo.color='#ccff90'">
-																	<img src="images/green.png" width="30px" height="30px"	data-ng-click="toDo.color='#2ecc71'">
+																	<img src="images/orange.png" width="30px" height="30px"	data-ng-click="toDo.color='#fb7c05'">
 																	<img src="images/gray.png" width="30px" height="30px"	data-ng-click="toDo.color='#95a5a6'">
 																</span>
 															</div>
@@ -160,7 +159,7 @@
 												</span>
 											</div>	
 												
-										<span style="float: right;margin-top:10px; cursor: pointer;" data-ng-click="hc.addNote()" data-toggle="tooltip" title="Add note">DONE</span>
+									<span style="float: right;margin-top:10px; cursor: pointer;" data-ng-click="hc.addNote()" data-toggle="tooltip" title="Add note">DONE</span>
 							</div>
 						</div>
 					</div>
@@ -226,7 +225,7 @@
 												<span>
 													<img src="images/blue.png" width="30px" height="30px"	data-ng-click="hc.setColor(todo,'#3498db')">
 													<img src="images/nice.png" width="37px" height="37px"	data-ng-click="hc.setColor(todo,'#ccff90')">
-													<img src="images/green.png" width="30px" height="30px"	data-ng-click="hc.setColor(todo,'#2ecc71')">
+													<img src="images/orange.png" width="30px" height="30px"	data-ng-click="hc.setColor(todo,'#fb7c05')">
 													<img src="images/gray.png" width="30px" height="30px"	data-ng-click="hc.setColor(todo,'#95a5a6')">
 												</span>
 											</div>
