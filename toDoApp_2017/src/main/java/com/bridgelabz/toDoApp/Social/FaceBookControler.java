@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,7 +24,6 @@ public class FaceBookControler {
 	@Autowired
 	private UserService userService;
 
-	String code = "";
 	
 	@RequestMapping(value="loginWithfacebook")
 	public void fbConnecion(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -48,7 +46,7 @@ public class FaceBookControler {
 	
 	
 	@RequestMapping(value="fbConnection")
-	public void fromFbRedirect (HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public void redirectFromFacebook (HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		System.out.println("mark zukarburg calling to todo App");
 		

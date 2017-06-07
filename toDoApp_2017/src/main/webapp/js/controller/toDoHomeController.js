@@ -173,10 +173,10 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 	
 	this.move = function() {
 		if($scope.visible){
-			$scope.move = {"margin-left":"10%","transition":"0.6s ease"}
+			$scope.move = {"margin-left":"10%","transition":"0.4s ease"}
 		}
 		else {
-			$scope.move = {"margin-left":"0px","transition":"0.6s ease"}
+			$scope.move = {"margin-left":"0px","transition":"0.4s ease"}
 		}
 		
 	}

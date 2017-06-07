@@ -48,7 +48,7 @@
 
 #title
 {
-	width: 95%;
+	width: 777px;
 	min-height: 45px;
 	padding-top: 12px;
 	padding-left: 20px;
@@ -62,7 +62,7 @@
 
 #note
 {
-	width: 95%;
+	width: 777px;
 	min-height: 45px;
 	padding-top: 12px;
 	padding-left: 20px;
@@ -75,7 +75,7 @@
 
 #done
 {
-	width: 95%;
+	width: 777px;
 	background-color: white;
 	/* height: 90px; */
 	padding-right: 20px;
@@ -159,7 +159,7 @@
   margin-top: 40px;
 }
 .cont.list .card {
-	width: 95%;
+	width: 777px;;
 	background: #fff;
 	padding: 6px;
 	margin-bottom: 30px;
@@ -172,7 +172,7 @@
 
 .cont.grid .card {
 	display: inline-block;
-	width: 30%;
+	width: 245px;;
 	
 	padding: 10px;
 	vertical-align: top;
@@ -208,20 +208,15 @@
   background-color: #ffffff;
   position: fixed;
   left: 0;
-  transition: width 0.5s ease-in-out;
+  transition: width 0.4s ease-in-out;
   overflow: hidden;
   
 }
 
 .menu.is-visible {
-  width: 200px;
-  transition: width 0.5s ease-in-out;
+  width: 225px;
+  transition: width 0.4s ease-in-out;
 }
-
-/* .dropdown-menu
-{
-	float: right;
-} */
 
 
 .uib-day button

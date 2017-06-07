@@ -1,12 +1,7 @@
 package com.bridgelabz.toDoApp.Social;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.net.URLEncoder;
 
 import javax.ws.rs.core.MediaType;
@@ -25,9 +20,6 @@ public class FaceBookConnection {
 	public static final String Secret_Id = "99f17048302c0eef0ed9ca2b99c2c73c";
 	public static final String Redirect_URI = "http://localhost:8080/toDoApp_2017/fbConnection";
 	
-   
-	
-	static String accessToken = "";
 	
 	public String getFbAuthURL(String unid) {
 		
@@ -85,70 +77,5 @@ public class FaceBookConnection {
 		
 	}
 	
-	
-	
-/*	public String getAccessToken(String code) {
-		
-		if( "".equals(accessToken) ) {
-			
-			URL fbGraphURL = null;
-			
-			try {
-				fbGraphURL = new URL( getFbGraphURL(code) );
-			}
-			catch (MalformedURLException e) {
-				e.printStackTrace();
-			}
-			
-			
-			URLConnection fbConnection ;
-			StringBuffer buffer = new StringBuffer();
-			
-			try {
-				fbConnection = fbGraphURL.openConnection();
-				
-				BufferedReader reader = new BufferedReader( new InputStreamReader(fbConnection.getInputStream() ));
-				
-				String inputLine ;
-				
-				
-				while ( (inputLine = reader.readLine()) != null ) {
-					
-					buffer.append(inputLine + "\n");
-				}
-				reader.close();
-			}
-			catch (IOException e) {
-				e.printStackTrace();
-			}
-			
-			accessToken = buffer.toString();
-			if( accessToken.startsWith("{")) {
-				throw new RuntimeException("ERROR: Access Token Invalid:" + accessToken);
-			}
-		}
-		
-		return accessToken;
-		
-	}
-	
-	
-	
-	public String getFbGraphURL(String code) {
-		
-		String fbgraphURL = "";
-		try{
-			
-			fbgraphURL = "https://graph.facebook.com/oauth/access_token?" + "client_id" + App_Id +
-					"&redirect_uri="+URLEncoder.encode(Redirect_URI, "UTF-8") +
-					"&client_secret=" + Secret_Id + "&code=" + "code";
-		}
-		catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		
-		return fbgraphURL;
-	}*/
-	
-	
+
 }

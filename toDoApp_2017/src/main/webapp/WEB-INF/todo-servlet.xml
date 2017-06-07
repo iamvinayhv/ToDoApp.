@@ -25,6 +25,7 @@
 	<bean id="userDao" class="com.bridgelabz.toDoApp.dao.daoImpl.UserDaoImpl"></bean>
 	<bean id="userValidation" class="com.bridgelabz.toDoApp.vlidator.UserValidation"></bean>
 	<bean id="connection" class="com.bridgelabz.toDoApp.Social.FaceBookConnection"></bean>
+	<bean id="googleConnection" class="com.bridgelabz.toDoApp.Social.GoogleConnection"></bean>
 	
 	
 	<!-- beans creation for ToDo manager -->
