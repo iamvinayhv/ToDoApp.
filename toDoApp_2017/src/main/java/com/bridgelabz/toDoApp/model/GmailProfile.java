@@ -7,6 +7,7 @@ public class GmailProfile {
 
 	private String id;
 	private String displayName;
+	private String email;
 	public String getId() {
 		return id;
 	}
@@ -18,6 +19,13 @@ public class GmailProfile {
 	}
 	public void setDisplayName(String displayName) {
 		this.displayName = displayName;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	@Override
 	public String toString() {

@@ -68,11 +68,13 @@ public class UserDaoImpl implements UserDao {
 		
 		try{
 		session = sessionFactory.openSession();
+		
 		Criteria ctr = session.createCriteria(User.class);
 		ctr.add(Restrictions.eq("email", email));
 		User user = (User) ctr.uniqueResult();
 		return user;
-		}finally{
+		}
+		finally{
 			if(session!=null){
 				session.close();
 			}

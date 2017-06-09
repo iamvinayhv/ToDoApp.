@@ -11,10 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bridgelabz.toDoApp.model.GmailProfile;
+import com.bridgelabz.toDoApp.model.User;
+import com.bridgelabz.toDoApp.service.serviceInterface.UserService;
 
 @RestController
 public class GoogleController {
 
+	@Autowired
+	private UserService userService;
+	
 	
 	@Autowired
 	private GoogleConnection googleConnection;
@@ -66,5 +71,7 @@ public class GoogleController {
 		
 		GmailProfile profile= googleConnection.getUserProfile(accessToken);
 		System.out.println(profile.getId());
+		
+		//User user = userService.getUserByEmail(profile.getId());
 	}
 }

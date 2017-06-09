@@ -1,7 +1,6 @@
 myToDo.controller("homeController", function($scope, $state, $uibModal, homeService) {
 	
 	var toDoList = [];
-	var pinToDo = [];
 	var user = [];
 	var getToDoHtOb = homeService.getNotes();
 	getToDoHtOb.then(function(data) {
@@ -12,7 +11,12 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		if( data.status == 200 ) {
 			console.log(data);
 			$scope.toDoList = data.data.todo;
-		
+			$scope.toDoPin = data.data.todo;
+			/*if(data.data.todo.pin == true ){
+				$scope.toDoPin = data.data.todo;
+			}*/
+			
+			console.log($scope.toDoPin);
 		}
 		else{
 			$state.go('signUp');
@@ -43,6 +47,7 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 					$scope.toDo.note=null;
 					$scope.toDo.color=null;
 					$scope.toDo.remainder=null;
+					$scope.toDo.pin=null;
 					
 				}
 				else{
@@ -104,13 +109,15 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		    	 this.remainder = toDo.remainder;
 		    	 this.upDated = toDo.upDated;
 		    	 this.color = toDo.color;
+		    	 this.pin = toDo.pin;
+		    	 this.archive = toDo.archive;
 		    	 var $ctrl = this;
 		    	 
 		    	 
 		    	 
 		    	this.ok = function () {
 		    		
-					$uibModalInstance.close({id:$ctrl.id, title:$ctrl.title, note:$ctrl.note, remainder:$ctrl.remainder, color:$ctrl.color});
+					$uibModalInstance.close({id:$ctrl.id, title:$ctrl.title, note:$ctrl.note, remainder:$ctrl.remainder, color:$ctrl.color, pin:$ctrl.pin, archive:$ctrl.archive});
 					
 				};
 				
@@ -296,6 +303,68 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 	
 	
 	
+	this.pinUp = function(toDo) {
+		toDo.pin = true;
+		var pinObj = homeService.pinUp(toDo);
+		
+		pinObj.then( function(data) {
+			if( data.status == 200 ){
+				//$scope.toDoList.splice(index, 1);
+			}
+		})
+		
+	}
+	
+	
+	this.unPin = function(toDo) {
+		toDo.pin = false;
+		var pinObj = homeService.unPin(toDo);
+		
+		pinObj.then( function(data) {
+			if( data.status == 200 ){
+				//$scope.toDoList.splice(index, 1);
+			}
+		})
+		
+	}
+	
+	
+	this.archive = function(toDo) {
+		toDo.archive = true;
+		toDo.pin = false;
+		var archObj = homeService.archive(toDo);
+		
+		archObj.then( function(data) {
+			if( data.status == 200 ){
+				
+			}
+		})
+	}
+	
+	
+	this.pinAndUnarch = function(toDo) {
+		toDo.pin = true;
+		toDo.archive = false;
+		var archObj = homeService.pinAndUnarch(toDo);
+		
+		archObj.then( function(data) {
+			if( data.status == 200 ){
+				
+			}
+		})
+	}
+	
+	this.unArchive = function(toDo) {
+		toDo.archive = false;
+		var archObj = homeService.unArchive(toDo);
+		
+		archObj.then( function(data) {
+			if( data.status == 200 ){
+				
+			}
+		})
+	}
+	
 	this.signOut = function() {
 		
 		var signoutObj = homeService.signOut();
@@ -315,7 +384,7 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		});
 	}
 	
-
+	
 	
 });
 

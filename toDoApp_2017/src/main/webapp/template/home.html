@@ -97,9 +97,9 @@
 
   <div data-ng-class="{'is-visible':visible}" class="menu" style="z-index: 1;">
     <ul style="padding-top: 20px; font-size: 20px;">
-      <li>Home</li>
-      <li>Notes</li>
-      <li>About</li>
+      <li><span><img src="images/noteicon.png"></span><span style="margin-left: 20px;">Notes</span></li>
+      <li><span><img src="images/remindericon.svg"></span><span style="margin-left: 25px;">Reminders</span></li>
+      <li><span><img src="images/archiveA.svg"></span><span style="margin-left: 26px;">Archive</span></li>
     </ul>
   </div>
 
@@ -110,7 +110,7 @@
 			<div class="col-sm-9">
 					<div>
 						<div >
-						
+				
 							<div data-ng-show ="IsVisible" id="title" name="title" data-ng-model="toDo.title" newcontenteditable contenteditable="true" placeholder="Title" style="font-weight: bold;"></div>
 							<div id="note" name="note" data-ng-model="toDo.note" data-ng-click="hc.showHide()" newcontenteditable contenteditable="true" placeholder="Take a note..."></div>
 							
@@ -134,7 +134,7 @@
 												</i> 
 											</div>	
 												
-											<div class="col-sm-2" style="background-color: {{color}}">
+											<div class="col-sm-1" style="background-color: {{color}}">
 												<span uib-dropdown dropdown-append-to-body><img uib-dropdown-toggle alt="color" src="images/color.png" width="20px;" height="20px;" data-toggle="tooltip" title="Change color" style="margin-top:5px;cursor: pointer;">
 														
 														<div  uib-dropdown-menu style="margin-top:-12px; margin-left: 25px" data-ng-model="toDo.color">
@@ -158,23 +158,26 @@
 														
 												</span>
 											</div>	
-												
+										<span data-ng-model="toDo.pin" style="cursor: pointer;"><img alt="icon" src="images/pin.svg" width="20px" height="20px" data-toggle="tooltip" title="Pin note" data-ng-click="toDo.pin='true'" style="margin-top: 5px;"></span>
 									<span style="float: right;margin-top:10px; cursor: pointer;" data-ng-click="hc.addNote()" data-toggle="tooltip" title="Add note">DONE</span>
 							</div>
 						</div>
 					</div>
+			<div data-ng-include="'template/archive.html'"></div>
 			
-					
+			<div data-ng-include="'template/pinUp.html'"></div>
+			
+			<div>Others</div>		
 			<div class="cont" data-ng-class="{list: isList, grid: !isList}">
 						<div class="cardRow">
 						
 						
-							<div class="card" id="cardId" data-ng-repeat="todo in toDoList | filter:searchText" data-ng-mouseover="icons=true" data-ng-mouseleave="icons=false" style="background-color: {{todo.color}};">
+							<div data-ng-if="!todo.pin && !todo.archive" class="card" id="cardId" data-ng-repeat="todo in toDoList | filter:searchText" data-ng-mouseover="icons=true" data-ng-mouseleave="icons=false" style="background-color: {{todo.color}};">
 						
 								<div  data-ng-click="hc.popUp(todo, $index)" ><!-- | orderBy:'-' -->
 									<div id="toDoTitle">{{todo.title}}
-<!-- 									<div style="float: right;"><img data-ng-show="icons" alt="icon" src="images/Pin.png" width="20px" height="20px" data-toggle="tooltip" title="Pin note" data-ng-click="hc.pinNote(todo,$index)"></div>
- -->									</div>
+									<div style="float: right; cursor: pointer;"><img data-ng-show="icons" alt="icon" src="images/pin.svg" width="20px" height="20px" data-toggle="tooltip" title="Pin note" data-ng-click="hc.pinUp(todo)"></div>
+									</div>
 									<div id="toDoNote">{{todo.note}}</div>
 								</div>
 							
@@ -233,10 +236,13 @@
 										
 									</span>
 									
+										<span style="margin-left: 25px;cursor: poin">
+											<img src="images/archive.svg" width="20px" height="20px" data-ng-click="hc.archive(todo)">
+										</span>
 									
 							
 										<span uib-dropdown dropdown-append-to-body >
-											<span uib-dropdown-toggle data-toggle="tooltip" title="More" style="margin-left: 15px; cursor: ">
+											<span uib-dropdown-toggle data-toggle="tooltip" title="More" style="margin-left: 10px; cursor: ">
 												<img alt="icon" src="images/more.png" width="30px" height="25px">
 											</span>
 										
@@ -264,6 +270,6 @@
 							</div>
 						</div>
 					</div>
-				<div class="col-sm-1"></div>
+			<div class="col-sm-1"></div>
 </div>
 </div></div>

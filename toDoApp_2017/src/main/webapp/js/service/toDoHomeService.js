@@ -65,12 +65,56 @@ myToDo.service("homeService",function ($http) {
 		});
 	}
 	
+	this.pinUp = function(toDo) {
+		return $http({
+			url:"http://localhost:8080/toDoApp_2017/setColor",
+			method:"POST",
+			data:toDo
+		});
+	}
+	
+	
+	this.unPin = function(toDo) {
+		return $http({
+			url:"http://localhost:8080/toDoApp_2017/setColor",
+			method:"POST",
+			data:toDo
+		});
+	}
+	
+	this.archive = function(toDo) {
+		return $http({
+			url:"http://localhost:8080/toDoApp_2017/setColor",
+			method:"POST",
+			data:toDo
+		});
+	}
+	
+	this.pinAndUnarch = function(toDo) {
+		return $http({
+			url:"http://localhost:8080/toDoApp_2017/setColor",
+			method:"POST",
+			data:toDo
+		});
+	}
+	
+	this.unArchive = function(toDo) {
+		return $http({
+			url:"http://localhost:8080/toDoApp_2017/setColor",
+			method:"POST",
+			data:toDo
+		});
+	}
+	
 	this.signOut = function() {
 		return $http({
 			url:"http://localhost:8080/toDoApp_2017/signOut",
 			method:"POST"
 		});
 	}
+	
+	
+	
 	
 });
 

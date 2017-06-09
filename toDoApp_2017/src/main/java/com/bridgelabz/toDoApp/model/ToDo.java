@@ -27,6 +27,8 @@ public class ToDo implements Serializable {
 	private String note;
 	private Date remainder;
 	private String color;
+	private boolean pin;
+	private boolean archive;
 	private Date upDated = new Date();
 
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -79,6 +81,23 @@ public class ToDo implements Serializable {
 
 	public void setUpDated(Date upDated) {
 		this.upDated = upDated;
+	}
+
+	public boolean isPin() {
+		return pin;
+	}
+
+	public void setPin(boolean pin) {
+		this.pin = pin;
+	}
+
+	
+	public boolean isArchive() {
+		return archive;
+	}
+
+	public void setArchive(boolean archive) {
+		this.archive = archive;
 	}
 
 	public User getUser() {
