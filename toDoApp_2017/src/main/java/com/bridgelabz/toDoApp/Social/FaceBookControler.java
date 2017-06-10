@@ -36,7 +36,6 @@ public class FaceBookControler {
 		
 		System.out.println(fbLoginURL);
 		
-		
 		response.sendRedirect(fbLoginURL);
 		
 		return;

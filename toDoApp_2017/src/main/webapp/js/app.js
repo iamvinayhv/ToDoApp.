@@ -4,26 +4,34 @@ myToDo.config(function ($stateProvider, $urlRouterProvider) {
   
   $stateProvider
  
-  .state('signIn',{
+  	.state('signIn',{
     url:"/signIn",
     templateUrl:"template/signIn.html",
     controller:"signInController",
 
-  })
+	})
   
-  .state('signUp',{
+  	.state('signUp',{
     url:"/signUp",
     templateUrl:"template/signUp.html",
     controller:"signUpController"
   
-  })
+	})
   
-    .state('home',{
+  	.state('home',{
 	    url:"/home",
 	    templateUrl:"template/home.html",
 	    controller:"homeController"
-	  })
+  	})
+	  
+    .state('archive',{
+		    url:"/archive",
+		    templateUrl:"template/home.html",
+		    controller:"archiveController"
+    });
   
+  
+	  
   $urlRouterProvider.otherwise('/signUp');
 
 });

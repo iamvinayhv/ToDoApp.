@@ -14,11 +14,11 @@
 
 
    
-#navBar
+/* #navBar
 {
 	background-color: #fb0;
 	
-}
+} */
 
 #refresh
 {
@@ -52,6 +52,7 @@
 	min-height: 45px;
 	padding-top: 12px;
 	padding-left: 20px;
+	padding-right: 35px;
 	background-color: white;
 	font-style: italic;
 	outline: none;

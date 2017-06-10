@@ -3,6 +3,8 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 	var toDoList = [];
 	var user = [];
 	var getToDoHtOb = homeService.getNotes();
+	
+	
 	getToDoHtOb.then(function(data) {
 		
 		console.log("comming data "+data.status);
@@ -364,6 +366,12 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 			}
 		})
 	}
+	
+	
+	this.showArchive = function() {
+		
+	}
+	
 	
 	this.signOut = function() {
 		

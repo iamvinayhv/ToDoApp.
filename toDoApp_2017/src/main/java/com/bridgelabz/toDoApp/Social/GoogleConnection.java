@@ -77,9 +77,9 @@ public class GoogleConnection {
 		Response response = target.request().header("Authorization", headerAuth).accept(MediaType.APPLICATION_JSON).get();
 		
 		GmailProfile profile = response.readEntity(GmailProfile.class);
-		System.out.println(profile.toString());
 		restCall.close();
 		
+		System.out.println(profile.getEmails().get(0).getValue());
 		return profile;
 	}
 }

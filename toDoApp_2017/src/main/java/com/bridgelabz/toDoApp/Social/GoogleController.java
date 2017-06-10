@@ -5,12 +5,14 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bridgelabz.toDoApp.model.GmailProfile;
+import com.bridgelabz.toDoApp.model.GoogleEmails;
 import com.bridgelabz.toDoApp.model.User;
 import com.bridgelabz.toDoApp.service.serviceInterface.UserService;
 
@@ -68,10 +70,22 @@ public class GoogleController {
 		System.out.println("ACCess Token--> "+accessToken);
 		
 		//get user profile 
-		
 		GmailProfile profile= googleConnection.getUserProfile(accessToken);
-		System.out.println(profile.getId());
 		
-		//User user = userService.getUserByEmail(profile.getId());
+		
+		
+		User user = userService.getUserByEmail(profile.getEmails().get(0).getValue());
+		
+		if(user==null){
+			user = new User();
+			user.setName(profile.getDisplayName());
+			user.setEmail(profile.getEmails().get(0).getValue());
+			user.setPassword("");
+			userService.signUp(user);
+		}
+		HttpSession session = request.getSession();
+		session.setAttribute("user", user);
+		
+		response.sendRedirect("http://localhost:8080/toDoApp_2017/#!/home");
 	}
 }
