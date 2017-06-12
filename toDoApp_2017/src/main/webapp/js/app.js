@@ -28,8 +28,13 @@ myToDo.config(function ($stateProvider, $urlRouterProvider) {
 		    url:"/archive",
 		    templateUrl:"template/home.html",
 		    controller:"archiveController"
-    });
+    })
   
+  .state('remainders',{
+	    url:"/remainders",
+	    templateUrl:"template/home.html",
+	    controller:"remaindersController"
+  	});
   
 	  
   $urlRouterProvider.otherwise('/signUp');

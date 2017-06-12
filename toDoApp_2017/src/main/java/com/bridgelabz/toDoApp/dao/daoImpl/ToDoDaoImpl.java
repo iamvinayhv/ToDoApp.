@@ -138,7 +138,7 @@ public class ToDoDaoImpl implements ToDoDao {
 
 
 
-	@Override
+	/*@Override
 	public void setReminder(ToDo toDo) {
 		
 		try{
@@ -177,12 +177,12 @@ public class ToDoDaoImpl implements ToDoDao {
 				session.close();
 			}
 		}
-	}
+	}*/
 
 
 
 	@Override
-	public void setColor(ToDo toDo) {
+	public void update(ToDo toDo) {
 		
 		try{
 			session = sessionFactory.openSession();

@@ -1,7 +1,6 @@
 package com.bridgelabz.toDoApp.controller;
 
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -361,7 +360,7 @@ public class ToDoController {
 	 * @param response
 	 * @return ResponseEntity
 	 * @throws JsonProcessingException
-	 */
+	 *//*
 	@RequestMapping(value="setReminder", method=RequestMethod.POST)
 	public ResponseEntity<String> setReminder ( @RequestBody ToDo toDo, HttpServletRequest request, HttpServletResponse response  ) throws JsonProcessingException {
 		
@@ -395,12 +394,12 @@ public class ToDoController {
 	}
 	
 	
-	/**
+	*//**
 	 * @param request
 	 * @param response
 	 * @return ResponseEntity
 	 * @throws JsonProcessingException 
-	 */
+	 *//*
 	@RequestMapping(value="cancelRemainder", method=RequestMethod.POST)
 	public ResponseEntity<String> cancelRemainder(@RequestBody ToDo toDo, HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
 		
@@ -431,7 +430,7 @@ public class ToDoController {
 			
 			return new ResponseEntity<String>(data, HttpStatus.UNAUTHORIZED);
 		}
-	}
+	}*/
 	
 	
 	/**
@@ -441,15 +440,15 @@ public class ToDoController {
 	 * @return
 	 * @throws JsonProcessingException 
 	 */
-	@RequestMapping(value="setColor", method=RequestMethod.POST)
-	public ResponseEntity<String> setColor (@RequestBody ToDo toDo, HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
+	@RequestMapping(value="update", method=RequestMethod.POST)
+	public ResponseEntity<String> update (@RequestBody ToDo toDo, HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
 		
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		
 		if( session != null && user != null ) {
 			
-			toDoService.setColor(toDo);
+			toDoService.update(toDo);
 			
 			ObjectMapper mapper = new ObjectMapper();
 			ObjectNode root = mapper.createObjectNode();

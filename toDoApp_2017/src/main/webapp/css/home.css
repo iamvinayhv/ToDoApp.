@@ -265,6 +265,9 @@
 .modal-content {
     margin-top: 34%!important;
 }
-
+.sidebar-nav div:hover {
+text-decoration: none;
+background: rgba(0, 0, 0, .2);
+}
 
 

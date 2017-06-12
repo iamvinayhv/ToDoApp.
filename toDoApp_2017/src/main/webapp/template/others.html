@@ -1,6 +1,7 @@
 <div class="cont" data-ng-class="{list: isList, grid: !isList}">
 	<div class="cardRow">
-		<div style="margin-bottom: 25px;">Others</div>
+	
+			<div style="margin-bottom: 25px;">Others</div>
 	
 		<div data-ng-if="!todo.pin && !todo.archive" class="card" id="cardId" data-ng-repeat="todo in toDoList | filter:searchText" data-ng-mouseover="icons=true" data-ng-mouseleave="icons=false" style="background-color: {{todo.color}};">
 	

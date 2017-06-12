@@ -94,12 +94,12 @@
 
 
 
-  <div  data-ng-class="{'is-visible':visible}" class="menu" style="z-index: 1;">
-    <ul style="padding-top: 20px; font-size: 20px;list-style: none;">
-      <li><a data-ui-sref="home" style="text-decoration: none;cursor: pointer;"><img src="images/noteicon.png"><span style="margin-left: 20px;mar">Notes</span></a><hr></li>
-      <li><a data-ui-sref="remainder" style="text-decoration: none;cursor: pointer;"><span><img src="images/remindericon.svg"></span><span style="margin-left: 25px;">Reminders</span></a><hr></li>
-      <li><a data-ui-sref="archive" style="text-decoration: none;cursor: pointer;"><span><img src="images/archiveA.svg"></span><span style="margin-left: 26px;">Archive</span></a><hr></li>
-    </ul>
+  <div data-ng-class="{'is-visible':visible}" class="menu" style="z-index: 1;">
+	    <div class="sidebar-nav" style="margin-top: 10px; font-size: 20px;">
+			<a data-ui-sref="home" style="text-decoration: none;cursor: pointer;padd"><div class="sidebar-brand" style="padding:13px;"><img src="images/noteicon.png"><span style="padding-left: 20px;">Notes</span></div></a>
+			<a data-ui-sref="remainders" style="text-decoration: none;cursor: pointer;"><div class="sidebar-brand" style="padding: 13px;"><span><img src="images/remindericon.svg"></span><span style="padding-left: 25px;">Reminders</span></div></a>
+			<a data-ui-sref="archive" style="text-decoration: none;cursor: pointer;"> <div class="sidebar-brand" style="padding: 13px;"><span><img src="images/archiveA.svg"></span><span style="padding-left: 26px;">Archive</span></div></a>
+	    </div>
   </div>
 
 
@@ -163,12 +163,15 @@
 						</div>
 					</div>
 					
+					<!-- <img data-ng-if="toDoList.length == 0" src="images/todo.png"> -->
+					
 					<div data-ng-show="archive" data-ng-include="'template/archive.html'"></div>
+					
+					<div data-ng-show="remainders" data-ng-include="'template/remainders.html'"></div>
 					
 					<div data-ng-show="!pinUp" data-ng-include="'template/pinUp.html'"></div>
 					
 					<div data-ng-show="!others" data-ng-include="'template/others.html'"></div>
-			
 			
 			<div class="col-sm-1"></div>
 		</div>

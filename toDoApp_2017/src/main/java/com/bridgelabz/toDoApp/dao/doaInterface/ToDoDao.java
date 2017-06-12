@@ -40,17 +40,17 @@ public interface ToDoDao {
 
 	/**
 	 * @param toDo
-	 */
+	 *//*
 	public void setReminder(ToDo toDo);
 
-	/**
+	*//**
 	 * @param toDoId
-	 */
-	public void cancelRemainder(ToDo toDo);
+	 *//*
+	public void cancelRemainder(ToDo toDo);*/
 
 	/**
 	 * @param toDo
 	 */
-	public void setColor(ToDo toDo);
+	public void update(ToDo toDo);
 
 }

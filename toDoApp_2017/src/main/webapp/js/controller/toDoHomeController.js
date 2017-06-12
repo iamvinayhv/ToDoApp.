@@ -1,9 +1,10 @@
 myToDo.controller("homeController", function($scope, $state, $uibModal, homeService) {
 	
 	var toDoList = [];
+	var toDoPin =[];
+	var toDoOthers =[];
 	var user = [];
 	var getToDoHtOb = homeService.getNotes();
-	
 	
 	getToDoHtOb.then(function(data) {
 		
@@ -11,14 +12,23 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		$scope.user = data.data.user;
 		
 		if( data.status == 200 ) {
-			console.log(data);
+			console.log(data.data.todo.length);
 			$scope.toDoList = data.data.todo;
-			$scope.toDoPin = data.data.todo;
-			/*if(data.data.todo.pin == true ){
-				$scope.toDoPin = data.data.todo;
+			toDoPin[data.data.todo.length]
+			
+			/*for(var i=0; i<data.data.todo.length; i++){
+				
+				if(data.data.todo[i].pin == true){
+					
+					$scope.toDoPin[i] = data.data.todo[i];
+				}
+				else if(data.data.todo[i].pin == false){
+					
+					toDoOthers[i] = data.data.todo[i];
+					
+				}
 			}*/
 			
-			console.log($scope.toDoPin);
 		}
 		else{
 			$state.go('signUp');
@@ -30,6 +40,7 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		console.log(error);
 	});
 		
+	
 	$scope.isList = true;
 	
 	this.addNote = function() {

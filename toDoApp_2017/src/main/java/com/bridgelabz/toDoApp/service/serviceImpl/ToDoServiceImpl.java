@@ -44,7 +44,7 @@ public class ToDoServiceImpl implements ToDoService {
 		return toDoDao.copyToDo(copy);
 	}
 
-	@Override
+	/*@Override
 	public void setReminder(ToDo toDo) {
 		
 		toDoDao.setReminder(toDo);
@@ -54,12 +54,12 @@ public class ToDoServiceImpl implements ToDoService {
 	public void cancelRemainder(ToDo toDo) {
 		
 		toDoDao.cancelRemainder(toDo);
-	}
+	}*/
 
 	@Override
-	public void setColor(ToDo toDo) {
+	public void update(ToDo toDo) {
 		
-		toDoDao.setColor(toDo);
+		toDoDao.update(toDo);
 	}
 
 }

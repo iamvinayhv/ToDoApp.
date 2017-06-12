@@ -43,7 +43,7 @@ myToDo.service("homeService",function ($http) {
 	
 	this.toToReminder = function(toDo) {
 		return $http({
-			url:"http://localhost:8080/toDoApp_2017/setReminder",
+			url:"http://localhost:8080/toDoApp_2017/update",
 			method:"POST",
 			data:toDo
 		});
@@ -51,7 +51,7 @@ myToDo.service("homeService",function ($http) {
 	
 	this.cancelRemainder = function(toDo) {
 		return $http({
-			url:"http://localhost:8080/toDoApp_2017/cancelRemainder",
+			url:"http://localhost:8080/toDoApp_2017/update",
 			method:"POST",
 			data:toDo
 		});
@@ -59,7 +59,7 @@ myToDo.service("homeService",function ($http) {
 	
 	this.setColor = function(toDo) {
 		return $http({
-			url:"http://localhost:8080/toDoApp_2017/setColor",
+			url:"http://localhost:8080/toDoApp_2017/update",
 			method:"POST",
 			data:toDo
 		});
@@ -67,7 +67,7 @@ myToDo.service("homeService",function ($http) {
 	
 	this.pinUp = function(toDo) {
 		return $http({
-			url:"http://localhost:8080/toDoApp_2017/setColor",
+			url:"http://localhost:8080/toDoApp_2017/update",
 			method:"POST",
 			data:toDo
 		});
@@ -76,7 +76,7 @@ myToDo.service("homeService",function ($http) {
 	
 	this.unPin = function(toDo) {
 		return $http({
-			url:"http://localhost:8080/toDoApp_2017/setColor",
+			url:"http://localhost:8080/toDoApp_2017/update",
 			method:"POST",
 			data:toDo
 		});
@@ -84,7 +84,7 @@ myToDo.service("homeService",function ($http) {
 	
 	this.archive = function(toDo) {
 		return $http({
-			url:"http://localhost:8080/toDoApp_2017/setColor",
+			url:"http://localhost:8080/toDoApp_2017/update",
 			method:"POST",
 			data:toDo
 		});
@@ -92,7 +92,7 @@ myToDo.service("homeService",function ($http) {
 	
 	this.pinAndUnarch = function(toDo) {
 		return $http({
-			url:"http://localhost:8080/toDoApp_2017/setColor",
+			url:"http://localhost:8080/toDoApp_2017/update",
 			method:"POST",
 			data:toDo
 		});
@@ -100,7 +100,7 @@ myToDo.service("homeService",function ($http) {
 	
 	this.unArchive = function(toDo) {
 		return $http({
-			url:"http://localhost:8080/toDoApp_2017/setColor",
+			url:"http://localhost:8080/toDoApp_2017/update",
 			method:"POST",
 			data:toDo
 		});
