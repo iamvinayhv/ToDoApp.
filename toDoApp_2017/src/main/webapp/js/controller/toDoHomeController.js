@@ -403,7 +403,7 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		});
 	}
 	
-	
-	
+
+
 });
 

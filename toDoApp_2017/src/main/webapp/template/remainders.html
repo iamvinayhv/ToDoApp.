@@ -44,22 +44,24 @@
 					<span uib-dropdown dropdown-append-to-body><img uib-dropdown-toggle alt="color" src="images/color.png" width="20px;" height="20px;" data-toggle="tooltip" title="Change color" style="margin-left: 20px; cursor: pointer;">
 						
 						<div  uib-dropdown-menu style="margin-top:-105px; margin-left: 23px">
-							<div style="margin-left: 10px; padding-right: 10px;">
-								<span>
-									<img src="images/White.png" width="32px" height="32px"	data-ng-click="hc.setColor(todo,'#ffffff')">
-									<img src="images/red.png" width="37px" height="37px"	data-ng-click="hc.setColor(todo,'#ff8a80')">
-									<img src="images/yellow.png" width="30px" height="30px" data-ng-click="hc.setColor(todo,'#ffd180')">
-									<img src="images/sky blue.png" width="37px" height="37px"	data-ng-click="hc.setColor(todo,'#80f8ff')">
-								</span>
-							</div>
-							<div style="margin-left: 13px; padding-top: 10px;">
-								<span>
-									<img src="images/blue.png" width="30px" height="30px"	data-ng-click="hc.setColor(todo,'#3498db')">
-									<img src="images/nice.png" width="37px" height="37px"	data-ng-click="hc.setColor(todo,'#ccff90')">
-									<img src="images/orange.png" width="30px" height="30px"	data-ng-click="hc.setColor(todo,'#fb7c05')">
-									<img src="images/gray.png" width="30px" height="30px"	data-ng-click="hc.setColor(todo,'#95a5a6')">
-								</span>
-							</div>
+							<div style="margin-left: 13px; padding-right: 10px;">
+							<span>
+								<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ffffff;display: inline-block;border:1px solid ;" data-ng-click="hc.setColor(todo,'#ffffff')"></div>
+								<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ff8a80;display: inline-block;" data-ng-click="hc.setColor(todo,'#ff8a80')"></div>
+								<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ffd180;display: inline-block;" data-ng-click="hc.setColor(todo,'#ffd180')"></div>
+								<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #80f8ff;display: inline-block;" data-ng-click="hc.setColor(todo,'#80f8ff')"></div>
+								
+							</span>
+						</div>
+						<div style="margin-left: 13px; padding-top: 10px;">
+							<span>
+								<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #3498db;display: inline-block;" data-ng-click="hc.setColor(todo,'#3498db')"></div>
+								<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ccff90;display: inline-block;" data-ng-click="hc.setColor(todo,'#ccff90')"></div>
+								<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #fb7c05;display: inline-block;" data-ng-click="hc.setColor(todo,'#fb7c05')"></div>
+								<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #95a5a6;display: inline-block;" data-ng-click="hc.setColor(todo,'#95a5a6')"></div>
+								
+							</span>
+						</div>
 						</div>
 						
 					</span>
@@ -67,6 +69,10 @@
 					
 					<span style="margin-left: 23px;cursor: pointer;">
 						<img src="images/unarchive.svg" width="25px" height="20px" data-ng-click="hc.unArchive(todo)">
+					</span>
+			
+					<span style="margin-left: 23px;cursor: pointer;" >
+						<img src="images/shareFB.png" height="18px" width="18px" data-toggle="tooltip" title="Share on Fb">
 					</span>
 			
 						<span uib-dropdown dropdown-append-to-body >

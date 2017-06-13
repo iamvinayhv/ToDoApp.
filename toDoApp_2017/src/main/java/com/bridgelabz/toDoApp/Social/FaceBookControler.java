@@ -80,6 +80,7 @@ public class FaceBookControler {
 			user.setName(profile.getName());
 			user.setEmail(profile.getEmail());
 			user.setPassword("");
+			System.out.println(profile.getCover()+"vover");
 			userService.signUp(user);
 		}
 		HttpSession session = request.getSession();

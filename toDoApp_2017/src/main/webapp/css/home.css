@@ -139,9 +139,6 @@
 
 
 
-
-
-
 #modal-body
 {
 	font-style: italic;
@@ -153,11 +150,11 @@
 }
 
 
-
 .cont .cardRow {
   width: 100%;
   padding: 20px 0;
 }
+
 .cont.list .card {
 	width: 777px;;
 	background: #fff;
@@ -166,6 +163,7 @@
 	box-shadow: 10px 10px 5px  #d3d7cf;
   
 }
+
 .cont.list .card div {
   vertical-align: middle;
 }

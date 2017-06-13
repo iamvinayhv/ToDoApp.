@@ -98,7 +98,7 @@
 	    <div class="sidebar-nav" style="margin-top: 10px; font-size: 20px;">
 			<a data-ui-sref="home" style="text-decoration: none;cursor: pointer;padd"><div class="sidebar-brand" style="padding:13px;"><img src="images/noteicon.png"><span style="padding-left: 20px;">Notes</span></div></a>
 			<a data-ui-sref="remainders" style="text-decoration: none;cursor: pointer;"><div class="sidebar-brand" style="padding: 13px;"><span><img src="images/remindericon.svg"></span><span style="padding-left: 25px;">Reminders</span></div></a>
-			<a data-ui-sref="archive" style="text-decoration: none;cursor: pointer;"> <div class="sidebar-brand" style="padding: 13px;"><span><img src="images/archiveA.svg"></span><span style="padding-left: 26px;">Archive</span></div></a>
+			<hr><a data-ui-sref="archive" style="text-decoration: none;cursor: pointer;"> <div class="sidebar-brand" style="padding: 13px;"><span><img src="images/archiveA.svg"></span><span style="padding-left: 26px;">Archive</span></div></a>
 	    </div>
   </div>
 
@@ -137,20 +137,22 @@
 												<span uib-dropdown dropdown-append-to-body><img uib-dropdown-toggle alt="color" src="images/color.png" width="20px;" height="20px;" data-toggle="tooltip" title="Change color" style="margin-top:5px;cursor: pointer;">
 														
 														<div  uib-dropdown-menu style="margin-top:-12px; margin-left: 25px" data-ng-model="toDo.color">
-															<div style="margin-left: 9px; padding-right: 10px;">
+															<div style="margin-left: 13px; padding-right: 10px;">
 																<span>
-																	<img src="images/White.png" width="32px" height="32px"	data-ng-click="toDo.color='#ffffff'">
-																	<img src="images/red.png" width="37px" height="37px"	data-ng-click="toDo.color='#ff8a80'">
-																	<img src="images/yellow.png" width="30px" height="30px" data-ng-click="toDo.color='#ffd180'">
-																	<img src="images/sky blue.png" width="37px" height="37px"	data-ng-click="toDo.color='#80f8ff'">
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ffffff;display: inline-block;border:1px solid ;" data-ng-click="hc.setColor(todo,'#ffffff')"></div>
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ff8a80;display: inline-block;" data-ng-click="hc.setColor(todo,'#ff8a80')"></div>
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ffd180;display: inline-block;" data-ng-click="hc.setColor(todo,'#ffd180')"></div>
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #80f8ff;display: inline-block;" data-ng-click="hc.setColor(todo,'#80f8ff')"></div>
+																	
 																</span>
 															</div>
-															<div style="margin-left: 14px; padding-top: 10px;">
+															<div style="margin-left: 13px; padding-top: 10px;">
 																<span>
-																	<img src="images/blue.png" width="30px" height="30px"	data-ng-click="toDo.color='#3498db'">
-																	<img src="images/nice.png" width="37px" height="37px"	data-ng-click="toDo.color='#ccff90'">
-																	<img src="images/orange.png" width="30px" height="30px"	data-ng-click="toDo.color='#fb7c05'">
-																	<img src="images/gray.png" width="30px" height="30px"	data-ng-click="toDo.color='#95a5a6'">
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #3498db;display: inline-block;" data-ng-click="hc.setColor(todo,'#3498db')"></div>
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ccff90;display: inline-block;" data-ng-click="hc.setColor(todo,'#ccff90')"></div>
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #fb7c05;display: inline-block;" data-ng-click="hc.setColor(todo,'#fb7c05')"></div>
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #95a5a6;display: inline-block;" data-ng-click="hc.setColor(todo,'#95a5a6')"></div>
+																	
 																</span>
 															</div>
 														</div>
