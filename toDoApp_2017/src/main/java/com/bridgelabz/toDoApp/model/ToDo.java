@@ -31,7 +31,7 @@ public class ToDo implements Serializable {
 	private boolean archive;
 	private Date upDated = new Date();
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.DETACH)
 	@JoinColumn
 	private User user;
 

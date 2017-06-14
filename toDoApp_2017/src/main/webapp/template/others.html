@@ -12,7 +12,7 @@
 				<div id="toDoNote">{{todo.note}}</div>
 			</div>
 		
-			<div  id="icons" style="padding-left: 20px;">
+			<div  id="icons" style="padding-left: 15px;">
 				<span data-ng-show="icons">
 				
 					<span uib-dropdown dropdown-append-to-body>
@@ -43,8 +43,12 @@
 							</div>
 					</span>
 				
+				<span style="margin-left: 10px">
+					<img src="images/Collaborator.png" data-ng-click="hc.collaborator(todo, user)" height="23px" width="23px" data-toggle="tooltip" title="Collaborator">
+				</span>
 				
-				<span uib-dropdown dropdown-append-to-body><img uib-dropdown-toggle alt="color" src="images/color.png" width="20px;" height="20px;" data-toggle="tooltip" title="Change color" style="margin-left: 20px; cursor: pointer;">
+				
+				<span uib-dropdown dropdown-append-to-body><img uib-dropdown-toggle alt="color" src="images/color.png" width="20px;" height="20px;" data-toggle="tooltip" title="Change color" style="margin-left: 15px; cursor: pointer;">
 					
 					<div  uib-dropdown-menu style="margin-top:-105px; margin-left: 23px">
 						<div style="margin-left: 13px; padding-right: 10px;">
@@ -69,16 +73,16 @@
 					
 				</span>
 				
-					<span style="margin-left: 25px;cursor: pointer;" data-toggle="tooltip" title="Archive">
+					<span style="margin-left: 15px;cursor: pointer;" data-toggle="tooltip" title="Archive">
 						<img src="images/archive.svg" width="20px" height="20px" data-ng-click="hc.archive(todo)">
 					</span>
 				
-					<span style="margin-left: 23px;cursor: pointer;" >
-						<img src="images/shareFB.png" height="18px" width="18px" data-toggle="tooltip" title="Share on Fb">
+					<span style="margin-left: 20px;cursor: pointer;">
+						<img src="images/shareFB.png" data-ng-click="hc.shareWithFb(todo)" height="18px" width="18px" data-toggle="tooltip" title="Share on Fb">
 					</span>
 		
 					<span uib-dropdown dropdown-append-to-body >
-						<span uib-dropdown-toggle data-toggle="tooltip" title="More" style="margin-left: 10px; cursor: pointer;">
+						<span uib-dropdown-toggle data-toggle="tooltip" title="More" style="margin-left: 7px; cursor: pointer;">
 							<img alt="icon" src="images/more.png" width="30px" height="25px">
 						</span>
 					

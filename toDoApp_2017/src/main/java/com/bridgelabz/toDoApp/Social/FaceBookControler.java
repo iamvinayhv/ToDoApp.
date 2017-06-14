@@ -8,10 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bridgelabz.toDoApp.model.FaceBookProfile;
+import com.bridgelabz.toDoApp.model.ToDo;
 import com.bridgelabz.toDoApp.model.User;
 import com.bridgelabz.toDoApp.service.serviceInterface.UserService;
 
@@ -89,5 +91,6 @@ public class FaceBookControler {
 		response.sendRedirect("http://localhost:8080/toDoApp_2017/#!/home");
 		
 	}
+	
 	
 }

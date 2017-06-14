@@ -107,6 +107,44 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		$scope.clear = $scope.clear ? false :false;
 	}
 	
+	this.collaborator = function(toDo,user) {
+		console.log(toDo);
+		var modal = $uibModal.open({
+			templateUrl : "template/collaborator.html",
+			size:'md',
+			controller:function( $uibModalInstance ){
+				
+				
+				this.id = toDo.id;
+		    	this.title = toDo.title;
+		    	this.note = toDo.note;
+		    	this.remainder = toDo.remainder;
+		    	this.upDated = toDo.upDated;
+		    	this.color = toDo.color;
+		    	this.pin = toDo.pin;
+		    	this.archive = toDo.archive;
+				this.name = toDo.user.name;
+				this.email = toDo.user.email;
+				
+				var $ctrlCollab = this;
+				
+				this.save = function () {
+		    		
+					$uibModalInstance.close({id:$ctrlCollab.id, title:$ctrlCollab.title, note:$ctrlCollab.note, remainder:$ctrlCollab.remainder, color:$ctrlCollab.color, pin:$ctrlCollab.pin, archive:$ctrlCollab.archive, email:$ctrlCollab});
+					
+				};
+				
+				this.cancel = function () {
+					
+				    $uibModalInstance.dismiss('cancel');
+				};
+				
+			},
+			
+			controllerAs : "$ctrlCollab"
+		});
+	}
+	
 	
 	var homeCont=this;
 	this.popUp = function(toDo, index) {
@@ -378,6 +416,33 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		})
 	}
 	
+	
+	this.shareWithFb = function(toDo) {
+		console.log("fb");
+		FB.init({appId: '458817991138556',
+			status: true,
+			xfbml: true
+		});
+		
+		FB.ui({
+			method: 'share_open_graph',
+			action_type: 'og.shares',
+			action_properties: JSON.stringify({
+				object:{
+					'og:title' : toDo.title,
+					'og:description' : toDo.note
+				}
+			})
+		},function(response){
+			if(response && !response.error_message){
+				console.log("Added");
+			}
+			else{
+				console.log("not ADded");
+			}
+		});
+	
+	}
 	
 	this.showArchive = function() {
 		

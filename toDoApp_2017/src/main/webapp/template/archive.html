@@ -40,6 +40,10 @@
 								</div>
 						</span>
 					
+					<span style="margin-left: 10px">
+						<img src="images/Collaborator.png" height="23px" width="23px" data-toggle="tooltip" title="Collaborator">
+					</span>
+					
 					
 					<span uib-dropdown dropdown-append-to-body><img uib-dropdown-toggle alt="color" src="images/color.png" width="20px;" height="20px;" data-toggle="tooltip" title="Change color" style="margin-left: 20px; cursor: pointer;">
 						
@@ -72,11 +76,11 @@
 					</span>
 			
 					<span style="margin-left: 23px;cursor: pointer;" >
-						<img src="images/shareFB.png" height="18px" width="18px" data-toggle="tooltip" title="Share on Fb">
+						<img src="images/shareFB.png" data-ng-click="hc.shareWithFb(todo)" height="18px" width="18px" data-toggle="tooltip" title="Share on Fb">
 					</span>
 			
 						<span uib-dropdown dropdown-append-to-body >
-							<span uib-dropdown-toggle data-toggle="tooltip" title="More" style="margin-left: 10px; cursor: ">
+							<span uib-dropdown-toggle data-toggle="tooltip" title="More" style="margin-left: 7px; cursor: pointer;">
 								<img alt="icon" src="images/more.png" width="30px" height="25px">
 							</span>
 						

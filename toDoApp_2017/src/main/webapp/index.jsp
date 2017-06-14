@@ -26,7 +26,7 @@
 	<script src="bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.templates.js"></script>
 	
 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular-sanitize.js"></script> -->  
-	
+	<script src="https://connect.facebook.net/enUS/all.js"></script>
 	
 	<script src="js/app.js" type="text/javascript"></script>
 	
