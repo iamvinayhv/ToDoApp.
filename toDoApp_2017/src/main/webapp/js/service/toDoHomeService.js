@@ -106,6 +106,14 @@ myToDo.service("homeService",function ($http) {
 		});
 	}
 	
+	this.collaborator = function(shareWith) {
+		return $http({
+			url:"http://localhost:8080/toDoApp_2017/collaborator",
+			method:"POST",
+			data:shareWith
+		});
+	}
+	
 	this.signOut = function() {
 		return $http({
 			url:"http://localhost:8080/toDoApp_2017/signOut",

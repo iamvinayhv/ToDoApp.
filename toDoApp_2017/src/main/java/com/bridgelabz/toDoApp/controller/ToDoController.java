@@ -6,8 +6,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.ws.rs.Path;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,17 +34,16 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 @RestController
 public class ToDoController {
 
+	static Logger logger = Logger.getLogger(ToDoController.class);
+	
 	@Autowired
 	private ToDoService toDoService;
 
 	
-	
 	/**
 	 * to add the new note
 	 * 
-	 * @param toDo
-	 * @param request
-	 * @param response
+	 * @param toDo, request, response
 	 * @return String message and status
 	 * @throws JsonProcessingException 
 	 */
@@ -105,79 +105,28 @@ public class ToDoController {
 			System.out.println( data ); 
 			return new ResponseEntity<String>(data, HttpStatus.UNAUTHORIZED);		}
 	}
-	
-	
-	
 
+	
+	
 	/**
-	 * to get all the notes by using the usedId
+	 * to get all the notes
 	 * 
-	 * @param UserId
-	 * @param request
-	 * @param response
+	 * @param UserId, request, response
 	 * @return String message and status
-	 * @throws JsonProcessingException 
+	 * @throws Exception 
 	 */
 	@RequestMapping(value = "getNotes", method = RequestMethod.GET)
-	public ResponseEntity<String> getNotes( HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
+	public ResponseEntity<String> getNotes( HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		System.out.println("Comming");
-		
-		HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-
-		if (user != null && session != null) {
-			List<ToDo> todoList = toDoService.getNotes(user.getId());
-			System.out.println(user.getId());
-			
-			if (  !todoList.isEmpty()  ) {
-
-				Collections.reverse(todoList);
-
-				ObjectMapper mapper = new ObjectMapper();
-				ObjectNode root = mapper.createObjectNode();
-				
-				root.put("status", "success");
-				
-				root.putPOJO("todo", todoList);
-				root.putPOJO("user", user);
-				
-				String data = mapper.writeValueAsString(root);
-				System.out.println( data ); 
-				
-				
-				return new ResponseEntity<String>(data, HttpStatus.OK);
-				
-			} else {
-				
-				ObjectMapper mapper = new ObjectMapper();
-				ObjectNode root = mapper.createObjectNode();
-				
-				root.put("status", "notes are not added");
-				
-				
-				root.putPOJO("todo", todoList);
-				root.putPOJO("user", user);
-				
-				String data = mapper.writeValueAsString(root);
-				System.out.println( data ); 
-				
-				return new ResponseEntity<String>(data, HttpStatus.OK);
-				
-			}
-		}
-		else {
-			
-			ObjectMapper mapper = new ObjectMapper();
-			ObjectNode root = mapper.createObjectNode();
-			
-			root.put("status", "sign in");
 		
-			String data = mapper.writeValueAsString(root);
-			System.out.println( data ); 
-			
+		String data = toDoService.getNotes( user );
+		
+		if( user != null )
+			return new ResponseEntity<String>(data, HttpStatus.OK);
+		else
 			return new ResponseEntity<String>(data, HttpStatus.UNAUTHORIZED);
-		}
 	}
 
 	
@@ -204,13 +153,11 @@ public class ToDoController {
 
 			if (result != 0) {
 				
-				List<ToDo> todoList = toDoService.getNotes(user.getId());
 				
 				ObjectMapper mapper = new ObjectMapper();
 				ObjectNode root = mapper.createObjectNode();
 				
 				root.put("status", "success");
-				root.putPOJO("todo", todoList);
 				
 				String data = mapper.writeValueAsString(root);
 				System.out.println( data ); 
@@ -355,83 +302,6 @@ public class ToDoController {
 		}
 	}
 	
-	/**
-	 * @param toDo
-	 * @param request
-	 * @param response
-	 * @return ResponseEntity
-	 * @throws JsonProcessingException
-	 *//*
-	@RequestMapping(value="setReminder", method=RequestMethod.POST)
-	public ResponseEntity<String> setReminder ( @RequestBody ToDo toDo, HttpServletRequest request, HttpServletResponse response  ) throws JsonProcessingException {
-		
-		HttpSession session = request.getSession();
-		User  user = (User) session.getAttribute("user");
-		
-		if(session != null && user != null ){
-			toDoService.setReminder(toDo);
-			
-			ObjectMapper mapper = new ObjectMapper();
-			ObjectNode root = mapper.createObjectNode();
-			
-			root.put("message", "remainder updated");
-			root.putPOJO("todo", toDo);
-			
-			String data = mapper.writeValueAsString(root);
-			System.out.println( data ); 
-			
-			return new ResponseEntity<String>(data, HttpStatus.OK);
-		}
-		else{
-			
-			ObjectMapper mapper = new ObjectMapper();
-			ObjectNode root = mapper.createObjectNode();
-			
-			root.put("message", "signIn Required");
-			String data = mapper.writeValueAsString(root);
-			
-			return new ResponseEntity<String>(data, HttpStatus.UNAUTHORIZED);
-		}
-	}
-	
-	
-	*//**
-	 * @param request
-	 * @param response
-	 * @return ResponseEntity
-	 * @throws JsonProcessingException 
-	 *//*
-	@RequestMapping(value="cancelRemainder", method=RequestMethod.POST)
-	public ResponseEntity<String> cancelRemainder(@RequestBody ToDo toDo, HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
-		
-		System.out.println("not comming");
-		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("user");
-		
-		if( session != null && user != null ) {
-			
-			toDoService.cancelRemainder(toDo);
-			
-			ObjectMapper mapper = new ObjectMapper();
-			ObjectNode root = mapper.createObjectNode();
-			
-			root.put("message", "remainder updated");
-			
-			String data = mapper.writeValueAsString(root);
-			System.out.println( data ); 
-			
-			return new ResponseEntity<String>(data, HttpStatus.OK);
-		}
-		else {
-			ObjectMapper mapper = new ObjectMapper();
-			ObjectNode root = mapper.createObjectNode();
-			
-			root.put("message", "signIn Required");
-			String data = mapper.writeValueAsString(root);
-			
-			return new ResponseEntity<String>(data, HttpStatus.UNAUTHORIZED);
-		}
-	}*/
 	
 	
 	/**
@@ -473,5 +343,13 @@ public class ToDoController {
 		
 		
 	}
+	
+	/*@RequestMapping(value="collaborator")
+	public ResponseEntity<String> getUser(@RequestBody String email, HttpServletRequest request, HttpServletResponse response){
+		
+		toDoService.
+		
+		return null;
+	}*/
 	
 }

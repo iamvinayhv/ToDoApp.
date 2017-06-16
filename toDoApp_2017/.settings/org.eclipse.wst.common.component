@@ -5,13 +5,13 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp/css"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp/js"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp/template"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp/js/controller"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp/js/validation"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp/js/service"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp/images"/>
         <wb-resource deploy-path="/" source-path="/src/main/java/com/bridgelabz/toDoApp/Social"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <property name="context-root" value="toDoApp_2017"/>
         <property name="java-output-path" value="/toDoApp_2017/target/classes"/>
     </wb-module>

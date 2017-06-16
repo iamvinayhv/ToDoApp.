@@ -2,7 +2,14 @@ package com.bridgelabz.toDoApp.service.serviceInterface;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.http.ResponseEntity;
+
 import com.bridgelabz.toDoApp.model.ToDo;
+import com.bridgelabz.toDoApp.model.User;
+import com.fasterxml.jackson.core.JsonParseException;
 
 /**
  * @author bridgeit vinay
@@ -22,9 +29,9 @@ public interface ToDoService {
 	 * to get all notes added for particular user
 	 * 
 	 * @param id
-	 * @return List
+	 * @return {@link ResponseEntity}
 	 */
-	public List<ToDo> getNotes(int userId);
+	public String getNotes(User user) throws Exception;
 
 	/**
 	 * to delete the particular note by using id

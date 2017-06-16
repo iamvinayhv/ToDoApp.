@@ -8,26 +8,15 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 	
 	getToDoHtOb.then(function(data) {
 		
-		console.log("comming data "+data.status);
+		console.log(data);
 		$scope.user = data.data.user;
 		
 		if( data.status == 200 ) {
-			console.log(data.data.todo.length);
-			$scope.toDoList = data.data.todo;
-			toDoPin[data.data.todo.length]
 			
-			/*for(var i=0; i<data.data.todo.length; i++){
-				
-				if(data.data.todo[i].pin == true){
-					
-					$scope.toDoPin[i] = data.data.todo[i];
-				}
-				else if(data.data.todo[i].pin == false){
-					
-					toDoOthers[i] = data.data.todo[i];
-					
-				}
-			}*/
+			
+			$scope.toDoList = data.data.todo;
+			
+			
 			
 		}
 		else{
@@ -107,8 +96,11 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		$scope.clear = $scope.clear ? false :false;
 	}
 	
+	
+	
+	var homeCont=this;
 	this.collaborator = function(toDo,user) {
-		console.log(toDo);
+		console.log(user);
 		var modal = $uibModal.open({
 			templateUrl : "template/collaborator.html",
 			size:'md',
@@ -123,14 +115,14 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 		    	this.color = toDo.color;
 		    	this.pin = toDo.pin;
 		    	this.archive = toDo.archive;
-				this.name = toDo.user.name;
-				this.email = toDo.user.email;
+				this.name = user.name;
+				this.email = user.email;
 				
 				var $ctrlCollab = this;
 				
 				this.save = function () {
-		    		
-					$uibModalInstance.close({id:$ctrlCollab.id, title:$ctrlCollab.title, note:$ctrlCollab.note, remainder:$ctrlCollab.remainder, color:$ctrlCollab.color, pin:$ctrlCollab.pin, archive:$ctrlCollab.archive, email:$ctrlCollab});
+					console.log("ok");
+					$uibModalInstance.close({id:$ctrlCollab.id, title:$ctrlCollab.title, note:$ctrlCollab.note, remainder:$ctrlCollab.remainder, color:$ctrlCollab.color, pin:$ctrlCollab.pin, archive:$ctrlCollab.archive, email:$ctrlCollab.email, sharedWith:$ctrlCollab.sharedWith});
 					
 				};
 				
@@ -143,10 +135,26 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 			
 			controllerAs : "$ctrlCollab"
 		});
+		
+		 modal.result.catch(function(error){
+	        	console.log("error::",error); 
+	        	
+	         }).then(function(data){
+	        	if(data) {
+	        		console.log(data.sharedWith);
+	        		homeCont.collaborat(data.sharedWith);
+	        }
+	    })
 	}
 	
 	
-	var homeCont=this;
+	this.collaborat = function(data) {
+		
+		if( email != undefined )
+			var colObj = homeService.collaborator(data);
+	}
+	
+	
 	this.popUp = function(toDo, index) {
 		console.log(toDo+index);
 			var modal = $uibModal.open({

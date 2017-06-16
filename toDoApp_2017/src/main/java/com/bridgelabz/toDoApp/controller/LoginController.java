@@ -59,17 +59,9 @@ public class LoginController {
 			ObjectMapper mapper = new ObjectMapper();
 			ObjectNode root = mapper.createObjectNode();
 			
-			//ObjectNode todo = mapper.createObjectNode();
-			//todo.put("id", toDo.getId());
-			
 			root.put("status", "success");
 			
-			//toDo.setUser(null);
-			
-			
-			// set("todo", todo);
 			String data = mapper.writeValueAsString(root);
-			System.out.println( data ); 
 			return new ResponseEntity<String>(data, HttpStatus.OK);
 		
 		} else {
@@ -77,16 +69,8 @@ public class LoginController {
 			ObjectMapper mapper = new ObjectMapper();
 			ObjectNode root = mapper.createObjectNode();
 			
-			//ObjectNode todo = mapper.createObjectNode();
-			//todo.put("id", toDo.getId());
-			
 			root.put("status", "failure");
 			
-			//toDo.setUser(null);
-			
-			//root.putPOJO("todo", toDo); 
-			
-			// set("todo", todo);
 			String data = mapper.writeValueAsString(root);
 			System.out.println( data ); 
 			return new ResponseEntity<String>(data, HttpStatus.UNAUTHORIZED);		}

@@ -23,12 +23,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-/**
- * this controller class handles the request "/signUp"
- * 
- * @author bridgeit vinay
- *
- */
 @RestController
 public class UserController {
 
@@ -41,10 +35,7 @@ public class UserController {
 	/**
 	 * to signUp for the new User
 	 * 
-	 * @param user
-	 * @param bindingResult
-	 * @param request
-	 * @param response
+	 * @param user, bindingResult, request, response
 	 * @return String message and status
 	 * @throws JsonProcessingException 
 	 */
@@ -65,16 +56,8 @@ public class UserController {
 			ObjectMapper mapper = new ObjectMapper();
 			ObjectNode root = mapper.createObjectNode();
 			
-			//ObjectNode todo = mapper.createObjectNode();
-			//todo.put("id", toDo.getId());
-			
 			root.put("status", "errors");
 			
-			//toDo.setUser(null);
-			
-			//root.putPOJO("todo", toDo); 
-			
-			// set("todo", todo);
 			String data = mapper.writeValueAsString(root);
 			System.out.println( data );
 			
@@ -87,16 +70,8 @@ public class UserController {
 				ObjectMapper mapper = new ObjectMapper();
 				ObjectNode root = mapper.createObjectNode();
 				
-				//ObjectNode todo = mapper.createObjectNode();
-				//todo.put("id", toDo.getId());
-				
 				root.put("status", "success");
 				
-				//toDo.setUser(null);
-				
-				//root.putPOJO("todo", toDo); 
-				
-				// set("todo", todo);
 				String data = mapper.writeValueAsString(root);
 				System.out.println( data ); 
 				return new ResponseEntity<String>(data, HttpStatus.OK);
@@ -105,20 +80,28 @@ public class UserController {
 				ObjectMapper mapper = new ObjectMapper();
 				ObjectNode root = mapper.createObjectNode();
 				
-				//ObjectNode todo = mapper.createObjectNode();
-				//todo.put("id", toDo.getId());
-				
 				root.put("status", "failure");
 				
-				//toDo.setUser(null);
-				
-				//root.putPOJO("todo", toDo); 
-				
-				// set("todo", todo);
 				String data = mapper.writeValueAsString(root);
 				System.out.println( data ); 
 				return new ResponseEntity<String>(data, HttpStatus.ALREADY_REPORTED);
 			}
 		}
 	}
+	
+	
+	/*@RequestMapping(value="collaborator")
+	public ResponseEntity<String> getUser(@RequestBody String email, HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException{
+		
+		User user = userService.getUserByEmail(email);
+		
+		ObjectMapper mapper = new ObjectMapper();
+		ObjectNode root = mapper.createObjectNode();
+		
+		root.putPOJO("user", user);
+		String data = mapper.writeValueAsString(root);
+		 
+		return new ResponseEntity<String>(data, HttpStatus.OK);
+		
+	}*/
 }
