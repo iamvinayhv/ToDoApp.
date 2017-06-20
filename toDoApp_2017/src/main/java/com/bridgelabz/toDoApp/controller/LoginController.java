@@ -69,7 +69,7 @@ public class LoginController {
 			ObjectMapper mapper = new ObjectMapper();
 			ObjectNode root = mapper.createObjectNode();
 			
-			root.put("status", "failure");
+			root.put("status", "Un-authorized User");
 			
 			String data = mapper.writeValueAsString(root);
 			System.out.println( data ); 

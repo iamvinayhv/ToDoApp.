@@ -2,7 +2,6 @@ package com.bridgelabz.toDoApp.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -10,8 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -32,7 +29,6 @@ public class ToDo implements Serializable {
 	private String color;
 	private boolean pin;
 	private boolean archive;
-	private String shareWith;
 	private Date upDated = new Date();
 
 	
@@ -40,10 +36,6 @@ public class ToDo implements Serializable {
 	@JoinColumn
 	private User user;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	@PrimaryKeyJoinColumn
-	private List<User> sharedWith;
-	
 	public int getId() {
 		return id;
 	}
@@ -108,14 +100,6 @@ public class ToDo implements Serializable {
 		this.archive = archive;
 	}
 	
-	public String getShareWith() {
-		return shareWith;
-	}
-
-	public void setShareWith(String shareWith) {
-		this.shareWith = shareWith;
-	}
-
 	public User getUser() {
 		return user;
 	}
@@ -123,14 +107,6 @@ public class ToDo implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	public List<User> getSharedWith() {
-		return sharedWith;
-	}
 
-	public void setSharedWith(List<User> sharedWith) {
-		this.sharedWith = sharedWith;
-	}
-	
 	
 }

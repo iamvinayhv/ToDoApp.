@@ -12,6 +12,7 @@ public class GmailProfile {
 	private String displayName;
 	private Date birthday;
 	private String gender;
+	private UserImage image;
 	private List<GoogleEmails> emails;
 	
 	
@@ -38,6 +39,13 @@ public class GmailProfile {
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+	
+	public UserImage getImage() {
+		return image;
+	}
+	public void setImage(UserImage image) {
+		this.image = image;
 	}
 	public List<GoogleEmails> getEmails() {
 		return emails;

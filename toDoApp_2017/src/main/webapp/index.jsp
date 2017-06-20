@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="bower_components/angular-ui-bootstrap/dist/ui-bootstrap-csp.css">
 	<link rel="stylesheet" href="bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css">
+	<link rel="stylesheet" href="bower_components/ng-img-crop/compile/minified/ng-img-crop.css">
+	
 	
 	<script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
 	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
@@ -27,6 +29,8 @@
 	
 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular-sanitize.js"></script> -->  
 	<script src="https://connect.facebook.net/enUS/all.js"></script>
+	
+	<script src="bower_components/ng-img-crop/compile/minified/ng-img-crop.js" type="text/javascript"></script>
 	
 	<script src="js/app.js" type="text/javascript"></script>
 	

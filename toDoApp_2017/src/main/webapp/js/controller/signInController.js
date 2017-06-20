@@ -15,19 +15,14 @@ myToDo.controller("signInController",function ($scope,  $state, signInService, s
 			console.log(data);
 			
 			console.log(data.status);
-			if( data.status=="200"){
+			if( data.status == "200"){
 				
 				$state.go('home');
 			}
-			else
-			{
-				$scope.emailError = data.data.emailError;
-				var message = data.data.message;
-				$scope.errorMessage = message;
-			}
 		})
 		.catch( function(error){
-			console.log(error);
+			
+			$scope.errorMessage = error.data.status;
 		});
 	}	
 });

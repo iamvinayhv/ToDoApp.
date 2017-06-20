@@ -11,8 +11,8 @@
 							<img alt="icon" data-toggle="tooltip" title="Menu" src="images/Menu.png" width="25px" height="20px">
 						</span>
 						
-						<span class="navbar-brand"  style="font-weight: bold;margin-right: 30px;">
-							Nanna Keep
+						<span class="navbar-brand"  style="font-weight: bold;margin-right: 30px;color: black;">
+							Google Keep
 						</span>
 						
 						<span>
@@ -20,7 +20,7 @@
 						</span>
 						
 			
-		          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="margin-left: 25%;">
+		          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="margin-left: 10%;">
 		              <span class="sr-only">Toggle navigation</span>
 		              <span class="icon-bar"></span>
 		              <span class="icon-bar"></span>
@@ -60,14 +60,15 @@
 			            <li>
 			            	<span uib-dropdown >
 			            	
-			            	<div class="dropdown-toggle" uib-dropdown-toggle style="width: 40px; height:40px; border-radius: 50%; background-color: white; padding-left: 10px; font-size: 30px; margin-top:5px;margin-left:30px; background-color: #b5a429; color:white; cursor: pointer;" data-toggle="tooltip" title="ToDo Account : {{user.email}}">{{user.name.charAt(0)| uppercase}}</div>
+			            	<div class="dropdown-toggle" uib-dropdown-toggle style="background-image:url('{{user.image}}');width: 40px; height:40px; border-radius: 50%; background-color: white; padding-left: 10px; font-size: 30px; margin-top:5px;margin-left:30px; background-color: #b5a429; color:white; cursor: pointer;" data-toggle="tooltip" title="ToDo Account : {{user.email}}"><div >{{user.name.charAt(0)| uppercase}}</div></div>
 			          			<div  uib-dropdown-menu style="margin-right: -100px;">
 			          				
-			          				<div class="col-sm-3" style="width: 300px;height: 130px;padding-top: 10px;border-bottom: 2px solid;">
+			          				<div  class="col-sm-3" style="width: 300px;height: 130px;padding-top: 10px;border-bottom: 2px solid;">
 			          				
-			          					<div class="col-sm-1" id="userChar" data-toggle="tooltip" title="Profile" >
-			          						{{user.name.charAt(0) | uppercase}}
+			          					<div data-ng-click="hc.profile(user)" class="col-sm-1  profile-pic" style="background-image: url('{{user.image}}');"  id="userChar" data-toggle="tooltip" title="Change Profile">
+			          					
 			          					</div>
+			          					
 			          					
 			          					<div class="col-sm-6">
 			          					
@@ -106,7 +107,7 @@
 	
 <div id="homeBody" class="row"  data-ng-style="move">
 		<div class="col-sm-2"></div>
-			<div class="col-sm-9">
+			<div class="col-sm-10">
 					<div>
 						<div data-ng-show="!addNote">
 				
@@ -175,7 +176,7 @@
 					
 					<div data-ng-show="!others" data-ng-include="'template/others.html'"></div>
 			
-			<div class="col-sm-1"></div>
+			<!-- <div class="col-sm-2"></div> -->
 		</div>
 	</div>
 </div>

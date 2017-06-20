@@ -22,6 +22,7 @@ public class User implements Serializable {
 	private String name;
 	private String mobile;
 	private String email;
+	private String image;
 	private String password;
 
 	public int getId() {
@@ -65,4 +66,14 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
+	
+	
 }

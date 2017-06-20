@@ -7,36 +7,31 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.bridgelabz.toDoApp.dao.doaInterface.ToDoDao;
 import com.bridgelabz.toDoApp.model.ToDo;
 
+@Repository
 public class ToDoDaoImpl implements ToDoDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	private Session session = null;
-	
 	@Override
 	public boolean addNote(ToDo toDo) {
 		
 		try {
-			session = sessionFactory.openSession();
-			Transaction transaction = session.beginTransaction();
+			Session session = sessionFactory.getCurrentSession();
+			//Transaction transaction = session.beginTransaction();
 			
 			session.save(toDo);
-			transaction.commit();
+			//transaction.commit();
 			return true;
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 			return false;
-		}
-		finally {
-			if(session != null) {
-				session.close();
-			}
 		}
 	}
 
@@ -44,22 +39,15 @@ public class ToDoDaoImpl implements ToDoDao {
 	
 	@Override
 	public List<ToDo> getNotes(int UserId) {
-		
-		try {
-			session = sessionFactory.openSession();
-			Transaction transaction = session.beginTransaction();
+	
+			Session session = sessionFactory.getCurrentSession();
 			
 			String hql = "from ToDo where user_id=:userId";
 			Query query = session.createQuery(hql);
 			query.setParameter("userId", UserId);
 			List<ToDo> notes = query.list();
-			transaction.commit();
 			return notes;
-		}
-		finally {
-			if(session != null)
-			session.close();
-		}
+		
 	}
 
 
@@ -67,22 +55,14 @@ public class ToDoDaoImpl implements ToDoDao {
 	@Override
 	public int deleteNote(int id) {
 		
-		try {
-			session = sessionFactory.openSession();
-			Transaction transaction = session.beginTransaction();
-			
-			String hql = "delete from ToDo where id=:id";
-			Query query = session.createQuery(hql);
-			query.setParameter("id", id);
-			int result = query.executeUpdate();
-			transaction.commit();
-			return result;
-		}
-		finally {
-			if(session != null) {
-				session.close();
-			}
-		}
+		Session session = sessionFactory.getCurrentSession();
+		
+		String hql = "delete from ToDo where id=:id";
+		Query query = session.createQuery(hql);
+		query.setParameter("id", id);
+		int result = query.executeUpdate();
+		return result;
+		
 	}
 
 
@@ -91,22 +71,15 @@ public class ToDoDaoImpl implements ToDoDao {
 	public boolean updateNote(ToDo toDo) {
 		
 		try {
-			session = sessionFactory.openSession();
-			Transaction transaction = session.beginTransaction();
+			Session session = sessionFactory.getCurrentSession();
 			session.update(toDo);
-			transaction.commit();
 			return true;
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
-		finally {
-			if(session != null) {
-				session.close();
-			}
-			
-		}
+		
 		
 	}
 
@@ -116,87 +89,30 @@ public class ToDoDaoImpl implements ToDoDao {
 	public boolean copyToDo(ToDo copy) {
 		
 		try{
-			session = sessionFactory.openSession();
-			Transaction transaction = session.beginTransaction();
+			Session session = sessionFactory.getCurrentSession();
 			session.save(copy);
-			transaction.commit();
 			return true;
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
-		finally {
-			if( session != null ) {
-				session.close();
-			}
-		}
 		
 	}
-
-
-
-	/*@Override
-	public void setReminder(ToDo toDo) {
-		
-		try{
-			session = sessionFactory.openSession();
-			Transaction transaction = session.beginTransaction();
-			session.update(toDo);
-			transaction.commit();
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		finally {
-			if(session != null ){
-				session.close();
-			}
-		}
-	}
-
-
-
-	@Override
-	public void cancelRemainder(ToDo toDo) {
-		
-		try{
-			session = sessionFactory.openSession();
-			Transaction transaction = session.beginTransaction();
-			
-			session.update(toDo);
-			transaction.commit();
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		finally {
-			if(session!=null) {
-				session.close();
-			}
-		}
-	}*/
-
 
 
 	@Override
 	public void update(ToDo toDo) {
 		
 		try{
-			session = sessionFactory.openSession();
-			Transaction transaction = session.beginTransaction();
+			Session session = sessionFactory.getCurrentSession();
 			
 			session.update(toDo);
-			transaction.commit();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		finally {
-			if(session!=null) {
-				session.close();
-			}
-		}
+		
 	}
 
 }

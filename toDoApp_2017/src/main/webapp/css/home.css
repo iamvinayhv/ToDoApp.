@@ -47,7 +47,7 @@
 
 #title
 {
-	width: 777px;
+	width: 81.69%;
 	min-height: 45px;
 	padding-top: 12px;
 	padding-left: 20px;
@@ -61,7 +61,7 @@
 
 #note
 {
-	width: 777px;
+	width: 81.69%;
 	min-height: 45px;
 	padding-top: 12px;
 	padding-left: 20px;
@@ -74,7 +74,7 @@
 
 #done
 {
-	width: 777px;
+	width: 81.69%;
 	background-color: white;
 	/* height: 90px; */
 	padding-right: 20px;
@@ -155,11 +155,12 @@
 }
 
 .cont.list .card {
-	width: 777px;;
+	width: 81.69%;
 	background: #fff;
 	padding: 6px;
 	margin-bottom: 30px;
 	box-shadow: 10px 10px 5px  #d3d7cf;
+	
   
 }
 
@@ -169,13 +170,14 @@
 
 .cont.grid .card {
 	display: inline-block;
-	width: 245px;;
-	
+	width: 26%;
+	padding: 6px;
 	vertical-align: top;
 	margin-bottom: 30px;
 	margin-right: 20px;
 	background: #fff;
 	box-shadow: 10px 10px 5px  #d3d7cf;
+	
 }
 
 .cont.grid .card:hover {
@@ -237,14 +239,27 @@
 	width: 100px;
 	height:100px;
 	border-radius:50%;
-	padding-left:27px;
 	background-color: #b5a429;
-	font-size: 70px;
-	color:white;
 	box-sizing: border-box;
+	
 }
 
-@media(max-width: 700px){
+#userChar:hover {
+    background-color: rgba(0,0,0,.5);
+    z-index: 10000;
+    color: #fff;
+    transition: all .3s ease;
+    text-decoration: none;
+}
+
+#userChar span {
+    display: inline-block;
+    padding-top: 4.5em;
+    padding-bottom: 4.5em;
+}
+
+
+@media(max-width: 500px){
 	#cardId,#title,#note,#done{
 	width:97%;
 	}
@@ -260,14 +275,30 @@
 .modal-content {
     margin-top: 34%!important;
 }
+
+
 .sidebar-nav div:hover {
 text-decoration: none;
+color:white;
 background: rgba(0, 0, 0, .2);
 }
 
+.cropArea {
+  background: #E4E4E4;
+  overflow: hidden;
+  width:500px;
+  height:350px;
+}
 
 
+/* .cropArea
+{
+    overflow: hidden;
 
+    width: 500px;
+    height: 350px;
 
+    background: #e4e4e4;
+} */
 
 

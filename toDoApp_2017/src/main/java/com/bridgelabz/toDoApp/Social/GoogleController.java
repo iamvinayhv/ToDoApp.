@@ -81,6 +81,7 @@ public class GoogleController {
 			user.setName(profile.getDisplayName());
 			user.setEmail(profile.getEmails().get(0).getValue());
 			user.setPassword("");
+			user.setImage(profile.getImage().getUrl());
 			userService.signUp(user);
 		}
 		HttpSession session = request.getSession();

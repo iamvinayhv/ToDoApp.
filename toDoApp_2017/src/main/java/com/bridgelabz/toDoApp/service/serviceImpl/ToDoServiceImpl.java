@@ -12,6 +12,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bridgelabz.toDoApp.dao.doaInterface.ToDoDao;
 import com.bridgelabz.toDoApp.model.ToDo;
@@ -20,18 +22,21 @@ import com.bridgelabz.toDoApp.service.serviceInterface.ToDoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+@Service
 public class ToDoServiceImpl implements ToDoService {
 	
 	@Autowired
 	private ToDoDao toDoDao;
 
 	@Override
+	@Transactional
 	public boolean addNote(ToDo toDo) {
 		
 		return toDoDao.addNote(toDo);
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public String getNotes( User user ) throws Exception {
 
 		final Logger logger = Logger.getLogger(ToDoServiceImpl.class);
@@ -84,24 +89,28 @@ public class ToDoServiceImpl implements ToDoService {
 	
 	
 	@Override
+	@Transactional
 	public int deleteNote(int id) {
 		
 		return toDoDao.deleteNote(id);
 	}
 
 	@Override
+	@Transactional
 	public boolean updateNote(ToDo toDo) {
 		
 		return toDoDao.updateNote(toDo);
 	}
 
 	@Override
+	@Transactional
 	public boolean copyToDo(ToDo copy) {
 		
 		return toDoDao.copyToDo(copy);
 	}
 
 	@Override
+	@Transactional
 	public void update(ToDo toDo) {
 		
 		toDoDao.update(toDo);

@@ -4,6 +4,8 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 	var toDoPin =[];
 	var toDoOthers =[];
 	var user = [];
+	var collaborator = {};
+	
 	var getToDoHtOb = homeService.getNotes();
 	
 	getToDoHtOb.then(function(data) {
@@ -122,7 +124,7 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 				
 				this.save = function () {
 					console.log("ok");
-					$uibModalInstance.close({id:$ctrlCollab.id, title:$ctrlCollab.title, note:$ctrlCollab.note, remainder:$ctrlCollab.remainder, color:$ctrlCollab.color, pin:$ctrlCollab.pin, archive:$ctrlCollab.archive, email:$ctrlCollab.email, sharedWith:$ctrlCollab.sharedWith});
+					$uibModalInstance.close({toDo,sharedWith:$ctrlCollab.sharedWith});
 					
 				};
 				
@@ -141,8 +143,8 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 	        	
 	         }).then(function(data){
 	        	if(data) {
-	        		console.log(data.sharedWith);
-	        		homeCont.collaborat(data.sharedWith);
+	        		console.log(data);
+	        		homeCont.collaborat(data);
 	        }
 	    })
 	}
@@ -150,7 +152,7 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 	
 	this.collaborat = function(data) {
 		
-		if( email != undefined )
+		if( data.sharedWith != undefined )
 			var colObj = homeService.collaborator(data);
 	}
 	
@@ -455,6 +457,61 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 	this.showArchive = function() {
 		
 	}
+	
+	
+	this.profile = function(user) {
+		console.log(user);
+		var modal = $uibModal.open({
+			templateUrl : "template/profile.html",
+			size:'md',
+			controller:function( $uibModalInstance ){
+				
+				this.user = user;
+				
+				 $scope.myImage='';
+				    $scope.myCroppedImage='';
+
+				    var handleFileSelect=function(evt) {
+				        var file=evt.currentTarget.files[0];
+				        var reader = new FileReader();
+				        reader.onload = function (evt) {
+				          $scope.$apply(function($scope){
+				            $scope.myImage=evt.target.result;
+				          });
+				        };
+				        reader.readAsDataURL(file);
+				      };
+				    
+		angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
+				
+				this.save = function () {
+					console.log("ok");
+					$uibModalInstance.close({});
+					
+				};
+				
+				this.cancel = function () {
+					
+				    $uibModalInstance.dismiss('cancel');
+				};
+				
+			},
+			
+			controllerAs : "$ctrlCollab"
+		});
+		
+		 modal.result.catch(function(error){
+	        	console.log("error::",error); 
+	        	
+	         }).then(function(data){
+	        	if(data) {
+	        		console.log(data.sharedWith);
+	        		homeCont.collaborat(data.sharedWith);
+	        }
+	    })
+	}
+	
+	
 	
 	
 	this.signOut = function() {

@@ -2,6 +2,7 @@ package com.bridgelabz.toDoApp.controller;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bridgelabz.toDoApp.model.Collaborator;
 import com.bridgelabz.toDoApp.model.ToDo;
 import com.bridgelabz.toDoApp.model.User;
 import com.bridgelabz.toDoApp.service.serviceInterface.ToDoService;
@@ -344,12 +346,20 @@ public class ToDoController {
 		
 	}
 	
-	/*@RequestMapping(value="collaborator")
-	public ResponseEntity<String> getUser(@RequestBody String email, HttpServletRequest request, HttpServletResponse response){
+	
+	@RequestMapping(value="collaborator")
+	public ResponseEntity<String> collaborator(@RequestBody Map<String, String> colbMap, HttpServletRequest request, HttpServletResponse response){
 		
-		toDoService.
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
 		
+		System.out.println(colbMap.get("sharedWith"));
+		if( user != null ){
+			
+		}
 		return null;
-	}*/
+	}
+	
+
 	
 }
