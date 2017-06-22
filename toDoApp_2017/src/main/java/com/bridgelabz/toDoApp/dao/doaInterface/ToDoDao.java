@@ -2,7 +2,9 @@ package com.bridgelabz.toDoApp.dao.doaInterface;
 
 import java.util.List;
 
+import com.bridgelabz.toDoApp.model.Collaborator;
 import com.bridgelabz.toDoApp.model.ToDo;
+import com.bridgelabz.toDoApp.model.User;
 
 public interface ToDoDao {
 
@@ -16,7 +18,7 @@ public interface ToDoDao {
 	 * @param id
 	 * @return List
 	 */
-	public List<ToDo> getNotes(int UserId);
+	public List<ToDo> getNotes(User user);
 
 	/**
 	 * @param id
@@ -52,5 +54,9 @@ public interface ToDoDao {
 	 * @param toDo
 	 */
 	public void update(ToDo toDo);
+
+	public boolean collaborator(Collaborator collaborator);
+
+	public List<ToDo> getSharedNotes(User user);
 
 }

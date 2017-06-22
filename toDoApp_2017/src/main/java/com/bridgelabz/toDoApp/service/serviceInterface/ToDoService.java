@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.ResponseEntity;
 
+import com.bridgelabz.toDoApp.model.Collaborator;
 import com.bridgelabz.toDoApp.model.ToDo;
 import com.bridgelabz.toDoApp.model.User;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -31,7 +32,7 @@ public interface ToDoService {
 	 * @param id
 	 * @return {@link ResponseEntity}
 	 */
-	public String getNotes(User user) throws Exception;
+	public List<ToDo> getNotes(User user);
 
 	/**
 	 * to delete the particular note by using id
@@ -55,19 +56,12 @@ public interface ToDoService {
 	 */
 	public boolean copyToDo(ToDo copy);
 
-	/**
-	 * @param toDo
-	 *//*
-	public void setReminder(ToDo toDo);
-
-	*//**
-	 * @param toDoId
-	 *//*
-	public void cancelRemainder(ToDo toDo);*/
 
 	/**
 	 * @param toDo
 	 */
 	public void update(ToDo toDo);
+
+	public boolean collaborator(Collaborator collaborator);
 
 }

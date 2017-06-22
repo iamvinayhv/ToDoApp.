@@ -537,3 +537,23 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, homeServ
 
 });
 
+/*$( function() {
+    $( "#cardId" ).sortable();
+   // $( "#cardId" ).disableSelection();
+  } );*/
+
+$('#cardId').sortable({
+    items: '#cardId',
+   /* opacity: 0.7,
+    axis: 'y',
+    handle: 'i.icon-sort',*/
+    update: function() {
+        var data = $(this).sortable('serialize');
+        console.log(data);
+    }
+});
+
+
+
+
+

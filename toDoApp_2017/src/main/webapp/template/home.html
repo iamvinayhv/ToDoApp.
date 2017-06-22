@@ -15,10 +15,6 @@
 							Google Keep
 						</span>
 						
-						<span>
-						
-						</span>
-						
 			
 		          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="margin-left: 10%;">
 		              <span class="sr-only">Toggle navigation</span>
@@ -63,10 +59,10 @@
 			            	<div class="dropdown-toggle" uib-dropdown-toggle style="background-image:url('{{user.image}}');width: 40px; height:40px; border-radius: 50%; background-color: white; padding-left: 10px; font-size: 30px; margin-top:5px;margin-left:30px; background-color: #b5a429; color:white; cursor: pointer;" data-toggle="tooltip" title="ToDo Account : {{user.email}}"><div >{{user.name.charAt(0)| uppercase}}</div></div>
 			          			<div  uib-dropdown-menu style="margin-right: -100px;">
 			          				
-			          				<div  class="col-sm-3" style="width: 300px;height: 130px;padding-top: 10px;border-bottom: 2px solid;">
+			          				<div  class="col-sm-3" style="width: 300px;height: 130px;border-bottom: 2px solid;">
 			          				
-			          					<div data-ng-click="hc.profile(user)" class="col-sm-1  profile-pic" style="background-image: url('{{user.image}}');"  id="userChar" data-toggle="tooltip" title="Change Profile">
-			          					
+			          					<div data-ng-click="hc.profile(user)" class="col-sm-1  profile-pic"  id="userChar" data-toggle="tooltip" title="Change Profile">
+			          					{{user.name.charAt(0)| uppercase}}
 			          					</div>
 			          					
 			          					
@@ -96,10 +92,10 @@
 
 
   <div data-ng-class="{'is-visible':visible}" class="menu" style="z-index: 1;">
-	    <div class="sidebar-nav" style="margin-top: 10px; font-size: 20px;">
-			<a data-ui-sref="home" style="text-decoration: none;cursor: pointer;padd"><div class="sidebar-brand" style="padding:13px;"><img src="images/noteicon.png"><span style="padding-left: 20px;">Notes</span></div></a>
-			<a data-ui-sref="remainders" style="text-decoration: none;cursor: pointer;"><div class="sidebar-brand" style="padding: 13px;"><span><img src="images/remindericon.svg"></span><span style="padding-left: 25px;">Reminders</span></div></a>
-			<hr><a data-ui-sref="archive" style="text-decoration: none;cursor: pointer;"> <div class="sidebar-brand" style="padding: 13px;"><span><img src="images/archiveA.svg"></span><span style="padding-left: 26px;">Archive</span></div></a>
+	    <div class="sidebar-nav" style="margin-top: 10px; font-size: 20px;"><hr>
+			<a data-ui-sref="home" style="text-decoration: none;cursor: pointer;"><div class="sidebar-brand" style="padding:13px;"><img src="images/noteicon.png" width="20px" height="20px;"><span style="padding-left: 25px;color: rgba(0,0,0,.5)"><i>Notes</i></span></div></a>
+			<a data-ui-sref="remainders" style="text-decoration: none;cursor: pointer;"><div class="sidebar-brand" style="padding: 13px;"><span><img src="images/remindericon.svg" width="20px" height="20px;"></span><span style="padding-left: 25px;color: rgba(0,0,0,.5)"><i>Reminders</i></span></div></a>
+			<hr><a data-ui-sref="archive" style="text-decoration: none;cursor: pointer;"> <div class="sidebar-brand" style="padding: 13px;"><span><img src="images/archive.svg" width="20px" height="20px;"></span><span style="padding-left: 26px;color: rgba(0,0,0,.5)"><i>Archive</i></span></div></a>
 	    </div>
   </div>
 
@@ -140,19 +136,19 @@
 														<div  uib-dropdown-menu style="margin-top:-12px; margin-left: 25px" data-ng-model="toDo.color">
 															<div style="margin-left: 13px; padding-right: 10px;">
 																<span>
-																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ffffff;display: inline-block;border:1px solid ;" data-ng-click="hc.setColor(todo,'#ffffff')"></div>
-																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ff8a80;display: inline-block;" data-ng-click="hc.setColor(todo,'#ff8a80')"></div>
-																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ffd180;display: inline-block;" data-ng-click="hc.setColor(todo,'#ffd180')"></div>
-																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #80f8ff;display: inline-block;" data-ng-click="hc.setColor(todo,'#80f8ff')"></div>
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ffffff;display: inline-block;border:1px solid ;" data-ng-click="toDo.color='#ffffff'"></div>
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ff8a80;display: inline-block;" data-ng-click="toDo.color='#ff8a80'"></div>
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ffd180;display: inline-block;" data-ng-click="toDo.color='#ffd180'"></div>
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #80f8ff;display: inline-block;" data-ng-click="toDo.color='#80f8ff'"></div>
 																	
 																</span>
 															</div>
 															<div style="margin-left: 13px; padding-top: 10px;">
 																<span>
-																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #3498db;display: inline-block;" data-ng-click="hc.setColor(todo,'#3498db')"></div>
-																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ccff90;display: inline-block;" data-ng-click="hc.setColor(todo,'#ccff90')"></div>
-																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #fb7c05;display: inline-block;" data-ng-click="hc.setColor(todo,'#fb7c05')"></div>
-																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #95a5a6;display: inline-block;" data-ng-click="hc.setColor(todo,'#95a5a6')"></div>
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #3498db;display: inline-block;" data-ng-click="toDo.color='#3498db'"></div>
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ccff90;display: inline-block;" data-ng-click="toDo.color='#ccff90'"></div>
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #fb7c05;display: inline-block;" data-ng-click="toDo.color='#fb7c05'"></div>
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #95a5a6;display: inline-block;" data-ng-click="toDo.color='#95a5a6'"></div>
 																	
 																</span>
 															</div>

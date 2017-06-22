@@ -73,6 +73,12 @@ public class User implements Serializable {
 	public void setImage(String image) {
 		this.image = image;
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", mobile=" + mobile + ", email=" + email + ", image=" + image
+				+ ", password=" + password + "]";
+	}
 	
 	
 	

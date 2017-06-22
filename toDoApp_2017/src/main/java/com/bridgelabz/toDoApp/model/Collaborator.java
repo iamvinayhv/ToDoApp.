@@ -2,6 +2,7 @@ package com.bridgelabz.toDoApp.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,11 +22,15 @@ public class Collaborator implements Serializable {
 	@GenericGenerator(name="gen", strategy="increment")
 	@GeneratedValue(generator="gen")
 	private int id;
+	
+	@ManyToOne(cascade=CascadeType.DETACH)
+	@JoinColumn
 	private ToDo toDo;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.DETACH)
 	@JoinColumn
 	private User user;
+	
 	public int getId() {
 		return id;
 	}

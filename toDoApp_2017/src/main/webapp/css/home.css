@@ -241,6 +241,9 @@
 	border-radius:50%;
 	background-color: #b5a429;
 	box-sizing: border-box;
+	font-size: 77px;
+	padding-left: 24px;
+	
 	
 }
 
@@ -279,7 +282,7 @@
 
 .sidebar-nav div:hover {
 text-decoration: none;
-color:white;
+color:#000000!important;
 background: rgba(0, 0, 0, .2);
 }
 

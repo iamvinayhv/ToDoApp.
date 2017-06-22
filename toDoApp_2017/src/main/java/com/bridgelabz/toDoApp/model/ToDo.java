@@ -108,5 +108,11 @@ public class ToDo implements Serializable {
 		this.user = user;
 	}
 
+	@Override
+	public String toString() {
+		return "ToDo [id=" + id + ", title=" + title + ", note=" + note + ", remainder=" + remainder + ", color="
+				+ color + ", pin=" + pin + ", archive=" + archive + ", upDated=" + upDated + ", user=" + user + "]";
+	}
+
 	
 }

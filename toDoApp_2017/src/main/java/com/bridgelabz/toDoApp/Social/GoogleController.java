@@ -34,7 +34,6 @@ public class GoogleController {
 		
 		String googleLoginURL = googleConnection.getGoogleAuthURL(unid);
 		
-		System.out.println(googleLoginURL);
 		response.sendRedirect(googleLoginURL);
 		return;
 	}
@@ -47,8 +46,6 @@ public class GoogleController {
 		
 		String sessionState = (String) request.getSession().getAttribute("STATE");
 		String googlestate = request.getParameter("state");
-		
-		System.out.println(googlestate);
 		
 		if( sessionState == null || !sessionState.equals(googlestate) ){
 			response.sendRedirect("loginWithGoogle");
@@ -63,16 +60,10 @@ public class GoogleController {
 		
 		String authCode = request.getParameter("code");
 		
-		//System.out.println(authCode);
-		
 		String accessToken = googleConnection.getAccessToken(authCode);
-		
-		System.out.println("ACCess Token--> "+accessToken);
 		
 		//get user profile 
 		GmailProfile profile= googleConnection.getUserProfile(accessToken);
-		
-		
 		
 		User user = userService.getUserByEmail(profile.getEmails().get(0).getValue());
 		
@@ -82,6 +73,7 @@ public class GoogleController {
 			user.setEmail(profile.getEmails().get(0).getValue());
 			user.setPassword("");
 			user.setImage(profile.getImage().getUrl());
+			
 			userService.signUp(user);
 		}
 		HttpSession session = request.getSession();

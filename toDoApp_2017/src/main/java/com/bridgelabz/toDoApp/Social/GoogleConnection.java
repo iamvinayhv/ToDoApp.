@@ -22,10 +22,7 @@ public class GoogleConnection {
 	public static final String Redirect_URI = "http://localhost:8080/toDoApp_2017/googleConnection";
 	
 	
-	public GoogleConnection() {
-		System.out.println(getClass().getSimpleName()+" Created");
-		// TODO Auto-generated constructor stub
-	}
+	public GoogleConnection() {}
 	public String getGoogleAuthURL(String unid){
 		
 		String googleLoginURL = "";
@@ -35,6 +32,7 @@ public class GoogleConnection {
 					"&state="+unid+"&response_type=code&scope=profile email&approval_prompt=force&access_type=offline";
 		}
 		catch (UnsupportedEncodingException e) {
+			
 			e.printStackTrace();
 		}
 		return googleLoginURL;

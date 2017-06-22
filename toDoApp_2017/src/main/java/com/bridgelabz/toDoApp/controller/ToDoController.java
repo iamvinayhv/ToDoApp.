@@ -20,9 +20,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bridgelabz.toDoApp.model.Collaborator;
+import com.bridgelabz.toDoApp.model.CollaboratorObject;
 import com.bridgelabz.toDoApp.model.ToDo;
 import com.bridgelabz.toDoApp.model.User;
 import com.bridgelabz.toDoApp.service.serviceInterface.ToDoService;
+import com.bridgelabz.toDoApp.service.serviceInterface.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -40,6 +42,10 @@ public class ToDoController {
 	
 	@Autowired
 	private ToDoService toDoService;
+	
+	
+	@Autowired
+	private UserService userService;
 
 	
 	/**
@@ -52,17 +58,13 @@ public class ToDoController {
 	@RequestMapping(value = "/addNote")
 	public ResponseEntity<String> addNote(@RequestBody ToDo toDo, HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
 
-		System.out.println("Add note java");
-		
 		HttpSession session = request.getSession(false);
 		User user = (User) session.getAttribute("user");
 
 		if ( session != null && user != null ) {
-
+			
 			toDo.setUser(user);
 			
-			System.out.println(toDo.getId());
-
 			boolean result = toDoService.addNote(toDo);
 			
 			System.out.println(toDo.getId());
@@ -120,15 +122,58 @@ public class ToDoController {
 	@RequestMapping(value = "getNotes", method = RequestMethod.GET)
 	public ResponseEntity<String> getNotes( HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
 		User user = (User) session.getAttribute("user");
-		
-		String data = toDoService.getNotes( user );
-		
-		if( user != null )
-			return new ResponseEntity<String>(data, HttpStatus.OK);
-		else
-			return new ResponseEntity<String>(data, HttpStatus.UNAUTHORIZED);
+
+		if (user != null && session != null) {
+			List<ToDo> todoList = toDoService.getNotes(user);
+			
+			
+			if (  !todoList.isEmpty()  ) {
+
+				Collections.reverse(todoList);
+
+				ObjectMapper mapper = new ObjectMapper();
+				ObjectNode root = mapper.createObjectNode();
+				
+				root.put("status", "success");
+				
+				root.putPOJO("todo", todoList);
+				root.putPOJO("user", user);
+				
+				String data = mapper.writeValueAsString(root);
+				
+				return new ResponseEntity<String>(data, HttpStatus.OK);
+				
+			} else {
+				
+				ObjectMapper mapper = new ObjectMapper();
+				ObjectNode root = mapper.createObjectNode();
+				
+				root.put("status", "notes are not added");
+				
+				
+				root.putPOJO("todo", todoList);
+				root.putPOJO("user", user);
+				
+				String data = mapper.writeValueAsString(root);
+				
+				return new ResponseEntity<String>(data, HttpStatus.OK);
+				
+			}
+		}
+			else {
+				
+				ObjectMapper mapper = new ObjectMapper();
+				ObjectNode root = mapper.createObjectNode();
+				
+				root.put("status", "sign in");
+			
+				String data = mapper.writeValueAsString(root);
+				System.out.println( data ); 
+				
+				return new ResponseEntity<String>(data, HttpStatus.UNAUTHORIZED);
+			}
 	}
 
 	
@@ -348,14 +393,23 @@ public class ToDoController {
 	
 	
 	@RequestMapping(value="collaborator")
-	public ResponseEntity<String> collaborator(@RequestBody Map<String, String> colbMap, HttpServletRequest request, HttpServletResponse response){
+	public ResponseEntity<String> collaborator(@RequestBody CollaboratorObject colbObj, HttpServletRequest request, HttpServletResponse response){
 		
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		
-		System.out.println(colbMap.get("sharedWith"));
+		
 		if( user != null ){
 			
+			User shareWithUser = userService.getUserByEmail( colbObj.getSharedWith() );
+			
+			if( shareWithUser != null ) {
+				Collaborator collaborator = new Collaborator();
+				collaborator.setSharedWith(shareWithUser);
+				collaborator.setToDo(colbObj.getToDo());
+				
+				toDoService.collaborator(collaborator);
+			}
 		}
 		return null;
 	}
