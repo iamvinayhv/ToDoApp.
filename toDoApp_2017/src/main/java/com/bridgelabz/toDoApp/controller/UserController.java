@@ -56,7 +56,7 @@ public class UserController {
 			ObjectMapper mapper = new ObjectMapper();
 			ObjectNode root = mapper.createObjectNode();
 			
-			root.put("status", "errors");
+			root.put("status", "please fill all the details");
 			
 			String data = mapper.writeValueAsString(root);
 			System.out.println( data );
@@ -73,7 +73,7 @@ public class UserController {
 				root.put("status", "success");
 				
 				String data = mapper.writeValueAsString(root);
-				System.out.println( data ); 
+				 
 				return new ResponseEntity<String>(data, HttpStatus.OK);
 				
 			} else {
@@ -83,25 +83,10 @@ public class UserController {
 				root.put("status", "failure");
 				
 				String data = mapper.writeValueAsString(root);
-				System.out.println( data ); 
+				 
 				return new ResponseEntity<String>(data, HttpStatus.ALREADY_REPORTED);
 			}
 		}
 	}
 	
-	
-	/*@RequestMapping(value="collaborator")
-	public ResponseEntity<String> getUser(@RequestBody String email, HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException{
-		
-		User user = userService.getUserByEmail(email);
-		
-		ObjectMapper mapper = new ObjectMapper();
-		ObjectNode root = mapper.createObjectNode();
-		
-		root.putPOJO("user", user);
-		String data = mapper.writeValueAsString(root);
-		 
-		return new ResponseEntity<String>(data, HttpStatus.OK);
-		
-	}*/
 }

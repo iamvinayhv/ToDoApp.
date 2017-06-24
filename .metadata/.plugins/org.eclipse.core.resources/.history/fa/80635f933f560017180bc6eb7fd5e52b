@@ -1,0 +1,5 @@
+package com.bridgelabz.toDoApp.model;
+
+public class CollaboratorObject {
+
+}

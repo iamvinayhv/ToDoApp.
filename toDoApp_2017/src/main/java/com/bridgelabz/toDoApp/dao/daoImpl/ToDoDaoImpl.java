@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
@@ -26,20 +27,15 @@ public class ToDoDaoImpl implements ToDoDao {
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public boolean addNote(ToDo toDo) {
+	public void addNote(ToDo toDo) {
 		
-		try {
-			Session session = sessionFactory.getCurrentSession();
-			//Transaction transaction = session.beginTransaction();
-			
-			session.save(toDo);
-			//transaction.commit();
-			return true;
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
+		
+		Session session = sessionFactory.getCurrentSession();
+		//Transaction transaction = session.beginTransaction();
+		
+		session.save(toDo);
+		//transaction.commit();
+		
 	}
 
 
@@ -49,10 +45,11 @@ public class ToDoDaoImpl implements ToDoDao {
 	
 			Session session = sessionFactory.getCurrentSession();
 			
-			String hql = "from ToDo where user_id=:userId";
-			Query query = session.createQuery(hql);
-			query.setParameter("userId", user.getId());
-			List<ToDo> notes = query.list();
+			List<ToDo> notes = (List<ToDo>) session.createCriteria(ToDo.class)
+							  .createAlias("user", "u")
+							  .add( Restrictions.eq("u.id", user.getId()) )
+							  .list();
+							 
 			return notes;
 		
 	}
@@ -75,67 +72,39 @@ public class ToDoDaoImpl implements ToDoDao {
 
 
 	@Override
-	public boolean updateNote(ToDo toDo) {
+	public void updateNote(ToDo toDo) {
 		
-		try {
-			Session session = sessionFactory.getCurrentSession();
-			session.update(toDo);
-			return true;
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-		
+		Session session = sessionFactory.getCurrentSession();
+		session.update(toDo);
+	
 		
 	}
 
 
 
 	@Override
-	public boolean copyToDo(ToDo copy) {
+	public void copyToDo(ToDo copy) {
 		
-		try{
-			Session session = sessionFactory.getCurrentSession();
-			session.save(copy);
-			return true;
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-		
+		Session session = sessionFactory.getCurrentSession();
+		session.save(copy);
 	}
 
 
 	@Override
 	public void update(ToDo toDo) {
 		
-		try{
-			Session session = sessionFactory.getCurrentSession();
-			
-			session.update(toDo);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+		Session session = sessionFactory.getCurrentSession();
+		session.update(toDo);
+	
 	}
 
 
 
 	@Override
-	public boolean collaborator(Collaborator collaborator) {
-		
-		try{
-			Session session = sessionFactory.getCurrentSession();
-			
-			session.save(collaborator);
-			return true;
-		}
-		catch (Exception e) {
-			return false;
-		}
+	public void collaborator(Collaborator collaborator) {
+	
+		Session session = sessionFactory.getCurrentSession();
+		session.save(collaborator);
 		
 	}
 
@@ -144,30 +113,23 @@ public class ToDoDaoImpl implements ToDoDao {
 	@Override
 	public List<ToDo> getSharedNotes(User user) {
 			
+		Session session = sessionFactory.getCurrentSession();
 		
-		try{
-			Session session = sessionFactory.getCurrentSession();
-			
-			List<ToDo> sharedNotes = null;
-			
-			
-			Criteria criteria = session.createCriteria(Collaborator.class);
-			
-			ProjectionList projectionList = Projections.projectionList();
-			projectionList.add(Projections.property("toDo"));
-			criteria.setProjection(projectionList);
-			
-			criteria.add(Restrictions.eq("user", user));
-			
-			sharedNotes = criteria.list();
-			
-			return sharedNotes;
-		}
-		catch (Exception e) {
-			
-			e.printStackTrace();
-			return null;
-		}
+		List<ToDo> sharedNotes = null;
+		
+		
+		Criteria criteria = session.createCriteria(Collaborator.class);
+		
+		ProjectionList projectionList = Projections.projectionList();
+		projectionList.add(Projections.property("toDo"));
+		criteria.setProjection(projectionList);
+		
+		criteria.add(Restrictions.eq("user", user));
+		
+		sharedNotes = criteria.list();
+		
+		return sharedNotes;
+		
 	}
 
 }

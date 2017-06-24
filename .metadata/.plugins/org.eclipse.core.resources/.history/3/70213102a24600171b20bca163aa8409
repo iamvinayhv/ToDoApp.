@@ -1,0 +1,267 @@
+#search
+{
+	/* width:700px; */
+	height:50px;
+	outline: none;
+	background-color: #fcaf3e;
+	margin-top:7px;
+	border: none;
+	padding-left: 45px;
+	border-radius:5px;
+	background-image:url('../images/Search.png'); 
+	background-repeat: no-repeat;
+    background-position: 10px 12px;
+	
+}
+
+
+#navHead
+{
+	padding-top: 15px;
+	margin-left: -50px;
+}
+#navBar
+{
+	height: 65px;
+	background-color: #fb0;
+}
+
+#refresh
+{
+	margin-top:20px;
+	font-size: 17px;
+	padding-left: 25px;
+}
+
+#signOut
+{
+	margin-left: 170px;
+	margin-top: 20px;
+	font-size: 17px;
+}
+
+
+
+
+
+
+#homeBody
+{
+	margin-top: 100px;
+}
+
+
+
+#title
+{
+	width: 97%;
+	min-height: 45px;
+	padding-top: 12px;
+	padding-left: 20px;
+	background-color: white;
+	font-style: italic;
+	outline: none;
+	box-shadow: 2px 2px 2px 0px;
+	
+}
+
+
+#note
+{
+	width: 97%;
+	min-height: 45px;
+	padding-top: 12px;
+	padding-left: 20px;
+	background-color: white;
+	font-style: italic;
+	outline: none;
+	box-shadow: 2px 2px 2px 0px;
+	
+}
+
+#done
+{
+	width: 97%;
+	background-color: white;
+	/* height: 90px; */
+	padding-right: 20px;
+	padding-bottom: 15px;
+	box-shadow: 2px 2px 2px 0px;
+	font-weight: bold;
+	margin-left: 0px;
+	padding-top: 10px;
+}
+
+
+.glyphicon
+{
+	cursor: pointer;
+}
+
+
+#note:empty:before
+{
+    content: attr(placeholder);
+    display: block;
+}
+
+#title:empty:before
+{
+    content: attr(placeholder);
+    display: block;
+}
+
+
+#toDoTitle
+{
+	font-weight: bold;
+	word-wrap: break-word;
+	padding: 10px 10px 10px 20px;
+	font-family: sans-serif;
+	
+}
+#toDoNote
+{
+	word-wrap: break-word;
+	padding: 10px 20px 15px 20px;
+	font-family: fantasy;
+	font-size: 17px;
+}
+
+#icons
+{
+	padding-bottom:30px;
+	height: 20px;
+}
+
+#remainder
+{
+	padding-top:5px;
+	border-top: 1px dashed;
+	padding-left: 20px;
+	min-height: 26px;
+}
+
+
+
+
+
+
+#modal-body
+{
+	font-style: italic;
+}
+
+.btn
+{
+	position: inherit;
+}
+
+
+
+.cont .cardRow {
+  width: 100%;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+.cont.list .card {
+	width: 97%;
+	background: #fff;
+	padding: 6px;
+	margin-bottom: 30px;
+	box-shadow: 1px 1px 1px 1px;
+  
+}
+.cont.list .card div {
+  vertical-align: middle;
+}
+
+.cont.grid .card {
+	display: inline-block;
+	width: 30%;
+	
+	padding: 10px;
+	vertical-align: middle;
+	margin-bottom: 30px;
+	margin-right: 20px;
+	background: #fff;
+	padding: 6px;
+	box-shadow: 1px 1px 1px 1px;
+}
+
+.modal-content
+{
+	margin-top: 50%;
+}
+
+
+
+
+
+.menu {
+  width: 0px;
+  height: 100%;
+  margin-top:-35px;
+  background-color: #ffffff;
+  position: fixed;
+  left: 0;
+  transition: width 0.5s ease-in-out;
+  overflow: hidden;
+  
+}
+
+.menu.is-visible {
+  width: 200px;
+  transition: width 0.5s ease-in-out;
+}
+
+/* .dropdown-menu
+{
+	float: right;
+} */
+
+
+.uib-day button
+{
+	margin-left: 25%;
+}
+
+
+
+.uib-datepicker-popup.dropdown-menu{
+	width: 85%;
+	outline: none;
+}
+
+.btn
+{
+	margin-left: 10px;
+}
+
+
+#userChar
+{
+	width: 100px;
+	height:100px;
+	border-radius:50%;
+	padding-left:27px;
+	background-color: #b5a429;
+	font-size: 70px;
+	color:white;
+	box-sizing: border-box;
+}
+
+@media(max-width: 400px){
+	#cardId,#title,#note,#done{
+	width:97%;
+	}
+}
+
+
+#search:focus {
+    background-color: #ffffff;
+}
+
+
+
+

@@ -1,0 +1,12 @@
+package com.bridgelabz.toDoApp.model;
+
+public class UserImage {
+
+	private String url;
+
+	@Override
+	public String toString() {
+		return "UserImage [url=" + url + "]";
+	}
+	
+}

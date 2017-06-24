@@ -1,0 +1,178 @@
+<div data-ng-controller="homeController as hc">
+	<div>
+
+			<nav data-ng-style="navBar" id="navBar" class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color: #fb0;">
+			      <div class="container">
+			      <div class="navbar-header" style="display: flex;">
+		          <!-- <a class="navbar-brand" href="#menu-toggle" id="menu-toggle" >
+		          </a> -->
+					
+						<span data-ng-click="visible=!visible; hc.move()" style="cursor: pointer; margin-top: 15px; margin-right: 30px;">
+							<img alt="icon" data-toggle="tooltip" title="Menu" src="images/Menu.png" width="25px" height="20px">
+						</span>
+						
+						<span class="navbar-brand"  style="font-weight: bold;margin-right: 30px;color: black;">
+							Google Keep
+						</span>
+						
+			
+		          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="margin-left: 10%;">
+		              <span class="sr-only">Toggle navigation</span>
+		              <span class="icon-bar"></span>
+		              <span class="icon-bar"></span>
+		              <span class="icon-bar"></span>
+		            </button>
+		      </div>
+		      
+		      
+		       
+		      
+		      
+		      
+		      <div id="navbar" class="navbar-collapse collapse">
+			          
+			          <ul class="nav navbar-nav navbar-right" id="navBar">
+						
+						<li>
+							<input type="text" data-ng-model="searchText" data-ng-click="clear=true" placeholder="Search" id="search" data-toggle="tooltip" title="Search" data-ng-style="search">
+							<img data-ng-show="clear" alt="icon" src="images/Delete.png" width="15px" height="15px" data-ng-click="hc.clear()" style="margin-left: -40px;cursor: pointer;">
+						</li>
+						     
+						<li id="refresh">
+							<span class="glyphicon glyphicon-refresh" data-ng-click="hc.refresh()" data-toggle="tooltip" title="Refresh"></span>
+						</li>
+				      
+		          		
+						<li>
+				    		<span  class="glyphicon" data-ng-click="isList = !isList" data-ng-class="{'glyphicon-list': !isList, 'glyphicon-th-large': isList}" style="margin-top:15px; font-size: 17px;margin-left: 37px"></span>
+						</li>
+			        
+			            <li>
+				            <span>
+				            <img alt="notifn" src="images/notification.png" width="20px;" height="20px;" data-toggle="tooltip" title="Notification" style=" cursor: pointer; margin-top: 15px;margin-left: 37px;">
+				            </span>
+						</li>
+							
+			            <li>
+			            	<span uib-dropdown >
+			            	
+			            	<div class="dropdown-toggle" uib-dropdown-toggle style="background-image:url('{{user.image}}');width: 40px; height:40px; border-radius: 50%; background-color: white; padding-left: 10px; font-size: 30px; margin-top:5px;margin-left:30px; background-color: #b5a429; color:white; cursor: pointer;" data-toggle="tooltip" title="ToDo Account : {{user.email}}"><div >{{user.name.charAt(0)| uppercase}}</div></div>
+			          			<div  uib-dropdown-menu style="margin-right: -100px;">
+			          				
+			          				<div  class="col-sm-3" style="width: 300px;height: 130px;padding-top: 10px;border-bottom: 2px solid;">
+			          				
+			          					<div data-ng-click="hc.profile(user)" class="col-sm-1  profile-pic"  id="userChar" data-toggle="tooltip" title="Change Profile">
+			          					{{user.name.charAt(0)| uppercase}}
+			          					</div>
+			          					
+			          					
+			          					<div class="col-sm-6">
+			          					
+			          					<span style="font-weight: bold; padding-top: 10px">{{user.name}}</span>
+			          					<span>{{ user.mobile}}</span>
+			          					<span>{{ user.email}}</span>
+			          					
+			          					</div>
+			          				</div>
+			          			
+			          			<div style="padding-left: 15px; padding-right: 15px;padding-bottom: 10px;">
+			          				<button style="margin-top: 15px;">Add account</button> <button data-ng-click="hc.signOut()" style="float: right;margin-top: 15px;">sign Out</button>
+			          			</div>
+			          			</div>
+			          		</span>
+			          			
+			          		
+			          	</li>
+			          	
+			          </ul>
+			      </div>
+			</nav>
+</div>
+
+
+
+  <div data-ng-class="{'is-visible':visible}" class="menu" style="z-index: 1;">
+	    <div class="sidebar-nav" style="margin-top: 10px; font-size: 20px;"><hr>
+			<a data-ui-sref="home" style="text-decoration: none;cursor: pointer;"><div class="sidebar-brand" style="padding:13px;"><img src="images/noteicon.png" width="20px" height="20px;"><span style="padding-left: 25px;color: rgba(0,0,0,.5)"><i>Notes</i></span></div></a>
+			<a data-ui-sref="remainders" style="text-decoration: none;cursor: pointer;"><div class="sidebar-brand" style="padding: 13px;"><span><img src="images/remindericon.svg" width="20px" height="20px;"></span><span style="padding-left: 25px;color: rgba(0,0,0,.5)"><i>Reminders</i></span></div></a>
+			<hr><a data-ui-sref="archive" style="text-decoration: none;cursor: pointer;"> <div class="sidebar-brand" style="padding: 13px;"><span><img src="images/archive.svg" width="20px" height="20px;"></span><span style="padding-left: 26px;color: rgba(0,0,0,.5)"><i>Archive</i></span></div></a>
+	    </div>
+  </div>
+
+
+	
+<div id="homeBody" class="row"  data-ng-style="move">
+		<div class="col-sm-2"></div>
+			<div class="col-sm-10">
+					<div>
+						<div data-ng-show="!addNote">
+				
+							<div data-ng-show ="IsVisible" id="title" name="title" data-ng-model="toDo.title" newcontenteditable contenteditable="true" placeholder="Title" style="font-weight: bold;"></div>
+							<div id="note" name="note" data-ng-model="toDo.note" data-ng-click="hc.showHide()" newcontenteditable contenteditable="true" placeholder="Take a note..."></div>
+							
+							<div class="row" data-ng-show ="done" id="done">
+							
+							
+										<div class="col-sm-4">
+												
+												<i class="dropdown" style="padding-top: 10px; padding-bottom: 10px">
+													  <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" >
+													    <div style="display: inline;">
+													    <span class="input-group" data-toggle="tooltip" title="Set Remainder" style=" padding-left: 5px;"><input type="text" class="form-control" data-ng-model="toDo.remainder" name="remainder" placeholder="Pick date & time">
+													    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i>
+													    </span></span></div>
+													   
+													  </a>
+												 
+													  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+													    <datetimepicker data-ng-model="toDo.remainder" data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }"/>
+													  </ul>
+												</i> 
+											</div>	
+												
+											<div class="col-sm-1" style="background-color: {{color}}">
+												<span uib-dropdown dropdown-append-to-body><img uib-dropdown-toggle alt="color" src="images/color.png" width="20px;" height="20px;" data-toggle="tooltip" title="Change color" style="margin-top:5px;cursor: pointer;">
+														
+														<div  uib-dropdown-menu style="margin-top:-12px; margin-left: 25px" data-ng-model="toDo.color">
+															<div style="margin-left: 13px; padding-right: 10px;">
+																<span>
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ffffff;display: inline-block;border:1px solid ;" data-ng-click="toDo.color=#ffffff"></div>
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ff8a80;display: inline-block;" data-ng-click="toDo.color"></div>
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ffd180;display: inline-block;" data-ng-click="hc.setColor(todo,'#ffd180')"></div>
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #80f8ff;display: inline-block;" data-ng-click="hc.setColor(todo,'#80f8ff')"></div>
+																	
+																</span>
+															</div>
+															<div style="margin-left: 13px; padding-top: 10px;">
+																<span>
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #3498db;display: inline-block;" data-ng-click="hc.setColor(todo,'#3498db')"></div>
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ccff90;display: inline-block;" data-ng-click="hc.setColor(todo,'#ccff90')"></div>
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #fb7c05;display: inline-block;" data-ng-click="hc.setColor(todo,'#fb7c05')"></div>
+																	<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #95a5a6;display: inline-block;" data-ng-click="hc.setColor(todo,'#95a5a6')"></div>
+																	
+																</span>
+															</div>
+														</div>
+														
+												</span>
+											</div>	
+										<span data-ng-model="toDo.pin" style="cursor: pointer;"><img alt="icon" src="images/pin.svg" width="20px" height="20px" data-toggle="tooltip" title="Pin note" data-ng-click="toDo.pin='true'" style="margin-top: 5px;"></span>
+									<span style="float: right;margin-top:10px; cursor: pointer;" data-ng-click="hc.addNote()" data-toggle="tooltip" title="Add note">DONE</span>
+							</div>
+						</div>
+					</div>
+					
+					<!-- <img data-ng-if="toDoList.length == 0" src="images/todo.png"> -->
+					
+					<div data-ng-show="archive" data-ng-include="'template/archive.html'"></div>
+					
+					<div data-ng-show="remainders" data-ng-include="'template/remainders.html'"></div>
+					
+					<div data-ng-show="!pinUp" data-ng-include="'template/pinUp.html'"></div>
+					
+					<div data-ng-show="!others" data-ng-include="'template/others.html'"></div>
+			
+			<!-- <div class="col-sm-2"></div> -->
+		</div>
+	</div>
+</div>

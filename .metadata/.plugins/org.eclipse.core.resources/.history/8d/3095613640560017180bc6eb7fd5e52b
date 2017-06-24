@@ -1,0 +1,22 @@
+package com.bridgelabz.toDoApp.model;
+
+public class CollaboratorObject {
+
+	private ToDo toDo;
+	private String sharedWith;
+	
+	
+	public ToDo getTodo() {
+		return todo;
+	}
+	public void setTodo(ToDo todo) {
+		this.todo = todo;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+}

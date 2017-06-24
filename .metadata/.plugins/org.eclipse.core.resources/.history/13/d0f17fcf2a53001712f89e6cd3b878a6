@@ -1,0 +1,18 @@
+package com.bridgelabz.toDoApp.model;
+
+import java.net.URL;
+
+public class UserImage {
+
+	private URL image;
+
+	public URL getImage() {
+		return image;
+	}
+
+	public void setImage(URL image) {
+		this.image = image;
+	}
+	
+	
+}

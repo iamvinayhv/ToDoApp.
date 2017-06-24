@@ -1,0 +1,113 @@
+<div class="row">
+	<div class="col-sm-4"></div>
+		<div class="col-sm-4">
+
+			<div data-ng-controller="signUpController">
+					
+				<nav id="navBar" class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color: #fb0;">
+					      <div class="container">
+					      <div class="navbar-header" style="display: flex;">
+				         
+								
+								<div class="navbar-brand" style="font-weight: bold;">
+									SignUp to ToDoApp
+								</div>
+								<img src="images/todo.png" height="60px" width="60px">
+						</div>
+				      </div>
+				      
+				</nav>
+					
+						
+						
+				<form name="signUpForm">
+				
+					<div id="signUpBody" >
+					
+						<div class="form-group">
+								<label for="name" class="cols-sm-2 control-label">Name</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><img src="images/Contact.png" width="20px" height="20px"></span>
+                                    <input type="text" class="form-control" name="name" id="form_name" data-ng-model="name" placeholder="Your Name" required/>
+								</div>
+							</div>
+						</div>
+						
+						<span style="color: red" class="error_form" id="name_error_msg"></span>		
+											
+											
+										
+						<div class="form-group">
+								<label for="mobile" class="cols-sm-2 control-label">Mobile</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><img src="images/phone.png" width="20px" height="20px"></span>
+									<input type="number" class="form-control" name="mobile" id="form_mobile" data-ng-model="mobile"  placeholder="Your mobile Number" data-ng-minlength="10" data-ng-maxlength="10" required/>
+								</div>
+								<div style="color: red" data-ng-show="signUpForm.mobile.$dirty">
+									<div data-ng-show="signUpForm.mobile.$invalid">mobile number must be 10 digits</div>
+								</div>
+							</div>
+						</div>
+								
+						<span style="color:red" class="error_form" id="mobile_error_msg"></span>
+								
+								
+									
+									
+						<div class="form-group">
+								<label for="email" class="cols-sm-2 control-label">Email</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><img src="images/mail.png" width="20px" height="20px"></span>
+									<input type="email" class="form-control" name="mail" id="form_email" data-ng-model="email" placeholder="Your Email" required/>
+								</div>
+								
+									<div style="color: red" data-ng-show="signUpForm.mail.$dirty">
+										<div data-ng-show="signUpForm.mail.$error.required">email is required</div>
+										<div data-ng-show="signUpForm.mail.$error.email">invalid email</div>
+									</div>
+							</div>
+						</div>
+						
+						<span style="color: red" class="error_form" id="email_error_msg"></span>		
+							
+								
+						<div class="form-group">
+								<label for="password" class="cols-sm-2 control-label">password</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><img src="images/Password.png" width="20px" height="20px"></span>
+									<input type="password" class="form-control" name="password" id="form_password" data-ng-model="password"  placeholder="Password" data-ng-minlength="7" required/>
+								</div>
+								
+								<div style="color: red" data-ng-show="signUpForm.password.$dirty">
+										<div data-ng-show="signUpForm.password.$error.required">password is required</div>
+										<div data-ng-show="signUpForm.password.$invalid">password must me minimum of 7 character</div>
+								</div>
+								
+							</div>
+						</div>
+						
+						<span style="color: red" class="error_form" id="password_error_msg"></span>	
+								
+							<div s>{{errorMessage}}</div>
+								
+						<div>
+							<button id="signUp" class="btn btn-success" type="button" data-ng-click="signUp()" style="width: 30%;margin-left: 15%;width: 60%;height: 40px;background-color: #fb0;margin-top: 15px;margin-bottom: 15px;">SignUp</button>
+						</div>			
+											
+					</form>
+					
+			</div>
+			
+			<div id="signUpBottom">
+				<a style="color: black;" data-ui-sref="signIn">Already Registered? SignIn</a>
+			</div>
+			
+      
+	</div>
+</div>
+
+

@@ -1,0 +1,6 @@
+package com.bridgelabz.toDoApp.model;
+
+public class UserImage {
+
+	private String imageUrl
+}

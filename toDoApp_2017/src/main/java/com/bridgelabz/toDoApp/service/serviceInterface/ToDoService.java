@@ -24,7 +24,7 @@ public interface ToDoService {
 	 * @param toDo
 	 * @return true/false
 	 */
-	public boolean addNote(ToDo toDo);
+	public void addNote(ToDo toDo);
 
 	/**
 	 * to get all notes added for particular user
@@ -48,13 +48,13 @@ public interface ToDoService {
 	 * @param toDo
 	 * @return true/false
 	 */
-	public boolean updateNote(ToDo toDo);
+	public void updateNote(ToDo toDo);
 
 	/**
 	 * @param copy
 	 * @return
 	 */
-	public boolean copyToDo(ToDo copy);
+	public void copyToDo(ToDo copy);
 
 
 	/**
@@ -62,6 +62,6 @@ public interface ToDoService {
 	 */
 	public void update(ToDo toDo);
 
-	public boolean collaborator(Collaborator collaborator);
+	public void collaborator(Collaborator collaborator, ToDo toDo);
 
 }

@@ -1,0 +1,33 @@
+#signUpBody
+{
+	width:100%;
+	hight: 200px;
+	margin-top: 100px;
+	padding-top:30px;
+	padding-left:50px;
+	padding-bottom: 10px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	color:#000000;
+	background-color: white;
+	box-shadow: 1px 1px 1px 1px;
+}
+
+
+
+#signUpBottom {
+    padding: 6px 20px;
+    margin-top: 15px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding-left: 27%;
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px;
+    margin-bottom: 30px;
+}
+
+
+
+#body {
+	background-color: #eeeeec;
+}

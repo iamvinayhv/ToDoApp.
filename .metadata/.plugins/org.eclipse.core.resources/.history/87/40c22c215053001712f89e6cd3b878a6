@@ -1,0 +1,11 @@
+package com.bridgelabz.toDoApp.model;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Collaborator {
+
+	private int id;
+	private ToDo toDo;
+	private User shared;
+}

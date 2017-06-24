@@ -24,12 +24,13 @@ public class Collaborator implements Serializable {
 	private int id;
 	
 	@ManyToOne(cascade=CascadeType.DETACH)
-	@JoinColumn
 	private ToDo toDo;
 	
 	@ManyToOne(cascade=CascadeType.DETACH)
-	@JoinColumn
 	private User user;
+	
+	@ManyToOne(cascade=CascadeType.DETACH)
+	private User sharedUser;
 	
 	public int getId() {
 		return id;
@@ -43,11 +44,17 @@ public class Collaborator implements Serializable {
 	public void setToDo(ToDo toDo) {
 		this.toDo = toDo;
 	}
-	public User getSharedWith() {
+	public User getUser() {
 		return user;
 	}
-	public void setSharedWith(User user) {
+	public void setUser(User user) {
 		this.user = user;
+	}
+	public User getSharedUser() {
+		return sharedUser;
+	}
+	public void setSharedUser(User sharedUser) {
+		this.sharedUser = sharedUser;
 	}
 	
 	

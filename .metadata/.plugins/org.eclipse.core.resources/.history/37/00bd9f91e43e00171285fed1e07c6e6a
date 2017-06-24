@@ -1,0 +1,66 @@
+<div>
+	<nav id="navBar" class="navbar navbar-default navbar-fixed-top" role="navigation">
+	      <div class="container">
+	      
+				<div class="navbar-header" id="navHead">
+				
+					<span><span style="font-size: 20px;">&#9776;</span>
+					<strong style="padding-left: 35px; font-size: 22px;">Your </strong><i style="font-size: 20px;">Keep</i>
+					<span class="glyphicon glyphicon-search"></span><input type="text" id="search" placeholder="Search"></span>
+	            
+				</div>
+				
+	          <ul class="nav navbar-nav navbar-right" id="navBar">
+	          
+	            <li id="refresh"><span class="glyphicon glyphicon-repeat"></span></li>
+	            <li><span id="list" class="glyphicon glyphicon-th-list" data-ng-click="list()" data-ng-style="listIcon"></span></li>
+	            <li><span id="grid" class="glyphicon glyphicon-th-large" data-ng-click="grid()" data-ng-style="gridIcon"></span></li>
+	            <li><span id="signOut" class="glyphicon glyphicon-off" data-ng-click="hc.signOut()"></span></li>
+	            
+	          </ul>
+	      </div>
+	</nav>
+</div>
+
+
+
+
+
+<div id="homeBody" class="row">
+		<div class="col-sm-2"></div>
+			<div class="col-sm-8">
+				<div data-ng-controller="homeController as hc">
+						
+					<div>
+						<div>
+						
+							<div data-ng-show ="IsVisible" id="title" name="title" data-ng-model="toDo.title" newcontenteditable contenteditable="true" placeholder="Title" style="font-weight: bold;"></div>
+							<div id="note" name="note" data-ng-model="toDo.note" data-ng-click="hc.showHide()" newcontenteditable contenteditable="true" placeholder="Take a note..."></div>
+							<div data-ng-show ="done" id="done" data-ng-click="hc.addNote()">DONE</div>
+							
+						</div>
+					</div>
+					
+			 <button type="button" class="btn btn-danger glyphicon" data-ng-click="isList = !isList" ng-class="{'glyphicon-list': !isList, 'glyphicon-th-large': isList}"></button>
+					
+					
+					<div class="cont" data-ng-class="{list: isList, grid: !isList}">
+						<div class="cardRow">
+							<div class="card" data-ng-repeat="todo in toDoList">
+						
+								<div  data-ng-click="hc.popUp(todo, $index)" >
+									<div id="toDoTitle">{{todo.title}}</div>
+									<div id="toDoNote">{{todo.note}}</div>
+								</div>
+								<div>
+									<span data-ng-click="hc.deleteNote(todo.id, $index)" class="glyphicon glyphicon-trash" style="padding-left: 20px; padding-bottom: 10px;padding-top: 20px;"></span>
+								</div>
+							</div>
+						</div>
+					
+					</div>	
+				</div>
+			</div>
+		<div class="col-sm-2"></div>
+</div>
+

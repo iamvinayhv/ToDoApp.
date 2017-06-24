@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,6 +24,8 @@ public class ToDo implements Serializable {
 	@GenericGenerator(name = "gen", strategy = "increment")
 	@GeneratedValue(generator = "gen")
 	private int id;
+	
+	@Column(name="title", nullable=false)
 	private String title;
 	private String note;
 	private Date remainder;
@@ -30,10 +33,11 @@ public class ToDo implements Serializable {
 	private boolean pin;
 	private boolean archive;
 	private Date upDated = new Date();
+	
+	private String sharedWithUserEmail;
 
 	
 	@ManyToOne(cascade = CascadeType.DETACH)
-	@JoinColumn
 	private User user;
 
 	public int getId() {
@@ -108,11 +112,22 @@ public class ToDo implements Serializable {
 		this.user = user;
 	}
 
+	
+	public String getSharedWithUserEmail() {
+		return sharedWithUserEmail;
+	}
+
+	public void setSharedWithUserEmail(String sharedWithUserEmail) {
+		this.sharedWithUserEmail = sharedWithUserEmail;
+	}
+
 	@Override
 	public String toString() {
 		return "ToDo [id=" + id + ", title=" + title + ", note=" + note + ", remainder=" + remainder + ", color="
-				+ color + ", pin=" + pin + ", archive=" + archive + ", upDated=" + upDated + ", user=" + user + "]";
+				+ color + ", pin=" + pin + ", archive=" + archive + ", upDated=" + upDated + ", sharedWithUserEmail="
+				+ sharedWithUserEmail + ", user=" + user + "]";
 	}
 
+	
 	
 }

@@ -1,0 +1,29 @@
+#signUpBody
+{
+	width:100%;
+	hight: 200px;
+	margin-top: 100px;
+	padding-top:10px;
+	padding-left:10px;
+	padding-bottom: 10px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	background-image: url("../images/signIn/board.jpg");
+}
+
+
+
+#signUpBottom {
+    padding: 6px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: #204a87;
+    padding-left: 27%;
+}
+
+
+
+#body {
+	background-color: #eeeeec;
+}

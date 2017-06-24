@@ -1,0 +1,11 @@
+package com.bridgelabz.toDoApp.model;
+
+public class CollaboratorObject {
+
+	private ToDo toDo;
+	private String sharedWith;
+	
+	
+	
+	
+}

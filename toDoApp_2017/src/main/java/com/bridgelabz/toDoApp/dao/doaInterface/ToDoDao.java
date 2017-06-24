@@ -12,7 +12,7 @@ public interface ToDoDao {
 	 * @param toDo
 	 * @return true/false
 	 */
-	public boolean addNote(ToDo toDo);
+	public void addNote(ToDo toDo);
 
 	/**
 	 * @param id
@@ -32,13 +32,13 @@ public interface ToDoDao {
 	 * @param toDo
 	 * @return true/false
 	 */
-	public boolean updateNote(ToDo toDo);
+	public void updateNote(ToDo toDo);
 
 	/**
 	 * @param copy
 	 * @return true/false
 	 */
-	public boolean copyToDo(ToDo copy);
+	public void copyToDo(ToDo copy);
 
 	/**
 	 * @param toDo
@@ -55,7 +55,7 @@ public interface ToDoDao {
 	 */
 	public void update(ToDo toDo);
 
-	public boolean collaborator(Collaborator collaborator);
+	public void collaborator(Collaborator collaborator);
 
 	public List<ToDo> getSharedNotes(User user);
 

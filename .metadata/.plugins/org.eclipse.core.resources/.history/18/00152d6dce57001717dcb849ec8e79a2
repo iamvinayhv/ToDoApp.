@@ -1,0 +1,64 @@
+package com.bridgelabz.toDoApp.model;
+
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+public class Collaborator implements Serializable {
+
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GenericGenerator(name="gen", strategy="increment")
+	@GeneratedValue(generator="gen")
+	private int id;
+	
+	@ManyToOne(cascade=CascadeType.DETACH)
+	@JoinColumn
+	private ToDo toDo;
+	
+	@ManyToOne(cascade=CascadeType.DETACH)
+	@JoinColumn
+	private User user;
+	
+	private User sharedUser;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public ToDo getToDo() {
+		return toDo;
+	}
+	public void setToDo(ToDo toDo) {
+		this.toDo = toDo;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public User getSharedUser() {
+		return sharedUser;
+	}
+	public void setSharedUser(User sharedUser) {
+		this.sharedUser = sharedUser;
+	}
+	
+	
+}

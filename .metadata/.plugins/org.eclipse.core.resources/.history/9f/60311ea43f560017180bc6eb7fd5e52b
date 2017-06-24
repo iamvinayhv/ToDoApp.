@@ -1,0 +1,7 @@
+package com.bridgelabz.toDoApp.model;
+
+public class CollaboratorObject {
+
+	private ToDo todo;
+	private String email;
+}

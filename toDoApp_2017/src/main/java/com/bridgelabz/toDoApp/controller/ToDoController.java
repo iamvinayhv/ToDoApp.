@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -65,11 +66,8 @@ public class ToDoController {
 			
 			toDo.setUser(user);
 			
-			boolean result = toDoService.addNote(toDo);
-			
-			System.out.println(toDo.getId());
-
-			if (result) {
+			try{
+				toDoService.addNote(toDo);
 				
 				ObjectMapper mapper = new ObjectMapper();
 				ObjectNode root = mapper.createObjectNode();
@@ -81,32 +79,24 @@ public class ToDoController {
 				
 				String data = mapper.writeValueAsString(root);
 				
-				System.out.println( data );
 				return new ResponseEntity<String>(data, HttpStatus.OK);
-			} else {
+			}
+			catch (Exception e) {
 				
-
 				ObjectMapper mapper = new ObjectMapper();
 				ObjectNode root = mapper.createObjectNode();
-				
 				root.put("status", "failure");
-				
 				String data = mapper.writeValueAsString(root);
-				
-				System.out.println( data );
 				
 				return new ResponseEntity<String>(data,HttpStatus.NO_CONTENT);
 			}
 		}
-
 		else {
 			ObjectMapper mapper = new ObjectMapper();
 			ObjectNode root = mapper.createObjectNode();
-			
 			root.put("status", "failure");
-
 			String data = mapper.writeValueAsString(root);
-			System.out.println( data ); 
+			
 			return new ResponseEntity<String>(data, HttpStatus.UNAUTHORIZED);		}
 	}
 
@@ -126,11 +116,9 @@ public class ToDoController {
 		User user = (User) session.getAttribute("user");
 
 		if (user != null && session != null) {
-			List<ToDo> todoList = toDoService.getNotes(user);
 			
-			
-			if (  !todoList.isEmpty()  ) {
-
+			try{
+				List<ToDo> todoList = toDoService.getNotes(user);
 				Collections.reverse(todoList);
 
 				ObjectMapper mapper = new ObjectMapper();
@@ -144,36 +132,24 @@ public class ToDoController {
 				String data = mapper.writeValueAsString(root);
 				
 				return new ResponseEntity<String>(data, HttpStatus.OK);
-				
-			} else {
-				
-				ObjectMapper mapper = new ObjectMapper();
-				ObjectNode root = mapper.createObjectNode();
-				
-				root.put("status", "notes are not added");
-				
-				
-				root.putPOJO("todo", todoList);
-				root.putPOJO("user", user);
-				
-				String data = mapper.writeValueAsString(root);
-				
-				return new ResponseEntity<String>(data, HttpStatus.OK);
-				
 			}
+			catch (Exception e) {
+				return new ResponseEntity<String>(HttpStatus.BAD_GATEWAY);
+			}
+		
 		}
-			else {
-				
-				ObjectMapper mapper = new ObjectMapper();
-				ObjectNode root = mapper.createObjectNode();
-				
-				root.put("status", "sign in");
+		else {
 			
-				String data = mapper.writeValueAsString(root);
-				System.out.println( data ); 
-				
-				return new ResponseEntity<String>(data, HttpStatus.UNAUTHORIZED);
-			}
+			ObjectMapper mapper = new ObjectMapper();
+			ObjectNode root = mapper.createObjectNode();
+			
+			root.put("status", "sign in");
+		
+			String data = mapper.writeValueAsString(root);
+			System.out.println( data ); 
+			
+			return new ResponseEntity<String>(data, HttpStatus.UNAUTHORIZED);
+		}
 	}
 
 	
@@ -255,11 +231,11 @@ public class ToDoController {
 		if ( session != null && user != null ) {
 
 			toDo.setUser(user);
-
-			boolean result = toDoService.updateNote(toDo);
 			
-			if (result) {
+			try{
 				
+				toDoService.updateNote(toDo);
+			
 				ObjectMapper mapper = new ObjectMapper();
 				ObjectNode root = mapper.createObjectNode();
 				
@@ -268,7 +244,8 @@ public class ToDoController {
 				String data = mapper.writeValueAsString(root);
 				
 				return new ResponseEntity<String>(data, HttpStatus.OK);
-			} else {
+			}
+			catch (Exception e){
 				
 				ObjectMapper mapper = new ObjectMapper();
 				ObjectNode root = mapper.createObjectNode();
@@ -310,11 +287,9 @@ public class ToDoController {
 			
 			
 			toDo.setUser(user);
+			try{
+				toDoService.copyToDo( toDo );
 			
-			boolean result = toDoService.copyToDo( toDo );
-			
-			if( result ) {
-				
 				ObjectMapper mapper = new ObjectMapper();
 				ObjectNode root = mapper.createObjectNode();
 				
@@ -325,7 +300,7 @@ public class ToDoController {
 				
 				return new ResponseEntity<String>(data, HttpStatus.OK);
 			}
-			else {
+			catch(Exception e){
 				ObjectMapper mapper = new ObjectMapper();
 				ObjectNode root = mapper.createObjectNode();
 				
@@ -366,17 +341,28 @@ public class ToDoController {
 		
 		if( session != null && user != null ) {
 			
-			toDoService.update(toDo);
-			
-			ObjectMapper mapper = new ObjectMapper();
-			ObjectNode root = mapper.createObjectNode();
-			
-			root.put("message", "color updated");
-			
-			String data = mapper.writeValueAsString(root);
-			System.out.println( data ); 
-			
-			return new ResponseEntity<String>(data, HttpStatus.OK);
+			try{
+				toDoService.update(toDo);
+				
+				ObjectMapper mapper = new ObjectMapper();
+				ObjectNode root = mapper.createObjectNode();
+				
+				root.put("message", "updated");
+				
+				String data = mapper.writeValueAsString(root);
+				
+				return new ResponseEntity<String>(data, HttpStatus.OK);
+			}
+			catch (Exception e) {
+
+				ObjectMapper mapper = new ObjectMapper();
+				ObjectNode root = mapper.createObjectNode();
+				
+				root.put("message", "Not updated");
+				
+				String data = mapper.writeValueAsString(root);
+				return new ResponseEntity<String>(HttpStatus.OK);
+			}
 		}
 		else {
 			ObjectMapper mapper = new ObjectMapper();
@@ -404,11 +390,20 @@ public class ToDoController {
 			User shareWithUser = userService.getUserByEmail( colbObj.getSharedWith() );
 			
 			if( shareWithUser != null ) {
+				
+				ToDo toDo = colbObj.getToDo();
+				toDo.setSharedWithUserEmail(shareWithUser.getEmail());
+				
 				Collaborator collaborator = new Collaborator();
-				collaborator.setSharedWith(shareWithUser);
+				collaborator.setUser(shareWithUser);
 				collaborator.setToDo(colbObj.getToDo());
 				
-				toDoService.collaborator(collaborator);
+				user.setMobile(null);
+				user.setPassword(null);
+				
+				collaborator.setSharedUser(user);
+				
+				toDoService.collaborator(collaborator,toDo);
 			}
 		}
 		return null;

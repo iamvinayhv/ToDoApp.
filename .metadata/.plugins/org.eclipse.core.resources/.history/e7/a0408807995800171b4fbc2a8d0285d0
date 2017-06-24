@@ -1,0 +1,31 @@
+ #form_name,#form_lastName,#form_mobile,#form_email,#form_password{
+    width: 85%;
+   
+} 
+
+
+#sigInBody {
+	color:#000000;
+	width: 100%;
+	margin-top: 100px;
+	padding-top:30px;
+	padding-bottom: 10px;
+	border-radius: 5px;
+	background-color: white;
+	box-shadow: 1px 1px 1px 1px;
+}
+
+
+#signInBottom {
+	width: 100%;
+	padding: 6px 20px;
+	margin-top: 15px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	padding-left: 35%;
+	background-color: white;
+	box-shadow: 1px 1px 1px 1px;
+	margin-bottom: 30px;
+}
+
+
