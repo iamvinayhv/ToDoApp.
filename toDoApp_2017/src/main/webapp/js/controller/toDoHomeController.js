@@ -6,6 +6,22 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, toastr, 
 	var user = [];
 	var collaborator = {};
 	
+	var vi = localStorage.getItem('view');
+	
+	console.log(vi === 'true');
+	
+
+	console.log(vi === 'false');
+	$scope.isList = vi === 'true';
+	
+	
+	this.viewChange = function() {
+		console.log(typeof $scope.isList)
+		localStorage.setItem('view',$scope.isList);
+		console.log(typeof localStorage.getItem('view'));
+	}
+	
+	
 	var getToDoHtOb = homeService.getNotes();
 	
 	getToDoHtOb.then(function(data) {
@@ -20,12 +36,12 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, toastr, 
 		}
 		
 	}).catch( function(error) {
-		$scope.isList = true;
+		//$scope.isList = true;
 		$state.go('signIn');
 	});
 		
 	
-	$scope.isList = true;
+	
 	
 	this.addNote = function() {
 		
@@ -283,6 +299,7 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, toastr, 
             toDo.remainder = today;
             console.log(toDo);
             httpObjRem = homeService.toToReminder(toDo);
+            toastr.success('Remainder Setted !');
 		}
 		else if( day == "Tomorrow") {
 			 var tomorrow = new Date(today);
@@ -290,6 +307,7 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, toastr, 
 			tomorrow.setHours(08, 00, 00);
             toDo.remainder = tomorrow;
             httpObjRem = homeService.toToReminder(toDo);
+            toastr.success('Remainder Setted !');
 		}
 		else if( day == "Next-Week") {
 			var nextWeek = new Date(today);
@@ -297,6 +315,7 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, toastr, 
 			nextWeek.setHours(08, 00, 00);
             toDo.remainder = nextWeek;
             httpObjRem = homeService.toToReminder(toDo);
+            toastr.success('Remainder Setted !');
 		}
 		
 		httpObjRem.then(function(data) {
@@ -529,13 +548,23 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, toastr, 
 	
 	
 	$( function() {
-	    $( ".slides" ).sortable({
-		/*items: '.cardRow',*/
-		opacity: 0.7,
+	    $( ".cardRow" ).sortable({
+		//items: '.cardRow',
+		opacity: 1,
 		axis: 'z',
-		update: function() {
+		update: function(e, ui) {
+			var allIndex = [];
+			$(".slides").each( function(index) {
+				var position = {};
+				position.id = $(this).attr("id");
+				position.index = index;
+				allIndex.push(position);
+				
+			});
+			console.log(allIndex);
+			
 	        var data = $(this).sortable('serialize');
-	        console.log(data);
+	        var indexObj = homeService.setIndex(allIndex);
 	    }
 		});
 	   

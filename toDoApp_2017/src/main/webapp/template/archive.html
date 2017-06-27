@@ -1,6 +1,6 @@
 	<div class="cont" data-ng-class="{list: isList, grid: !isList}">
 		<div class="cardRow">
-			<div data-ng-if="todo.archive" class="card" id="cardId" data-ng-repeat="todo in toDoList | filter:searchText" data-ng-mouseover="icons=true" data-ng-mouseleave="icons=false" style="background-color: {{todo.color}};">
+			<div data-ng-if="todo.archive" class="card" id="{{todo.id}}" data-ng-repeat="todo in toDoList | filter:searchText" data-ng-mouseover="icons=true" data-ng-mouseleave="icons=false" style="background-color: {{todo.color}};">
 		
 				<div  data-ng-click="hc.popUp(todo, $index)" ><!-- | orderBy:'-' -->
 					<div id="toDoTitle" ng-bind-html="todo.title"></div>

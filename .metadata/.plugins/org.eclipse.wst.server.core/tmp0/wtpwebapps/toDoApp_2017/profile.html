@@ -8,12 +8,12 @@
   
   
 
-  <div>Select an image file: <input type="file" id="fileInput" /></div>
+<!--   <div>Select an image file: <input type="file" id="fileInput" /></div>
   <div class="cropArea">
     <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
   </div>
   <div>Cropped Image:</div>
-  <div><img ng-src="{{myCroppedImage}}" /></div>
+  <div><img ng-src="{{myCroppedImage}}" /></div> -->
 
   
 <!--   <div class="modal-header">
@@ -32,3 +32,33 @@
 
 <button class="btn btn-warning" type="button" ng-click="setCropImage(CroppedImage)">Done</button>
 </div> -->
+
+
+
+
+
+<div>
+
+  <div style="padding:10px;margin-left: 36px;">Select an image file: <input type="file" id="fileInput" /></div>
+  <div class="cropArea">
+    <img-crop image="myImage" ng-init="profileImage()" result-image="myCroppedImage"></img-crop>
+  </div>
+  <!-- <div>Cropped Image:</div>
+  <div><img ng-src="{{myCroppedImage}}" /></div> -->
+
+  <button style="margin-left:40%;margin-bottom:2%;"><a ng-click=saveProfileImage(myCroppedImage)>save</a></button>
+      <!-- <button class="btn btn-warning" type="button" id="done" ng-click="$ctrl.cancel()" style="background-color: transparent;">CANCEL</button> -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

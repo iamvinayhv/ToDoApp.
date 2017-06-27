@@ -44,7 +44,7 @@
 				      
 		          		
 						<li>
-				    		<span  class="glyphicon" data-ng-click="isList = !isList" data-ng-class="{'glyphicon-list': !isList, 'glyphicon-th-large': isList}" style="margin-top:15px; font-size: 17px;margin-left: 37px"></span>
+				    		<span  class="glyphicon" data-toggle="tooltip" title="{{!isList?'list view':'grid view'}}" data-ng-click="isList = !isList;hc.viewChange()"  data-ng-class="{'glyphicon-list': !isList, 'glyphicon-th-large': isList}" style="margin-top:15px; font-size: 17px;margin-left: 37px"></span>
 						</li>
 			        
 			            <li>

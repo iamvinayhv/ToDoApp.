@@ -114,6 +114,14 @@ myToDo.service("homeService",function ($http) {
 		});
 	}
 	
+	this.setIndex = function(todoindexObj) {
+		return $http({
+			url:"http://localhost:8080/toDoApp_2017/setIndex",
+			method:"POST",
+			data:todoindexObj
+		});
+	}
+	
 	this.signOut = function() {
 		return $http({
 			url:"http://localhost:8080/toDoApp_2017/signOut",

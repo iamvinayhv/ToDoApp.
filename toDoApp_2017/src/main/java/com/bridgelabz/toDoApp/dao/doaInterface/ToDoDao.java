@@ -1,6 +1,7 @@
 package com.bridgelabz.toDoApp.dao.doaInterface;
 
 import java.util.List;
+import java.util.Map;
 
 import com.bridgelabz.toDoApp.model.Collaborator;
 import com.bridgelabz.toDoApp.model.ToDo;
@@ -58,5 +59,7 @@ public interface ToDoDao {
 	public void collaborator(Collaborator collaborator);
 
 	public List<ToDo> getSharedNotes(User user);
+
+	public void setIndex(List<Map<String,Integer>> indexOb);
 
 }

@@ -1,9 +1,9 @@
 <div class="cont" data-ng-class="{list: isList, grid: !isList}">
-	<div class="cardRow slides">
+	<div class="cardRow">
 	
 			<div style="margin-bottom: 25px;">Others</div>
 	
-		<div data-ng-if="!todo.pin && !todo.archive" class="card" id="cardId" data-ng-repeat="todo in toDoList | filter:searchText" data-ng-mouseover="icons=true" data-ng-mouseleave="icons=false" style="background-color: {{todo.color}};">
+		<div data-ng-if="!todo.pin && !todo.archive" class="card slides" id="{{todo.id}}" data-ng-repeat="todo in toDoList | filter:searchText" data-ng-mouseover="icons=true" data-ng-mouseleave="icons=false" style="background-color: {{todo.color}};">
 			<!-- <div data-ng-show="icons" style="margin-top: -13px;margin-left: -11px;padding:5px; border-radius: 50%; height: 30px;width: 30px;background-color: white;" ><img width="20px" height="20px" src="images/Checked.png"></div>
  -->			<div  data-ng-click="hc.popUp(todo, $index)" ><!-- | orderBy:'-' -->
 				
@@ -119,7 +119,7 @@
 					</div>
 				</div>
 				
-				<div  data-ng-if="todo.sharedWithUserEmail && todo.sharedWithUserEmail != user.email" style="vertical-align: middle;border-top: 1px solid;" >
+				<div  data-ng-if="todo.sharedWithUserEmail && todo.sharedWithUserEmail != user.email" style="vertical-align: middle;border-top: 1px solid;">
 					<div id="sharedWith" data-toggle="tooltip" title="shared with--{{todo.sharedWithUserEmail}}">
 							{{todo.sharedWithUserEmail.charAt(0)| uppercase}}
 					</div>

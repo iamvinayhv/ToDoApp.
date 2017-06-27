@@ -1,0 +1,130 @@
+<div class="cont" data-ng-class="{list: isList, grid: !isList}">
+	<div class="cardRow">
+	
+			<div style="margin-bottom: 25px;">Others</div>
+	<div></div>
+		<div data-ng-if="!todo.pin && !todo.archive" class="card" id="{{todo.id}}" data-ng-repeat="todo in toDoList | filter:searchText" data-ng-mouseover="icons=true" data-ng-mouseleave="icons=false" style="background-color: {{todo.color}};">
+			<!-- <div data-ng-show="icons" style="margin-top: -13px;margin-left: -11px;padding:5px; border-radius: 50%; height: 30px;width: 30px;background-color: white;" ><img width="20px" height="20px" src="images/Checked.png"></div>
+ -->			<div  data-ng-click="hc.popUp(todo, $index)" ><!-- | orderBy:'-' -->
+				
+				<div id="toDoTitle" ng-bind-html="todo.title"></div>
+				<div style="float: right; cursor: pointer;margin-top: -30px;"><img data-ng-show="icons" alt="icon" src="images/pin.svg" width="20px" height="20px" data-toggle="tooltip" title="Pin note" data-ng-click="hc.pinUp(todo)"></div>
+				
+				<div id="toDoNote" ng-bind-html="todo.note"></div>
+			</div>
+		
+			<div  id="icons" style="padding-left: 15px;">
+				<span data-ng-show="icons">
+				
+					<span uib-dropdown dropdown-append-to-body>
+						<span data-toggle="tooltip" title="Remind me">
+							<img uib-dropdown-toggle alt="color" src="images/remaind.png" width="25px;" height="20px;"  style=" cursor: pointer;"">
+						</span>
+						
+							<div uib-dropdown-menu class="dropdown-menu" style="cursor: pointer; margin-left: 10px;  top: 87%; padding:10px; line-height: 2; margin-top: 10px;">
+									
+									<div>Reminder:</div>
+														
+									<hr>
+																								
+									<div data-ng-click="hc.toToReminder(todo,'Today')">
+										<span style="padding-right: 60px;">Later today</span>
+										<span style="float: right; padding-right: 10px">08:00 PM</span>
+									</div>
+									
+									
+								    <div data-ng-click="hc.toToReminder(todo,'Tomorrow')">
+								        <span>Tomorrow</span><span style="float: right; padding-right: 10px">08:00 AM</span>
+								    </div>
+								
+								    <div data-ng-click="hc.toToReminder(todo,'Next-Week')">
+								        <span>Next Week</span><span style="float: right; padding-right: 10px">08:00 AM</span>
+								    </div>
+								    
+							</div>
+					</span>
+		
+				
+				<span style="margin-left: 10px">
+					<img src="images/Collaborator.png" data-ng-click="hc.collaborator(todo, user)" height="23px" width="23px" data-toggle="tooltip" title="Collaborator" style="cursor: pointer;">
+				</span>
+				
+				
+				<span uib-dropdown dropdown-append-to-body><img uib-dropdown-toggle alt="color" src="images/color.png" width="20px;" height="20px;" data-toggle="tooltip" title="Change color" style="margin-left: 15px; cursor: pointer;">
+					
+					<div  uib-dropdown-menu style="margin-top:-105px; margin-left: 23px">
+						<div style="margin-left: 13px; padding-right: 10px;">
+							<span>
+								<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ffffff;display: inline-block;border:1px solid ;" data-ng-click="hc.setColor(todo,'#ffffff')"></div>
+								<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ff8a80;display: inline-block;" data-ng-click="hc.setColor(todo,'#ff8a80')"></div>
+								<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ffd180;display: inline-block;" data-ng-click="hc.setColor(todo,'#ffd180')"></div>
+								<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #80f8ff;display: inline-block;" data-ng-click="hc.setColor(todo,'#80f8ff')"></div>
+								
+							</span>
+						</div>
+						<div style="margin-left: 13px; padding-top: 10px;">
+							<span>
+								<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #3498db;display: inline-block;" data-ng-click="hc.setColor(todo,'#3498db')"></div>
+								<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #ccff90;display: inline-block;" data-ng-click="hc.setColor(todo,'#ccff90')"></div>
+								<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #fb7c05;display: inline-block;" data-ng-click="hc.setColor(todo,'#fb7c05')"></div>
+								<div style="height: 30px;width: 30px;border-radius: 50%;background-color: #95a5a6;display: inline-block;" data-ng-click="hc.setColor(todo,'#95a5a6')"></div>
+								
+							</span>
+						</div>
+					</div>
+					
+				</span>
+				
+					<span style="margin-left: 15px;cursor: pointer;" data-toggle="tooltip" title="Archive">
+						<img src="images/archive.svg" width="20px" height="20px" data-ng-click="hc.archive(todo)">
+					</span>
+				
+					<span style="margin-left: 20px;cursor: pointer;">
+						<img src="images/shareFB.png" data-ng-click="hc.shareWithFb(todo)" height="18px" width="18px" data-toggle="tooltip" title="Share on Fb">
+					</span>
+		
+		
+					<span uib-dropdown dropdown-append-to-body >
+						<span uib-dropdown-toggle data-toggle="tooltip" title="More" style="margin-left: 7px; cursor: pointer;">
+							<img alt="icon" src="images/more.png" width="30px" height="25px">
+						</span>
+					
+						<div >
+							<ul uib-dropdown-menu class="dropdown-menu" style="cursor: pointer; margin-left: 2%; margin-top: 10px;">
+								<li data-ng-click="hc.makeCopy(todo)"><a>Make a copy</a></li>
+								<li data-ng-click="hc.deleteNote(todo.id, $index)"><a>Delete Note</a></li>
+							</ul>
+						</div>
+					
+					</span>
+					
+					
+					
+				
+					
+				</span>
+			</div>
+			
+			
+			
+				<div data-ng-if="todo.remainder" id="remainder" data-ng-mouseover="cancel=true" data-ng-mouseleave="cancel=false"><span>
+					<span><img alt="icon" src="images/timeSpan.png" width="12px" height="12px"> {{todo.remainder|date:'MMM, dd yyyy  hh:mm a'}}</span>
+					<span style="float: right;" data-ng-show="cancel"><img data-ng-click="hc.cancelRemainder(todo)" alt="icon" src="images/Cancel.png" width="20px" height="20px" data-toggle="tooltip" title="Delete remainder"></span>
+	
+				</div>
+				
+				<div  data-ng-if="todo.sharedWithUserEmail == user.email" style="vertical-align: middle;border-top: 1px solid;" >
+					<div id="sharedBy" data-toggle="tooltip" title="shared by--{{todo.user.email}}">
+							{{todo.user.email.charAt(0)| uppercase}}
+					</div>
+				</div>
+				
+				<div  data-ng-if="todo.sharedWithUserEmail && todo.sharedWithUserEmail != user.email" style="vertical-align: middle;border-top: 1px solid;">
+					<div id="sharedWith" data-toggle="tooltip" title="shared with--{{todo.sharedWithUserEmail}}">
+							{{todo.sharedWithUserEmail.charAt(0)| uppercase}}
+					</div>
+				</div>
+				
+		</div>
+	</div>
+</div>

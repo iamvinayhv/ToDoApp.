@@ -1,12 +1,14 @@
 package com.bridgelabz.toDoApp.dao.daoImpl;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.ProjectionList;
@@ -129,6 +131,26 @@ public class ToDoDaoImpl implements ToDoDao {
 		sharedNotes = criteria.list();
 		
 		return sharedNotes;
+		
+	}
+
+
+
+	@Override
+	public void setIndex(List<Map<String,Integer>> indexOb) {
+		
+		String hql = "update ToDo set indexValue=:index where id=:todoId";
+		Session session = sessionFactory.getCurrentSession();
+		Iterator<Map<String,Integer>> iterator = indexOb.iterator();
+		
+		while(iterator.hasNext()){
+			HashMap<String, Integer> map = (HashMap<String, Integer>) iterator.next();
+			
+			Query query =session.createQuery(hql);
+			query.setParameter("index", map.get("index"));
+			query.setParameter("todoId", map.get("id"));
+			query.executeUpdate();
+		}
 		
 	}
 

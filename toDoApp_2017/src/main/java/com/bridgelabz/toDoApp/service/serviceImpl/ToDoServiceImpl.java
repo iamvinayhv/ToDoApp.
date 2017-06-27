@@ -1,6 +1,7 @@
 package com.bridgelabz.toDoApp.service.serviceImpl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -79,6 +80,13 @@ public class ToDoServiceImpl implements ToDoService {
 		toDoDao.collaborator(collaborator);
 		toDoDao.update(toDo);
 		
+	}
+
+	@Override
+	@Transactional
+	public void setIndex(List<Map<String,Integer>> indexOb) {
+		
+		toDoDao.setIndex(indexOb);
 	}
 
 }

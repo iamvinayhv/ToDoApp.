@@ -1,6 +1,7 @@
 package com.bridgelabz.toDoApp.controller;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -8,10 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +28,7 @@ import com.bridgelabz.toDoApp.service.serviceInterface.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 /**
  * this is the Controller class,it handles some the requests which are used to
@@ -119,8 +119,10 @@ public class ToDoController {
 			
 			try{
 				List<ToDo> todoList = toDoService.getNotes(user);
-				Collections.reverse(todoList);
-
+				//Collections.reverse(todoList);
+				
+				
+				
 				ObjectMapper mapper = new ObjectMapper();
 				ObjectNode root = mapper.createObjectNode();
 				
@@ -171,11 +173,10 @@ public class ToDoController {
 		HttpSession session = request.getSession(false);
 		User user = (User) session.getAttribute("user");
 		if (session != null && user != null) {
-
-			int result = toDoService.deleteNote(id);
-
-			if (result != 0) {
-				
+			
+			try
+			{
+				int result = toDoService.deleteNote(id);
 				
 				ObjectMapper mapper = new ObjectMapper();
 				ObjectNode root = mapper.createObjectNode();
@@ -183,17 +184,16 @@ public class ToDoController {
 				root.put("status", "success");
 				
 				String data = mapper.writeValueAsString(root);
-				System.out.println( data ); 
 				
 				return new ResponseEntity<String>(data, HttpStatus.OK);
 				
-			} else {
+			}
+			catch (Exception e) {
 				ObjectMapper mapper = new ObjectMapper();
 				ObjectNode root = mapper.createObjectNode();
 				
 				root.put("status", "toDoNot there");
-				String data = mapper.writeValueAsString(root);
-				System.out.println( data ); 
+				String data = mapper.writeValueAsString(root); 
 				
 				return new ResponseEntity<String>(data, HttpStatus.NOT_FOUND);
 			}
@@ -409,6 +409,22 @@ public class ToDoController {
 		return null;
 	}
 	
+	
+	@RequestMapping(value="setIndex",method=RequestMethod.POST)
+	public ResponseEntity<String> setIndex(@RequestBody List<Map<String,Integer>> indexOb,HttpServletRequest request, HttpServletResponse response){
+		
+		//System.out.println(indexOb);
+		
+		try{
+			toDoService.setIndex(indexOb);
+		}
+		catch (Exception e) {
+			
+		}
+		
+		return null;
+		
+	}
 
 	
 }

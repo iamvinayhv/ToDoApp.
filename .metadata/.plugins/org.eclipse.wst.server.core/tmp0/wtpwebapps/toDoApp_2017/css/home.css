@@ -296,7 +296,7 @@
 
 
 @media(max-width: 500px){
-	#cardId,#title,#note,#done{
+	.card,#title,#note,#done{
 	width:97%;
 	}
 }
