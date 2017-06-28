@@ -1,0 +1,344 @@
+#search
+{
+	height:45px;
+	outline: none;
+	background-color: #fcaf3e;
+	margin-top:3px;
+	border: none;
+	padding-left: 40px;
+	border-radius:5px;
+	background-image:url('../images/Search.png'); 
+	background-repeat: no-repeat;
+    background-position: 10px 12px;
+}
+
+   
+/* #navBar
+{
+	background-color: #fb0;
+	
+} */
+
+#refresh
+{
+	margin-top:15px;
+	font-size: 17px;
+	margin-left: 37px;
+}
+
+#signOut
+{
+	margin-left: 170px;
+	margin-top: 20px;
+	font-size: 17px;
+}
+
+
+
+
+
+
+#homeBody
+{
+	margin-top: 100px;
+}
+
+
+
+#title
+{
+	width: 81.69%;
+	min-height: 45px;
+	padding-top: 12px;
+	padding-left: 20px;
+	padding-right: 35px;
+	background-color: white;
+	font-style: italic;
+	outline: none;
+	box-shadow: 7px 7px 5px  #d3d7cf;
+}
+
+
+#note
+{
+	width: 81.69%;
+	min-height: 45px;
+	padding-top: 12px;
+	padding-left: 20px;
+	background-color: white;
+	font-style: italic;
+	outline: none;
+	box-shadow: 7px 7px 5px  #d3d7cf;
+	
+}
+
+#done
+{
+	width: 81.69%;
+	background-color: white;
+	/* height: 90px; */
+	padding-right: 20px;
+	padding-bottom: 15px;
+	box-shadow: 7px 7px 5px  #d3d7cf;
+	font-weight: bold;
+	margin-left: 0px;
+	padding-top: 10px;
+}
+
+
+.glyphicon
+{
+	cursor: pointer;
+}
+
+
+#note:empty:before
+{
+    content: attr(placeholder);
+    display: block;
+}
+
+#title:empty:before
+{
+    content: attr(placeholder);
+    display: block;
+}
+
+
+#toDoTitle
+{
+	font-weight: bold;
+	word-wrap: break-word;
+	padding: 10px 10px 10px 20px;
+	font-family: sans-serif;
+	
+}
+#toDoNote
+{
+	word-wrap: break-word;
+	padding: 10px 20px 15px 20px;
+	font-family: fantasy;
+	font-size: 17px;
+}
+
+#icons
+{
+	padding-bottom:30px;
+	height: 20px;
+}
+
+#remainder
+{
+	padding-top:5px;
+	border-top: 1px dashed;
+	padding-left: 20px;
+	min-height: 26px;
+	margin-top: 7px;
+	margin-bottom: 7px;
+}
+
+#sharedBy
+{
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	background-color: white;
+	border: 1px solid;
+	padding-left: 5px;
+	font-size: 18px;
+	margin-left: 15px;
+	font-weight: bold;
+	margin-top: 7px;
+	cursor: pointer;
+}
+
+#sharedWith
+{
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	background-color: white;
+	border: 1px solid;
+	padding-left: 5px;
+	font-size: 18px;
+	margin-left: 15px;
+	font-weight: bold;
+	margin-top: 7px;
+	cursor: pointer;
+}
+
+
+
+
+#modal-body
+{
+	font-style: italic;
+}
+
+.btn
+{
+	position: inherit;
+}
+
+
+.cont .cardRow {
+  width: 100%;
+  padding: 20px 0;
+  
+}
+
+.cont.list .card {
+	width: 81.69%;
+	background: #fff;
+	padding: 6px;
+	margin-bottom: 30px;
+	box-shadow: 10px 10px 5px  #d3d7cf;
+	
+  
+}
+
+.cont.list .card div {
+  vertical-align: middle;
+}
+
+.cont.grid .card {
+	display: inline-block;
+	width: 26%;
+	padding: 6px;
+	vertical-align: top;
+	margin-bottom: 30px;
+	margin-right: 20px;
+	background: #fff;
+	box-shadow: 10px 10px 5px  #d3d7cf;
+	
+}
+
+.cont.grid .card:hover {
+	box-shadow: 10px 10px 5px  #babdb6;
+	/* transform: scale(1.025); */
+}
+.cont.list .card:hover {
+	box-shadow: 10px 10px 5px  #babdb6;
+	/*transform: scale(1.01); */
+}
+
+.modal-content
+{
+	margin-top: 50%;
+}
+
+
+
+
+
+.menu {
+  width: 0px;
+  height: 100%;
+  margin-top:-49px;
+  background-color: #ffffff;
+  position: fixed;
+  left: 0;
+  transition: width 0.4s ease-in-out;
+  overflow: hidden;
+  
+}
+
+.menu.is-visible {
+  width: 225px;
+  transition: width 0.4s ease-in-out;
+}
+
+
+.uib-day button
+{
+	margin-left: 25%;
+}
+
+
+
+.uib-datepicker-popup.dropdown-menu{
+	width: 85%;
+	outline: none;
+}
+
+.btn
+{
+	margin-left: 10px;
+}
+
+
+#userChar
+{
+	width: 100px;
+	height:100px;
+	border-radius:50%;
+	background-color: #b5a429;
+	box-sizing: border-box;
+	font-size: 77px;
+	padding-left: 24px;
+	
+	
+}
+
+#userChar:hover {
+    background-color: rgba(0,0,0,.5);
+    z-index: 10000;
+    color: #fff;
+    transition: all .3s ease;
+    text-decoration: none;
+}
+
+#userChar span {
+    display: inline-block;
+    padding-top: 4.5em;
+    padding-bottom: 4.5em;
+}
+
+
+@media(max-width: 500px){
+	.slides,#title,#note,#done{
+	width:97%;
+	}
+}
+@media(max-width: 500px){
+	.slides{
+	width:97%;
+	}
+}
+
+
+
+#search:focus {
+    background-color: #ffffff;
+}
+
+.modal-content {
+    margin-top: 34%!important;
+}
+
+
+.sidebar-nav div:hover {
+text-decoration: none;
+color:#000000!important;
+background: rgba(0, 0, 0, .2);
+}
+
+.cropArea {
+  background: #E4E4E4;
+  overflow: hidden;
+  width:500px;
+  height:350px;
+}
+
+
+/* .cropArea
+{
+    overflow: hidden;
+
+    width: 500px;
+    height: 350px;
+
+    background: #e4e4e4;
+} */
+
+

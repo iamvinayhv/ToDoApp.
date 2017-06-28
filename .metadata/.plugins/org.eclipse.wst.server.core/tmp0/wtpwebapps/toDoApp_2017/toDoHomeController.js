@@ -6,19 +6,11 @@ myToDo.controller("homeController", function($scope, $state, $uibModal, toastr, 
 	var user = [];
 	var collaborator = {};
 	
-	var vi = localStorage.getItem('view');
-	
-	console.log(vi === 'true');
-	
-
-	console.log(vi === 'false');
-	$scope.isList = vi === 'true';
-	
+	$scope.isList = localStorage.getItem('view') === 'true';
 	
 	this.viewChange = function() {
-		console.log(typeof $scope.isList)
+
 		localStorage.setItem('view',$scope.isList);
-		console.log(typeof localStorage.getItem('view'));
 	}
 	
 	

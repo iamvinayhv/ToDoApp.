@@ -119,9 +119,14 @@ public class ToDoController {
 			
 			try{
 				List<ToDo> todoList = toDoService.getNotes(user);
-				//Collections.reverse(todoList);
 				
-				
+				Collections.sort(todoList,new Comparator<ToDo>(){
+					@Override
+					public int compare(ToDo o1, ToDo o2) {
+						
+						return Integer.valueOf(o1.getIndexValue()).compareTo(o2.getIndexValue());
+					}
+				});
 				
 				ObjectMapper mapper = new ObjectMapper();
 				ObjectNode root = mapper.createObjectNode();

@@ -192,7 +192,7 @@
 	background: #fff;
 	padding: 6px;
 	margin-bottom: 30px;
-	box-shadow: 10px 10px 5px  #d3d7cf;
+	box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.7);
 	
   
 }
@@ -209,16 +209,16 @@
 	margin-bottom: 30px;
 	margin-right: 20px;
 	background: #fff;
-	box-shadow: 10px 10px 5px  #d3d7cf;
+	box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.7);
 	
 }
 
 .cont.grid .card:hover {
-	box-shadow: 10px 10px 5px  #babdb6;
+	box-shadow: 0 10px 6px -6px #777;
 	/* transform: scale(1.025); */
 }
 .cont.list .card:hover {
-	box-shadow: 10px 10px 5px  #babdb6;
+	box-shadow: 0 10px 6px -6px #777;
 	/*transform: scale(1.01); */
 }
 
@@ -296,8 +296,8 @@
 
 
 @media(max-width: 500px){
-	.card,#title,#note,#done{
-	width:97%;
+	.slides,#title,#note,#done{
+	width:97%!important;
 	}
 }
 

@@ -1953,3 +1953,38 @@ Jun 27, 2017 17:26:51.59 [1:1:0627/172651.593621:ERROR:KeyboardEventManager.cpp(
 Jun 27, 2017 17:27:27.40 [2880:2880:0627/172726.020651:ERROR:gles2_cmd_decoder.cc(5286)] Error: 3 for Command kBlitFramebufferCHROMIUM
 Jun 27, 2017 17:41:36.24 [1:1:0627/174136.241108:ERROR:KeyboardEventManager.cpp(427)] Not implemented reached in static bool blink::KeyboardEventManager::currentCapsLockState()
 Jun 27, 2017 18:25:13.93 [2803:2846:0627/182513.849212:ERROR:ssl_client_socket_impl.cc(1135)] handshake failed; returned -1, SSL error code 1, net_error -100
+Jun 27, 2017 18:42:53.91 [1:1:0627/184253.894417:ERROR:KeyboardEventManager.cpp(427)] Not implemented reached in static bool blink::KeyboardEventManager::currentCapsLockState()
+Jun 27, 2017 18:48:22.75 [1:1:0627/184822.757262:ERROR:KeyboardEventManager.cpp(427)] Not implemented reached in static bool blink::KeyboardEventManager::currentCapsLockState()
+Jun 27, 2017 18:50:09.70 [1:1:0627/185009.707062:ERROR:KeyboardEventManager.cpp(427)] Not implemented reached in static bool blink::KeyboardEventManager::currentCapsLockState()
+Jun 27, 2017 18:50:45.39 [1:1:0627/185045.392904:ERROR:KeyboardEventManager.cpp(427)] Not implemented reached in static bool blink::KeyboardEventManager::currentCapsLockState()
+Jun 27, 2017 19:06:27.34 [1:1:0627/190627.307931:ERROR:KeyboardEventManager.cpp(427)] Not implemented reached in static bool blink::KeyboardEventManager::currentCapsLockState()
+Jun 27, 2017 19:06:43.74 [1:1:0627/190643.745207:ERROR:KeyboardEventManager.cpp(427)] Not implemented reached in static bool blink::KeyboardEventManager::currentCapsLockState()
+Jun 27, 2017 19:17:50.88 [1:1:0627/191750.889095:ERROR:KeyboardEventManager.cpp(427)] Not implemented reached in static bool blink::KeyboardEventManager::currentCapsLockState()
+
+Jun 28, 2017 10:37:08.93 NEW SESSION
+Jun 28, 2017 10:37:08.93 [1:1:0628/103708.935227:ERROR:KeyboardEventManager.cpp(427)] Not implemented reached in static bool blink::KeyboardEventManager::currentCapsLockState()
+Jun 28, 2017 10:38:16.85 A Parser-blocking, cross site (i.e. different eTLD+1) script, http://img1.ph-126.net/google.js, is invoked via document.write. The network request for this script MAY be blocked by the browser in this or a future page load due to poor network connectivity. If blocked in this page load, it will be confirmed in a subsequent console message.See https://www.chromestatus.com/feature/5718547946799104 for more details.
+Jun 28, 2017 10:38:16.85 A Parser-blocking, cross site (i.e. different eTLD+1) script, http://img1.ph-126.net/google.js, is invoked via document.write. The network request for this script MAY be blocked by the browser in this or a future page load due to poor network connectivity. If blocked in this page load, it will be confirmed in a subsequent console message.See https://www.chromestatus.com/feature/5718547946799104 for more details.
+Jun 28, 2017 10:38:59.77 [2465:2508:0628/103859.774578:ERROR:ssl_client_socket_impl.cc(1135)] handshake failed; returned -1, SSL error code 1, net_error -101
+Jun 28, 2017 10:39:01.48 [2465:2508:0628/103901.486571:ERROR:ssl_client_socket_impl.cc(1135)] handshake failed; returned -1, SSL error code 1, net_error -100
+Jun 28, 2017 10:40:21.94 [1:1:0628/104021.941473:ERROR:KeyboardEventManager.cpp(427)] Not implemented reached in static bool blink::KeyboardEventManager::currentCapsLockState()
+Jun 28, 2017 11:09:25.97 [2541:2541:0628/110925.974453:ERROR:gles2_cmd_decoder.cc(5286)] Error: 3 for Command kBlitFramebufferCHROMIUM
+Jun 28, 2017 11:34:09.17 [1:1:0628/113409.172949:ERROR:KeyboardEventManager.cpp(427)] Not implemented reached in static bool blink::KeyboardEventManager::currentCapsLockState()
+Jun 28, 2017 11:34:56.10 [2465:2465:0628/113456.101445:ERROR:display_info_provider_aura.cc(31)] Not implemented reached in virtual void extensions::DisplayInfoProviderAura::UpdateDisplayUnitInfoForPlatform(const display::Display &, extensions::api::system_display::DisplayUnitInfo *)
+Jun 28, 2017 12:45:09.07 [2465:2508:0628/124509.058215:ERROR:ssl_client_socket_impl.cc(1135)] handshake failed; returned -1, SSL error code 1, net_error -101
+Jun 28, 2017 12:45:24.08 [2465:2508:0628/124524.083381:ERROR:ssl_client_socket_impl.cc(1135)] handshake failed; returned -1, SSL error code 1, net_error -101
+Jun 28, 2017 12:46:55.49 [1:1:0628/124655.499428:ERROR:KeyboardEventManager.cpp(427)] Not implemented reached in static bool blink::KeyboardEventManager::currentCapsLockState()
+Jun 28, 2017 12:48:21.60 [1:1:0628/124821.601974:ERROR:KeyboardEventManager.cpp(427)] Not implemented reached in static bool blink::KeyboardEventManager::currentCapsLockState()
+Jun 28, 2017 13:12:44.83 [2465:2508:0628/131244.833374:ERROR:ssl_client_socket_impl.cc(1135)] handshake failed; returned -1, SSL error code 1, net_error -101
+Jun 28, 2017 13:14:23.26 [1:1:0628/131423.263028:ERROR:KeyboardEventManager.cpp(427)] Not implemented reached in static bool blink::KeyboardEventManager::currentCapsLockState()
+Jun 28, 2017 13:15:27.44 [2465:2508:0628/131527.449691:ERROR:ssl_client_socket_impl.cc(1135)] handshake failed; returned -1, SSL error code 1, net_error -101
+
+Jun 28, 2017 14:48:22.18 NEW SESSION
+Jun 28, 2017 14:48:22.18 [1:1:0628/144822.180322:ERROR:KeyboardEventManager.cpp(427)] Not implemented reached in static bool blink::KeyboardEventManager::currentCapsLockState()
+Jun 28, 2017 14:49:14.55 A Parser-blocking, cross site (i.e. different eTLD+1) script, http://img1.ph-126.net/google.js, is invoked via document.write. The network request for this script MAY be blocked by the browser in this or a future page load due to poor network connectivity. If blocked in this page load, it will be confirmed in a subsequent console message.See https://www.chromestatus.com/feature/5718547946799104 for more details.
+Jun 28, 2017 14:49:14.55 A Parser-blocking, cross site (i.e. different eTLD+1) script, http://img1.ph-126.net/google.js, is invoked via document.write. The network request for this script MAY be blocked by the browser in this or a future page load due to poor network connectivity. If blocked in this page load, it will be confirmed in a subsequent console message.See https://www.chromestatus.com/feature/5718547946799104 for more details.
+Jun 28, 2017 14:53:19.36 [2576:2576:0628/145319.365216:ERROR:gles2_cmd_decoder.cc(5286)] Error: 3 for Command kBlitFramebufferCHROMIUM
+Jun 28, 2017 15:04:01.81 [1:1:0628/150401.816958:ERROR:KeyboardEventManager.cpp(427)] Not implemented reached in static bool blink::KeyboardEventManager::currentCapsLockState()
+Jun 28, 2017 15:21:37.81 [2455:2512:0628/152137.814956:ERROR:ssl_client_socket_impl.cc(1135)] handshake failed; returned -1, SSL error code 1, net_error -100
+Jun 28, 2017 15:22:37.33 [2455:2512:0628/152237.332791:ERROR:ssl_client_socket_impl.cc(1135)] handshake failed; returned -1, SSL error code 1, net_error -101
+Jun 28, 2017 15:22:38.32 [2455:2512:0628/152238.326515:ERROR:ssl_client_socket_impl.cc(1135)] handshake failed; returned -1, SSL error code 1, net_error -100

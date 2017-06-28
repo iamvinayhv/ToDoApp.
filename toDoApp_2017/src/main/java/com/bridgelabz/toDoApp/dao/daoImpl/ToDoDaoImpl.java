@@ -35,6 +35,10 @@ public class ToDoDaoImpl implements ToDoDao {
 		Session session = sessionFactory.getCurrentSession();
 		//Transaction transaction = session.beginTransaction();
 		
+		String hql = "update ToDo set indexValue=indexValue+1";
+		Query query = session.createQuery(hql);
+		query.executeUpdate();
+		
 		session.save(toDo);
 		//transaction.commit();
 		
@@ -142,7 +146,6 @@ public class ToDoDaoImpl implements ToDoDao {
 		String hql = "update ToDo set indexValue=:index where id=:todoId";
 		Session session = sessionFactory.getCurrentSession();
 		Iterator<Map<String,Integer>> iterator = indexOb.iterator();
-		
 		while(iterator.hasNext()){
 			HashMap<String, Integer> map = (HashMap<String, Integer>) iterator.next();
 			
